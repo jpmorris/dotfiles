@@ -9,8 +9,16 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'sjl/gundo.vim'
-Plugin 'altercation/vim-colors/solarized'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'godlygeek/tabular'
+Plugin 'ervandew/supertab'
+Plugin 'vim-scripts/Vim-R-plugin'
+
+
 
 
 call vundle#end()
