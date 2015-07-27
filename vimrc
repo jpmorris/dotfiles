@@ -87,6 +87,7 @@ set wildmode=list:longest,full
 set mouse=a                   " Enable mouse support in console
 set backspace=2               " Got backspace?
 set number                    " Line Numbers PWN!
+set relativenumber
 set ignorecase                " Ignoring case is a fun trick
 set smartcase                 " And so is Artificial Intellegence!
 inoremap jj <Esc>             " This is totally awesome - remap jj to escape
