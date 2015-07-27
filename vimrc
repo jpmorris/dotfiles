@@ -3,7 +3,10 @@ syntax enable			" syntax highlighting
 filetype plugin on		" load filetype plugins for the filetype
 filetype indent on		" load indent rules for the filetype
 
+" linux load:
 set rtp+=~/.vim/bundle/Vundle.vim
+" windows load:
+"set rtp+=~/vimfiles/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
