@@ -3,18 +3,22 @@ syntax enable			" syntax highlighting
 filetype plugin on		" load filetype plugins for the filetype
 filetype indent on		" load indent rules for the filetype
 
-" linux load:
-<<<<<<< HEAD
-set rtp+=~/.vim/bundle/Vundle.vim
-" windows load:
-"set rtp+=~/vimfiles/bundle/Vundle.vim
-=======
-set rtp+=~/vimfiles/bundle/Vundle.vim
-" windows load:
-"set rtp+=~/.vim/bundle/Vundle.vim
->>>>>>> 696533393c9453ed05ccf059c12763d47d01fc26
-call vundle#begin()
+" WINDOWS SPECIFIC - TODO: if/else for win/linux
+let vimrplugin_r_path = "C:\\Users\\mor20\\progs2\\R\\R-3.2.1\\bin\\x64"
+let g:rplugin_sumatra_path = "C:\\Users\\mor20\\progs2\\SumatraPDF-3.0\\SumatraPDF.exe"
+" let vimrplugin_latexmk = 1
+" let vimrplugin_latexcmd = 'latexmk -bibtex -pdf -pdflatex="pdflatex -file-line-error -synctex=1"'
+let g:latex_viewer='C:\Users\mor20\progs2\SumatraPDF-3.0\SumatraPDF.exe -reuse-instance -inverse-search '.
+\ '"gvim --servername '.v:servername.' --remote-send \"^<C-\^>^<C-n^>'.
+\ ':execute ''drop ''.fnameescape(''\%f'')^<CR^>:\%l^<CR^>:normal\! zzzv^<CR^>'.
+\ ':call remote_foreground('''.v:servername.''')^<CR^>\""'
 
+" VUNDLE
+let win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
+let vimDir = win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
+let &runtimepath .= ',' . expand(vimDir . '/bundle/Vundle.vim')
+call vundle#rc(expand(vimDir . '/bundle'))
+call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'sjl/gundo.vim'
@@ -26,11 +30,10 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'godlygeek/tabular'
 Plugin 'ervandew/supertab'
 Plugin 'vim-scripts/Vim-R-plugin'
-
-
-
+"Bundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
 call vundle#end()
+
 
 
 " THEME
@@ -40,10 +43,11 @@ colorscheme solarized
 set colorcolumn=80
 
 if has('gui_running')
-   set background=light
+"   set background=light
 "   set guifont=Terminus\ 9
+   set background=dark
   if has('gui_win32')
-    set guifont=DejaVu_Sans_Mono:h12:cANSI
+    set guifont=Courier\ New:h9
   else
     set guifont=DejaVu\ Sans\ Mono\ 12
   endif
