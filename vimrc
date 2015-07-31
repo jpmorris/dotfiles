@@ -13,6 +13,11 @@ let g:latex_viewer='C:\Users\mor20\progs2\SumatraPDF-3.0\SumatraPDF.exe -reuse-i
 \ ':execute ''drop ''.fnameescape(''\%f'')^<CR^>:\%l^<CR^>:normal\! zzzv^<CR^>'.
 \ ':call remote_foreground('''.v:servername.''')^<CR^>\""'
 
+nnoremap <expr><silent> gb ':VimLatexView -forward-search '
+        \ . shellescape(expand('%:p')) . ' '
+        \ . line(".") . ' '
+        \ . shellescape(g:latex#data[b:latex.id].out()) . '<CR>'
+
 " VUNDLE
 let win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
 let vimDir = win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
