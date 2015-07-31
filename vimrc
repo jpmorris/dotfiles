@@ -103,7 +103,8 @@ set number                    " Line Numbers PWN!
 set relativenumber
 set ignorecase                " Ignoring case is a fun trick
 set smartcase                 " And so is Artificial Intellegence!
-inoremap jj <Esc>             " This is totally awesome - remap jj to escape
+"This is totally awesome - remap jj to escape
+inoremap jj <Esc>
                               " in insert mode.
 nnoremap JJJJ <Nop>
 set incsearch                 " Incremental searching is sexy
@@ -157,9 +158,6 @@ endfunc
 
 "{{{ Mappings
 
-" Open Url on this line with the browser \w
-map <Leader>w :call Browser ()<CR>
-
 " Open the Project Plugin <F2>
 nnoremap <silent> <F2> :Project<CR>
 
@@ -168,12 +166,6 @@ nnoremap <silent> <Leader>pal  :Project .vimproject<CR>
 
 " Open the TagList Plugin <F3>
 nnoremap <silent> <F3> :Tlist<CR>
-
-" Next Tab
-nnoremap <silent> <C-Right> :tabnext<CR>
-
-" Previous Tab
-nnoremap <silent> <C-Left> :tabprevious<CR>
 
 " New Tab
 nnoremap <silent> <C-t> :tabnew<CR>
