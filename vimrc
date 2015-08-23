@@ -44,6 +44,7 @@ Plugin 'ervandew/supertab'
 Plugin 'vim-scripts/Vim-R-plugin'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
+"Plugin 'MattesGroeger/vim-bookmarks'
 call vundle#end()
 "}}}
 
@@ -93,6 +94,8 @@ let g:tagbar_type_r = {
         \ 'v:FunctionVariables',
     \ ]
 \ }
+" syntastic r checking
+let g:syntastic_r_lint_styles = 'list(spacing.indentation.notabs, spacing.indentation.evenindent)'
 
 " }}}
 
@@ -121,13 +124,16 @@ if has('gui_running')
 "   set guifont=Terminus\ 9
    set background=dark
   if has('gui_win32')
-    set guifont=Courier\ New:h9
+"   set guifont=Courier\ New:h10
+   set guifont=Dina:h8
   else
-    set guifont=DejaVu\ Sans\ Mono\ 12
+"    set guifont=DejaVu\ Sans\ Mono\ 12
   endif
 else
    set background=dark
 endif
+
+
 
 
 " }}}
