@@ -44,6 +44,7 @@ Plugin 'ervandew/supertab'
 Plugin 'vim-scripts/Vim-R-plugin'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
+Plugin 'rodjek/vim-puppet'
 "Plugin 'MattesGroeger/vim-bookmarks'
 call vundle#end()
 "}}}
@@ -85,6 +86,11 @@ set ttyfast
 set noerrorbells
 set visualbell
 set t_vb=
+
+" backup to tmp
+set backupdir=~/vimtmp/backup//
+set directory=~/vimtmp/swap//
+set undodir=~/vimtmp/undo//
 
 let g:tagbar_type_r = {
     \ 'ctagstype' : 'r',
