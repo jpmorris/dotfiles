@@ -5,7 +5,7 @@ filetype indent on		" load indent rules for the filetype
 
 " {{{ OS Specific
 " WINDOWS SPECIFIC - TODO: if/else for win/linux
-let vimrplugin_r_path = "C:\\Users\\mor20\\progs2\\R\\R-3.2.1\\bin\\x64"
+let vimrplugin_r_path = "C:\\Program Files\\R\\R-3.2.2\\bin\\x64"
 let g:rplugin_sumatra_path = "C:\\Users\\mor20\\progs2\\SumatraPDF-3.0\\SumatraPDF.exe"
 " let vimrplugin_latexmk = 1
 " let vimrplugin_latexcmd = 'latexmk -bibtex -pdf -pdflatex="pdflatex -file-line-error -synctex=1"'
@@ -86,6 +86,8 @@ set ttyfast
 set noerrorbells
 set visualbell
 set t_vb=
+
+let NERDTreeShowHidden=1      " show hidden files in nerdtree
 
 " backup to tmp
 set backupdir=~/vimtmp/backup//
@@ -204,16 +206,13 @@ nnoremap <silent> <F3> :Tlist<CR>
 " New Tab
 nnoremap <silent> <C-t> :tabnew<CR>
 
-" DOS is for fools.
-nnoremap <silent> <F9> :%s/$//g<CR>:%s// /g<CR>
+"Nerdtree open
+map <F9> :NERDTreeToggle<CR>
+
 
 " Paste Mode!  Dang! <F10>
 nnoremap <silent> <F10> :call Paste_on_off()<CR>
 set pastetoggle=<F10>
-
-" Create Blank Newlines and stay in Normal mode
-nnoremap <silent> zj o<Esc>
-nnoremap <silent> zk O<Esc>
 
 " Space will toggle folds!
 nnoremap <space> za
@@ -222,8 +221,8 @@ nnoremap <space> za
 nmap <F8> :TagbarToggle<CR>
 
 " Insert Blank lines in normal mode
-nmap <S-Enter> O<Esc>j
-nmap <CR> o<Esc>k
+nmap <CR> O<Esc>j
+nmap <S-Enter> o<Esc>k
 
 
 "}}}
