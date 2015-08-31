@@ -3,10 +3,18 @@ syntax enable			" syntax highlighting
 filetype plugin on		" load filetype plugins for the filetype
 filetype indent on		" load indent rules for the filetype
 
-" {{{ OS Specific
-" WINDOWS SPECIFIC - TODO: if/else for win/linux
-let vimrplugin_r_path = "C:\\Program Files\\R\\R-3.2.2\\bin\\x64"
-let g:rplugin_sumatra_path = "C:\\Users\\mor20\\progs2\\SumatraPDF-3.0\\SumatraPDF.exe"
+
+" {{{ OS/Computer Specific
+if has('win32')
+   if hostname() == 'S217648'
+      let vimrplugin_r_path = "C:\\Users\\mor20\\progs2\\R\\R-3.2.1\\bin\\x64"
+      let g:rplugin_sumatra_path = "C:\\Users\\mor20\\progs2\\SumatraPDF-3.0\\SumatraPDF.exe"
+   elseif hostname() == 'SPIKE'
+      let vimrplugin_r_path = "C:\\Program Files\\R\\R-3.2.2\\bin\\x64"
+      "let g:rplugin_sumatra_path = "C:\\Users\\mor20\\progs2\\SumatraPDF-3.0\\SumatraPDF.exe"
+   endif
+elseif has('unix')
+endif
 " let vimrplugin_latexmk = 1
 " let vimrplugin_latexcmd = 'latexmk -bibtex -pdf -pdflatex="pdflatex -file-line-error -synctex=1"'
 "let g:latex_viewer='C:\Users\mor20\progs2\SumatraPDF-3.0\SumatraPDF.exe -reuse-instance -inverse-search '.
@@ -126,7 +134,7 @@ set background=dark
 colorscheme solarized
 
 set colorcolumn=80
-
+set textwidth=80
 if has('gui_running')
 "   set background=light
 "   set guifont=Terminus\ 9
