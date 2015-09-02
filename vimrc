@@ -53,7 +53,7 @@ Plugin 'vim-scripts/Vim-R-plugin'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'rodjek/vim-puppet'
-"Plugin 'MattesGroeger/vim-bookmarks'
+Plugin 'jistr/vim-nerdtree-tabs'
 call vundle#end()
 "}}}
 
