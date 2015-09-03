@@ -40,20 +40,18 @@ let &runtimepath .= ',' . expand(vimDir . '/bundle/Vundle.vim')
 call vundle#rc(expand(vimDir . '/bundle'))
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-
-Plugin 'sjl/gundo.vim'
+Plugin 'sjl/gundo.vim'                    " undo history
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
-Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'godlygeek/tabular'
-Plugin 'ervandew/supertab'
+Plugin 'godlygeek/tabular'                " line up characters use :Tabularize /<char>
+Plugin 'ervandew/supertab'                " tab insert completion
 Plugin 'vim-scripts/Vim-R-plugin'
 Plugin 'scrooloose/nerdtree'
-Plugin 'majutsushi/tagbar'
-Plugin 'rodjek/vim-puppet'
-Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'majutsushi/tagbar'                " tagbar navigation
+Plugin 'rodjek/vim-puppet'                " vim puppet syntax
+Plugin 'jistr/vim-nerdtree-tabs'          " put nerdtree on all tabs
 call vundle#end()
 "}}}
 
@@ -95,6 +93,17 @@ set noerrorbells
 set visualbell
 set t_vb=
 set fileformat=unix
+
+"syntastic settings:
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 
 let NERDTreeShowHidden=1      " show hidden files in nerdtree
 
