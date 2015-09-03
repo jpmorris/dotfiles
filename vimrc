@@ -215,7 +215,7 @@ nnoremap <silent> <F3> :Tlist<CR>
 nnoremap <silent> <C-t> :tabnew<CR>
 
 "Nerdtree open
-map <F9> :NERDTreeToggle<CR>
+map <F9> :NERDTreeTabsToggle<CR>
 
 
 " Paste Mode!  Dang! <F10>
@@ -232,7 +232,9 @@ nmap <F8> :TagbarToggle<CR>
 nmap <CR> O<Esc>j
 nmap <S-Enter> o<Esc>k
 
-
+" Move between split screens
+noremap <C-h> <C-w>h
+noremap <C-l> <C-w>l
 "}}}
 
 "{{{Taglist configuration
