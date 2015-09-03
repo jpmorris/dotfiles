@@ -94,6 +94,7 @@ set ttyfast
 set noerrorbells
 set visualbell
 set t_vb=
+set fileformat=unix
 
 let NERDTreeShowHidden=1      " show hidden files in nerdtree
 
