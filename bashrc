@@ -118,3 +118,5 @@ fi
 
 # vi mode:
 set -o vi
+
+alias vim="vim --servername VIM"
