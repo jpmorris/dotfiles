@@ -78,10 +78,6 @@ set number                    " Line Numbers PWN!
 set relativenumber
 set ignorecase                " Ignoring case is a fun trick
 set smartcase                 " And so is Artificial Intellegence!
-"This is totally awesome - remap jj to escape
-inoremap jj <Esc>
-                              " in insert mode.
-nnoremap JJJJ <Nop>
 set incsearch                 " Incremental searching is sexy
 set hlsearch                  " Highlight things that we find with the search
 let g:clipbrdDefaultReg = '+' " Since I use linux, I want this
@@ -106,6 +102,8 @@ let g:syntastic_check_on_wq = 0
 
 
 let NERDTreeShowHidden=1      " show hidden files in nerdtree
+let vimrplugin_assign=2       " stop _ to -> remapping
+
 
 " backup to tmp
 set backupdir=~/vimtmp/backup//
@@ -211,6 +209,12 @@ augroup END
 "}}}
 
 "{{{ Mappings
+"This is totally awesome - remap jj to escape
+inoremap jj <Esc>
+nnoremap JJJJ <Nop>
+
+" easymotion search
+nnoremap <C-O> <Leader><Leader>s
 
 " Open the Project Plugin <F2>
 nnoremap <silent> <F2> :Project<CR>
