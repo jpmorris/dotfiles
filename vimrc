@@ -214,7 +214,7 @@ inoremap jj <Esc>
 nnoremap JJJJ <Nop>
 
 " easymotion search
-nnoremap <C-O> <Leader><Leader>s
+map <C-K> <Leader><Leader>s
 
 " Open the Project Plugin <F2>
 nnoremap <silent> <F2> :Project<CR>
