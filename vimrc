@@ -215,8 +215,15 @@ augroup END
 inoremap jj <Esc>
 nnoremap JJJJ <Nop>
 
+" Move between split screens
+noremap <C-h> <C-w>h
+noremap <C-l> <C-w>l
 " easymotion search
-map <C-K> <Leader><Leader>s
+map <C-u> <Leader><Leader>s
+" easier page up/down movement
+noremap <C-j> <C-d>
+noremap <C-k> <C-u>
+
 
 " Open the Project Plugin <F2>
 nnoremap <silent> <F2> :Project<CR>
@@ -248,9 +255,6 @@ nmap <F8> :TagbarToggle<CR>
 nmap <CR> O<Esc>j
 nmap <S-Enter> o<Esc>k
 
-" Move between split screens
-noremap <C-h> <C-w>h
-noremap <C-l> <C-w>l
 "}}}
 
 "{{{Taglist configuration
