@@ -42,6 +42,7 @@ let &runtimepath .= ',' . expand(vimDir . '/bundle/Vundle.vim')
 call vundle#rc(expand(vimDir . '/bundle'))
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
+Plugin 'jalvesaq/R-Vim-runtime'
 Plugin 'sjl/gundo.vim'                    " undo history
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
