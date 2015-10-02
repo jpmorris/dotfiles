@@ -7,7 +7,7 @@ filetype indent on		" load indent rules for the filetype
 " {{{ OS/Computer Specific
 if has('win32')
    if hostname() == 'S217648'
-      let vimrplugin_r_path = "C:\\Users\\mor20\\progs2\\R\\R-3.2.1\\bin\\x64"
+      let vimrplugin_r_path = "C:\\Users\\mor20\\progs2\\R\\R-3.2.2\\bin\\x64"
       let g:rplugin_sumatra_path = "C:\\Users\\mor20\\progs2\\SumatraPDF-3.0\\SumatraPDF.exe"
    elseif hostname() == 'SPIKE'
       let vimrplugin_r_path = "C:\\Program Files\\R\\R-3.2.2\\bin\\x64"
@@ -54,6 +54,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'                " tagbar navigation
 Plugin 'rodjek/vim-puppet'                " vim puppet syntax
 Plugin 'jistr/vim-nerdtree-tabs'          " put nerdtree on all tabs
+Plugin 'tpope/vim-surround'
+Plugin 'MattesGroeger/vim-bookmarks'
+Plugin 'chrisbra/Recover.vim'
 call vundle#end()
 "}}}
 
