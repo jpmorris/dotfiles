@@ -144,23 +144,21 @@ set sidescrolloff=5         " keep at least 5 lines left/right
 set showmatch                 " show matching bracket
 
 " THEME
-set background=dark
-colorscheme solarized
-
 set colorcolumn=80
 set textwidth=80
 if has('gui_running')
-"   set background=light
-"   set guifont=Terminus\ 9
+   colorscheme solarized
    set background=dark
   if has('gui_win32')
-"   set guifont=Courier\ New:h10
    set guifont=Dina:h8
   else
-"    set guifont=DejaVu\ Sans\ Mono\ 12
+    set guifont=peep:h11
   endif
 else
+   colorscheme solarized
+   se t_Co=16
    set background=dark
+   set guifont=peep:h11
 endif
 
 
