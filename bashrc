@@ -117,6 +117,15 @@ if ! shopt -oq posix; then
 fi
 
 # vi mode:
-set -o vi
+#set -o vi
+if [ "x$DISPLAY" != "x" ]
+then
+   if [ "screen" = "$TERM" ]
+   then
+      export TERM=screen-256color
+   else
+      export TERM=xterm-256color
+   fi
+   alias vim='vim --servername VIM'
+fi
 
-alias vim="vim --servername VIM"
