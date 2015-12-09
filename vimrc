@@ -215,7 +215,7 @@ augroup END
 "{{{ Mappings
 "This is totally awesome - remap jj to escape
 inoremap jj <Esc>
-nnoremap JJJJ <Nop>
+"nnoremap JJJJ <Nop>
 
 " Move between split screens
 noremap <C-h> <C-w>h
@@ -225,7 +225,11 @@ map <C-u> <Leader><Leader>s
 " easier page up/down movement
 noremap <C-j> <C-d>
 noremap <C-k> <C-u>
-
+" move viewport
+nnoremap K <C-e>
+nnoremap <C-e> K
+nnoremap J <C-y>
+nnoremap <C-y> J
 
 " Open the Project Plugin <F2>
 nnoremap <silent> <F2> :Project<CR>
