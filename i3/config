@@ -180,3 +180,9 @@ bindsym XF86AudioPrev exec playerctl previous
 exec --no-startup-id nm-applet
 exec blueman-applet
 exec gnome-sound-applet
+exec syndaemon -i 2 -t -k -d
+
+
+
+
+
