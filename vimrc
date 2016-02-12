@@ -4,7 +4,7 @@ filetype plugin on		" load filetype plugins for the filetype
 filetype indent on		" load indent rules for the filetype
 
 
-" {{{ OS/Computer Specific
+"  OS/Computer Specific
 if has('win32')
    if hostname() == 'S217648'
       let vimrplugin_r_path = "C:\\Users\\mor20\\progs2\\R\\R-3.2.2\\bin\\x64"
@@ -32,9 +32,8 @@ nnoremap <expr><silent> gb ':VimLatexView -forward-search '
 "let g:rct_completion_use_fri = 1
 "let g:Tex_DefaultTargetFormat = "pdf"
 "let g:Tex_ViewRule_pdf = "kpdf"
-" }}}
 
-" {{{ Vundle Plugins
+"  Vundle Plugins
 " VUNDLE
 let win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
 let vimDir = win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
@@ -62,15 +61,14 @@ Plugin 'vim-scripts/taglist.vim'
 
 
 call vundle#end()
-"}}}
 
-" {{{ Input
+"  Input
 " FILE HANDLING
 " Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 set showcmd                   " This shows what you are typing as a command.
-set foldmethod=marker         " Folding Stuffs
+set foldmethod=manual         " Folding Stuffs
 set autoindent                " Who doesn't like autoindent?
 set expandtab                 " Spaces are better than a tab character
 set smarttab
@@ -130,9 +128,7 @@ let g:tagbar_type_r = {
 " syntastic r checking
 let g:syntastic_r_lint_styles = 'list(spacing.indentation.notabs, spacing.indentation.evenindent)'
 
-" }}}
-
-"{{{Look and Feel
+"Look and Feel
 
 "Status line gnarliness
 set laststatus=2
@@ -164,13 +160,7 @@ else
    set guifont=peep:h11
 endif
 
-
-
-
-" }}}
-
-"{{{ Functions
-
+" Functions
 " Paste Toggle
 let paste_mode = 0 " 0 = normal, 1 = paste
 
@@ -212,10 +202,7 @@ augroup JumpCursorOnEdit
             \ endif
 augroup END
 
-
-"}}}
-
-"{{{ Mappings
+" Mappings
 "This is totally awesome - remap jj to escape
 inoremap jj <Esc>
 "nnoremap JJJJ <Nop>
@@ -264,14 +251,14 @@ nmap <F8> :TagbarToggle<CR>
 nmap <CR> O<Esc>j
 nmap <S-Enter> o<Esc>k
 
-"}}}
 
-"{{{Taglist configuration
+
+" Taglist configuration
 let Tlist_Use_Right_Window = 1
 let Tlist_Enable_Fold_Column = 0
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_SingleClick = 1
 let Tlist_Inc_Winwidth = 0
-"}}}
+
 
 
