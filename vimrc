@@ -57,6 +57,9 @@ Plugin 'jistr/vim-nerdtree-tabs'          " put nerdtree on all tabs
 Plugin 'tpope/vim-surround'
 Plugin 'MattesGroeger/vim-bookmarks'
 Plugin 'chrisbra/Recover.vim'
+Plugin 'vim-scripts/taglist.vim'
+
+
 call vundle#end()
 
 "  Input
