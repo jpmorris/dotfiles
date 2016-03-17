@@ -76,6 +76,7 @@ vimrplugin_rrstcompiler	r-plugin.txt	/*vimrplugin_rrstcompiler*
 vimrplugin_rst2pdfargs	r-plugin.txt	/*vimrplugin_rst2pdfargs*
 vimrplugin_rst2pdfpath	r-plugin.txt	/*vimrplugin_rst2pdfpath*
 vimrplugin_save_win_pos	r-plugin.txt	/*vimrplugin_save_win_pos*
+vimrplugin_set_home_env	r-plugin.txt	/*vimrplugin_set_home_env*
 vimrplugin_show_args	r-plugin.txt	/*vimrplugin_show_args*
 vimrplugin_sleeptime	r-plugin.txt	/*vimrplugin_sleeptime*
 vimrplugin_source	r-plugin.txt	/*vimrplugin_source*

@@ -188,8 +188,8 @@ function! RMakePDF(bibtex, knit)
         let pdfcmd = pdfcmd . ", view = FALSE"
     else
         if g:vimrplugin_openpdf == 1
-            if b:pdf_opened == 0
-                let b:pdf_opened = 1
+            if b:pdf_is_open == 0
+                let b:pdf_is_open = 1
             else
                 let pdfcmd = pdfcmd . ", view = FALSE"
             endif
@@ -244,7 +244,7 @@ endfunction
 
 if g:vimrplugin_rnowebchunk == 1
     " Write code chunk in rnoweb files
-    imap <buffer><silent> < <Esc>:call RWriteChunk()<CR>a
+    inoremap <buffer><silent> < <Esc>:call RWriteChunk()<CR>a
 endif
 
 " Pointers to functions whose purposes are the same in rnoweb, rrst, rmd,
@@ -254,7 +254,7 @@ let b:PreviousRChunk = function("RnwPreviousChunk")
 let b:NextRChunk = function("RnwNextChunk")
 let b:SendChunkToR = function("RnwSendChunkToR")
 
-let b:pdf_opened = 0
+let b:pdf_is_open = 0
 
 
 "==========================================================================
