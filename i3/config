@@ -22,7 +22,7 @@ font pango:DejaVu Sans Mono 12
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-force_xinerama yes
+#force_xinerama yes
 
 
 # start a terminal
@@ -192,10 +192,10 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+#bindsym XF86AudioPlay exec playerctl play
+#bindsym XF86AudioPause exec playerctl pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
 
 
 exec --no-startup-id nm-applet
