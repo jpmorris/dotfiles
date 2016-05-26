@@ -6,23 +6,16 @@ filetype indent on		" load indent rules for the filetype
 
 "  OS/Computer Specific
 if has('win32')
-   if hostname() == 'S217648'
-      let vimrplugin_r_path = "C:\\Users\\mor20\\progs2\\R\\R-3.2.2\\bin\\x64"
-      let g:rplugin_sumatra_path = "C:\\Users\\mor20\\progs2\\SumatraPDF-3.0\\SumatraPDF.exe"
-   elseif hostname() == 'SPIKE'
+   if hostname() == 'SPIKE'
       let vimrplugin_r_path = "C:\\Program Files\\R\\R-3.2.2\\bin\\x64"
-      "let g:rplugin_sumatra_path = "C:\\Users\\mor20\\progs2\\SumatraPDF-3.0\\SumatraPDF.exe"
+      "let g:rplugin_sumatra_path =
+      ""C:\\Users\\mor20\\progs2\\SumatraPDF-3.0\\SumatraPDF.exe"
    elseif hostname() == 'julia'
-      let g:rplugin_sumatra_path = "C:\Program Files (x86)\SumatraPDF\\SumatraPDF.exe"
+      let g:rplugin_sumatra_path =
+      "C:\Program Files (x86)\SumatraPDF\\SumatraPDF.exe"
    endif
 elseif has('unix')
 endif
-" let vimrplugin_latexmk = 1
-" let vimrplugin_latexcmd = 'latexmk -bibtex -pdf -pdflatex="pdflatex -file-line-error -synctex=1"'
-"let g:latex_viewer='C:\Users\mor20\progs2\SumatraPDF-3.0\SumatraPDF.exe -reuse-instance -inverse-search '.
-"\ '"gvim --servername '.v:servername.' --remote-send \"^<C-\^>^<C-n^>'.
-"\ ':execute ''drop ''.fnameescape(''\%f'')^<CR^>:\%l^<CR^>:normal\! zzzv^<CR^>'.
-"\ ':call remote_foreground('''.v:servername.''')^<CR^>\""'
 
 nnoremap <expr><silent> gb ':VimLatexView -forward-search '
         \ . shellescape(expand('%:p')) . ' '
@@ -41,7 +34,6 @@ let &runtimepath .= ',' . expand(vimDir . '/bundle/Vundle.vim')
 call vundle#rc(expand(vimDir . '/bundle'))
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-Plugin 'jalvesaq/R-Vim-runtime'
 Plugin 'sjl/gundo.vim'                    " undo history
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
@@ -49,16 +41,18 @@ Plugin 'bling/vim-airline'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'godlygeek/tabular'                " line up characters use :Tabularize /<char>
 Plugin 'ervandew/supertab'                " tab insert completion
-Plugin 'vim-scripts/Vim-R-plugin'
+"Plugin 'jalvesaq/R-Vim-runtime'
+"Plugin 'vim-scripts/Vim-R-plugin' is being replaced with Nvim-R
+Plugin 'jalvesaq/Nvim-R'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'                " tagbar navigation
-Plugin 'rodjek/vim-puppet'                " vim puppet syntax
+"Plugin 'rodjek/vim-puppet'                " vim puppet syntax
 Plugin 'jistr/vim-nerdtree-tabs'          " put nerdtree on all tabs
-Plugin 'tpope/vim-surround'
+"Plugin 'tpope/vim-surround'
 Plugin 'MattesGroeger/vim-bookmarks'
 Plugin 'chrisbra/Recover.vim'
-Plugin 'vim-scripts/taglist.vim'
-
+"Plugin 'vim-scripts/taglist.vim'
+"Plugin 'EricGebhart/SAS-Vim'
 
 call vundle#end()
 
@@ -109,7 +103,7 @@ let g:syntastic_check_on_wq = 0
 
 
 let NERDTreeShowHidden=1      " show hidden files in nerdtree
-let vimrplugin_assign=2       " stop _ to -> remapping
+let R_assign=2                " stop _ to -> remapping
 
 
 " backup to tmp
@@ -146,9 +140,9 @@ set showmatch                 " show matching bracket
 set colorcolumn=80
 set textwidth=80
 if has('gui_running')
-   colorscheme solarized
    set background=dark
-  if has('gui_win32')
+   colorscheme solarized
+ if has('gui_win32')
    set guifont=Dina:h8
   else
     set guifont=peep:h11
@@ -237,10 +231,6 @@ nnoremap <silent> <C-t> :tabnew<CR>
 map <F9> :NERDTreeTabsToggle<CR>
 
 
-" Paste Mode!  Dang! <F10>
-nnoremap <silent> <F10> :call Paste_on_off()<CR>
-set pastetoggle=<F10>
-
 " Space will toggle folds!
 nnoremap <space> za
 
@@ -250,6 +240,31 @@ nmap <F8> :TagbarToggle<CR>
 " Insert Blank lines in normal mode
 nmap <CR> O<Esc>j
 nmap <S-Enter> o<Esc>k
+
+
+" Sas
+"
+"   " Add a separator before the SAS menu items
+menu Tools.-Sep-     :
+
+" Assign RunSASonCurrentFile function to the tools menu
+menu Tools.Run\ SAS\ on\ Current\ File  :call RunSASonCurrentFile()
+
+" Assign  LoadSASLogLst function to the tools menu
+menu Tools.Load\ SAS\ Log\/List\ for\ Current\ File :call LoadSASLogLst()
+
+" Assign  ChkSASLog function to the tools menu
+menu Tools.Check\ SAS\ Log :call CheckSASLog()
+
+" Map RunSASonCurrentFile to a function key
+map <F10> :call RunSASonCurrentFile()
+
+" Map LoadSASLogLst to a function key
+map <F11> :call LoadSASLogLst()
+
+" Map CheckSASLog to a function key
+map <F12> :call CheckSASLog()
+
 
 
 
