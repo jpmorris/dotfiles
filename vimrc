@@ -6,13 +6,8 @@ filetype indent on		" load indent rules for the filetype
 
 "  OS/Computer Specific
 if has('win32')
-   if hostname() == 'SPIKE'
-      let vimrplugin_r_path = "C:\\Program Files\\R\\R-3.2.2\\bin\\x64"
-      "let g:rplugin_sumatra_path =
-      ""C:\\Users\\mor20\\progs2\\SumatraPDF-3.0\\SumatraPDF.exe"
-   elseif hostname() == 'julia'
-      let g:rplugin_sumatra_path =
-      "C:\Program Files (x86)\SumatraPDF\\SumatraPDF.exe"
+   if hostname() == 'julia'
+      let g:rplugin_sumatra_path = "C:\Program Files (x86)\SumatraPDF\\SumatraPDF.exe"
    endif
 elseif has('unix')
 endif
