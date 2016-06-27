@@ -61,8 +61,8 @@ set foldmethod=manual         " Folding Stuffs
 set autoindent                " Who doesn't like autoindent?
 set expandtab                 " Spaces are better than a tab character
 set smarttab
-set shiftwidth=3              " Who wants an 8 character tab?  Not me!
-set softtabstop=3
+set shiftwidth=4              " Who wants an 8 character tab?  Not me!
+set softtabstop=4
 if version >= 700             " Use english for spellchecking, but
    set spl=en spell
 endif
@@ -194,7 +194,7 @@ augroup END
 " Mappings
 "This is totally awesome - remap jj to escape
 inoremap jj <Esc>
-"nnoremap JJJJ <Nop>
+nnoremap JJJJ <Nop>
 
 " Move between split screens
 noremap <C-h> <C-w>h
