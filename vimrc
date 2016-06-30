@@ -194,7 +194,8 @@ augroup END
 " Mappings
 "This is totally awesome - remap jj to escape
 inoremap jj <Esc>
-nnoremap JJJJ <Nop>
+"nnoremap JJJJ <Nop>
+nnoremap JJJJ <Esc>
 
 " Move between split screens
 noremap <C-h> <C-w>h
