@@ -34,7 +34,7 @@ let &runtimepath .= ',' . expand(vimDir . '/bundle/Vundle.vim')
 call vundle#rc(expand(vimDir . '/bundle'))
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-Plugin 'sjl/gundo.vim'                    " undo history
+"#Plugin 'sjl/gundo.vim'                    " undo history
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
@@ -44,9 +44,9 @@ Plugin 'ervandew/supertab'                " tab insert completion
 "Plugin 'jalvesaq/R-Vim-runtime'
 "Plugin 'vim-scripts/Vim-R-plugin' is being replaced with Nvim-R
 Plugin 'jalvesaq/Nvim-R'
-Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'                " tagbar navigation
 "Plugin 'rodjek/vim-puppet'                " vim puppet syntax
+Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'          " put nerdtree on all tabs
 "Plugin 'tpope/vim-surround'
 Plugin 'MattesGroeger/vim-bookmarks'
