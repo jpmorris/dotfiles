@@ -6,13 +6,8 @@ filetype indent on		" load indent rules for the filetype
 
 "  OS/Computer Specific
 if has('win32')
-   if hostname() == 'SPIKE'
-      let vimrplugin_r_path = "C:\\Program Files\\R\\R-3.2.2\\bin\\x64"
-      "let g:rplugin_sumatra_path =
-      ""C:\\Users\\mor20\\progs2\\SumatraPDF-3.0\\SumatraPDF.exe"
-   elseif hostname() == 'julia'
-      let g:rplugin_sumatra_path =
-      "C:\Program Files (x86)\SumatraPDF\\SumatraPDF.exe"
+   if hostname() == 'julia'
+      let g:rplugin_sumatra_path = "C:\Program Files (x86)\SumatraPDF\\SumatraPDF.exe"
    endif
 elseif has('unix')
 endif
@@ -66,8 +61,8 @@ set foldmethod=manual         " Folding Stuffs
 set autoindent                " Who doesn't like autoindent?
 set expandtab                 " Spaces are better than a tab character
 set smarttab
-set shiftwidth=3              " Who wants an 8 character tab?  Not me!
-set softtabstop=3
+set shiftwidth=4              " Who wants an 8 character tab?  Not me!
+set softtabstop=4
 if version >= 700             " Use english for spellchecking, but
    set spl=en spell
 endif
@@ -199,7 +194,7 @@ augroup END
 " Mappings
 "This is totally awesome - remap jj to escape
 inoremap jj <Esc>
-"nnoremap JJJJ <Nop>
+nnoremap JJJJ <Nop>
 
 " Move between split screens
 noremap <C-h> <C-w>h

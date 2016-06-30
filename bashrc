@@ -152,3 +152,5 @@ then
    alias vim='vim --servername VIM'
 fi
 
+JAVA_HOME=/usr/lib/jvm/java-8-oracle/
+
