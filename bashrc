@@ -149,7 +149,7 @@ then
    else
       export TERM=xterm-256color
    fi
-   alias vim='vim --servername VIM'
+   alias vim='nvim'
 fi
 
 JAVA_HOME=/usr/lib/jvm/java-8-oracle/
