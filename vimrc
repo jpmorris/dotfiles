@@ -17,39 +17,33 @@ nnoremap <expr><silent> gb ':VimLatexView -forward-search '
         \ . line(".") . ' '
         \ . shellescape(g:latex#data[b:latex.id].out()) . '<CR>'
 
-"let g:rct_completion_use_fri = 1
-"let g:Tex_DefaultTargetFormat = "pdf"
-"let g:Tex_ViewRule_pdf = "kpdf"
 
-"  Vundle Plugins
-" VUNDLE
-let win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
-let vimDir = win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
-let &runtimepath .= ',' . expand(vimDir . '/bundle/Vundle.vim')
-call vundle#rc(expand(vimDir . '/bundle'))
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-"#Plugin 'sjl/gundo.vim'                    " undo history
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-airline'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'godlygeek/tabular'                " line up characters use :Tabularize /<char>
-Plugin 'ervandew/supertab'                " tab insert completion
-"Plugin 'jalvesaq/R-Vim-runtime'
-"Plugin 'vim-scripts/Vim-R-plugin' is being replaced with Nvim-R
-Plugin 'jalvesaq/Nvim-R'
-Plugin 'majutsushi/tagbar'                " tagbar navigation
-"Plugin 'rodjek/vim-puppet'                " vim puppet syntax
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'          " put nerdtree on all tabs
-"Plugin 'tpope/vim-surround'
-Plugin 'MattesGroeger/vim-bookmarks'
-Plugin 'chrisbra/Recover.vim'
-"Plugin 'vim-scripts/taglist.vim'
-"Plugin 'EricGebhart/SAS-Vim'
+" -- PLUGINS ---
 
-call vundle#end()
+call plug#begin('~/.vim/plugged')
+
+"#Plug 'sjl/gundo.vim'                    " undo history
+Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/syntastic'
+Plug 'bling/vim-airline'
+Plug 'easymotion/vim-easymotion'
+Plug 'godlygeek/tabular'                " line up characters use :Tabularize /<char>
+Plug 'ervandew/supertab'                " tab insert completion
+"Plug 'jalvesaq/R-Vim-runtime'
+"Plug 'vim-scripts/Vim-R-plugin' is being replaced with Nvim-R
+Plug 'jalvesaq/Nvim-R'
+Plug 'majutsushi/tagbar'                " tagbar navigation
+"Plug 'rodjek/vim-puppet'                " vim puppet syntax
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'          " put nerdtree on all tabs
+"Plug 'tpope/vim-surround'
+Plug 'MattesGroeger/vim-bookmarks'
+Plug 'chrisbra/Recover.vim'
+"Plug 'vim-scripts/taglist.vim'
+"Plug 'EricGebhart/SAS-Vim'
+
+call plug#end()
+
 
 "  Input
 " FILE HANDLING
@@ -195,7 +189,7 @@ augroup END
 "This is totally awesome - remap jj to escape
 inoremap jj <Esc>
 "nnoremap JJJJ <Nop>
-nnoremap JJJJ <Esc>
+inoremap JJ <Esc>
 
 " Move between split screens
 noremap <C-h> <C-w>h
