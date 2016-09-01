@@ -28,7 +28,7 @@ Plug 'scrooloose/syntastic'
 Plug 'bling/vim-airline'
 Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'                " line up characters use :Tabularize /<char>
-Plug 'ervandew/supertab'                " tab insert completion
+"Plug 'ervandew/supertab'                " tab insert completion
 "Plug 'jalvesaq/R-Vim-runtime'
 "Plug 'vim-scripts/Vim-R-plugin' is being replaced with Nvim-R
 Plug 'jalvesaq/Nvim-R'
@@ -126,13 +126,14 @@ set sidescrolloff=5         " keep at least 5 lines left/right
 set showmatch                 " show matching bracket
 
 " THEME
-set colorcolumn=80
-set textwidth=80
+" 80 is too small, code != books, email, github, widescreens, human eye, everything supports 97
+set colorcolumn=97
+set textwidth=97
 if has('gui_running')
    set background=dark
    colorscheme solarized
  if has('gui_win32')
-   set guifont=Dina:h8
+   set guifont=Dina:h8,ProggyCleanTT:h12
   else
     set guifont=peep:h11
   endif
