@@ -22,23 +22,23 @@ nnoremap <expr><silent> gb ':VimLatexView -forward-search '
 
 call plug#begin('~/.vim/plugged')
 
-"#Plug 'sjl/gundo.vim'                    " undo history
+"
 Plug 'altercation/vim-colors-solarized'
-Plug 'scrooloose/syntastic'
-Plug 'bling/vim-airline'
-Plug 'easymotion/vim-easymotion'
-Plug 'godlygeek/tabular'                " line up characters use :Tabularize /<char>
-"Plug 'ervandew/supertab'                " tab insert completion
-"Plug 'jalvesaq/R-Vim-runtime'
-"Plug 'vim-scripts/Vim-R-plugin' is being replaced with Nvim-R
 Plug 'jalvesaq/Nvim-R'
-Plug 'majutsushi/tagbar'                " tagbar navigation
-"Plug 'rodjek/vim-puppet'                " vim puppet syntax
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'          " put nerdtree on all tabs
-"Plug 'tpope/vim-surround'
-Plug 'MattesGroeger/vim-bookmarks'
+"
+Plug 'easymotion/vim-easymotion'
 Plug 'chrisbra/Recover.vim'
+Plug 'scrooloose/syntastic'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'                " line up characters use :Tabularize /<char>
+Plug 'Shougo/neocomplete.vim'
+"Plug 'majutsushi/tagbar'                " tagbar navigation
+"Plug 'ervandew/supertab'                " tab insert completion
+"Plug 'rodjek/vim-puppet'                " vim puppet syntax
+"Plug 'MattesGroeger/vim-bookmarks'
 "Plug 'vim-scripts/taglist.vim'
 "Plug 'EricGebhart/SAS-Vim'
 
@@ -90,6 +90,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:neocomplete#enable_at_startup = 1
 
 let NERDTreeShowHidden=1      " show hidden files in nerdtree
 let R_assign=2                " stop _ to -> remapping
@@ -138,10 +139,11 @@ if has('gui_running')
     set guifont=peep:h11
   endif
 else
-   colorscheme solarized
-   se t_Co=16
+   let g:solarized_termcolors=256
    set background=dark
-   set guifont=peep:h11
+   colorscheme solarized
+   "se t_Co=16
+   "set guifont=peep:h11
 endif
 
 " Functions
