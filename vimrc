@@ -35,6 +35,7 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'                " line up characters use :Tabularize /<char>
 Plug 'Shougo/neocomplete.vim'
+Plug 'scrooloose/nerdcommenter'
 "Plug 'majutsushi/tagbar'                " tagbar navigation
 "Plug 'ervandew/supertab'                " tab insert completion
 "Plug 'rodjek/vim-puppet'                " vim puppet syntax
