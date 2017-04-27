@@ -133,9 +133,9 @@ set showmatch                 " show matching bracket
 
 " THEME
 " 80 is too small, code != books, email, github, widescreens, human eye, everything supports 97
-" -- see above to define two zones
+" -- see above (colorcolumn) to define two zones
 "set colorcolumn="97,".join(range
-"set textwidth=97
+set textwidth=97
 "set background=dark
 "colorscheme solarized
 colorscheme darkblue
