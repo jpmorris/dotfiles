@@ -196,8 +196,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 # temporary fix of brightness controls xbacklight is broken in 16.10
-bindsym XF86MonBrightnessUp exec xbright +5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbright -5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbright +30 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbright -30 # decrease screen brightness
 
 # Touchpad controls
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
@@ -217,7 +217,7 @@ exec blueman-applet
 #exec gnome-sound-applet
 #exec syndaemon -i 2 -t -k -d
 #exec pactl load-module module-bluetooth-discover
-
+exec --no-startup-id xautolock -time 2 -detectsleep -locker "/opt/suspension.sh"
 
 
 

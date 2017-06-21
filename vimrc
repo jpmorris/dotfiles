@@ -1,4 +1,4 @@
-:source ~/vimrc.common
+:source ~/.vimrc.common
 
 " Mappings
 " add relativenumber movement to jumplist
