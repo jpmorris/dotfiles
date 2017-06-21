@@ -102,9 +102,9 @@ let &colorcolumn="97,".join(range(120,200),",")
 
 
 " backup to tmp
-set backupdir=~/vimtmp/backup//
-set directory=~/vimtmp/swap//
-set undodir=~/vimtmp/undo//
+set backupdir=~/.vimtmp/backup//
+set directory=~/.vimtmp/swap//
+set undodir=~/.vimtmp/undo//
 
 let g:tagbar_type_r = {
     \ 'ctagstype' : 'r',
