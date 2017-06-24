@@ -28,6 +28,8 @@ Plug 'jalvesaq/Nvim-R'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'          " put nerdtree on all tabs
 "
+Plug 'xolox/vim-colorscheme-switcher'
+Plug 'xolox/vim-misc'
 Plug 'easymotion/vim-easymotion'
 Plug 'chrisbra/Recover.vim'
 Plug 'scrooloose/syntastic'
@@ -136,18 +138,31 @@ set showmatch                 " show matching bracket
 " -- see above (colorcolumn) to define two zones
 "set colorcolumn="97,".join(range
 set textwidth=97
-"set background=dark
+set background=dark
 "colorscheme solarized
-colorscheme darkblue
+"colorscheme darkblue
+"colorscheme lucario
+
+"set t_Co=256
+"colorscheme industry
+" gvim
 if has('gui_running')
  if has('gui_win32')
    set guifont=Dina:h8,ProggyCleanTT:h12
   else
     set guifont=peep:h11
   endif
+" console
 else
+   " putty
+   " ubuntu console
    "let g:solarized_termcolors=256
-   "se t_Co=16
+   let g:impact_transbg=1
+   "colorscheme industry
+   colorscheme murphy
+   set t_Co=256
+   hi clear SpellBad
+   hi SpellBad cterm=underline
    "set guifont=peep:h11
 endif
 

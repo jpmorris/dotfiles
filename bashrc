@@ -153,5 +153,5 @@ then
 fi
 
 JAVA_HOME=/usr/lib/jvm/java-8-oracle/
-export PATH=/home/jmorris/anaconda2/bin:$PATH
+export PATH=/opt/anaconda3/bin:$PATH
 

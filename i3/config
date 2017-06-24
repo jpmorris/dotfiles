@@ -218,6 +218,6 @@ exec blueman-applet
 #exec syndaemon -i 2 -t -k -d
 #exec pactl load-module module-bluetooth-discover
 exec --no-startup-id xautolock -time 2 -detectsleep -locker "/opt/suspension.sh"
-
+exec --no-startup-id syndaemon -i 0.5 -d -K
 
 
