@@ -107,6 +107,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+    alias fasthomerdp='xfreerdp /u:jm@james-morris.com /w:1790 /h:1020 +fonts /v:home.iq8.org'
+    alias slowhomerdp='xfreerdp /u:jm@james-morris.com /w:1080 /h:720 /bpp:16 -themes -wallpaper /jpeg-quality:10 /v:home.iq8.org'
 fi
 
 # some more ls aliases

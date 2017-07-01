@@ -28,6 +28,7 @@ Plug 'jalvesaq/Nvim-R'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'          " put nerdtree on all tabs
 "
+Plug 'jpalardy/vim-slime'
 Plug 'xolox/vim-colorscheme-switcher'
 Plug 'xolox/vim-misc'
 Plug 'easymotion/vim-easymotion'
@@ -261,7 +262,8 @@ let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_SingleClick = 1
 let Tlist_Inc_Winwidth = 0
 
-
+" VIM-SLIME SPECIFIC
+let g:slime_target="tmux"
 
 " NEOCOMPLETE SPECIFIC
 
