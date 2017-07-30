@@ -1,0 +1,6 @@
+#!/bin/sh
+case "$1" in
+	resume|thaw)
+            pactl set-sink-mute 0 true
+;;
+esac

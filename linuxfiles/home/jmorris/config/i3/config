@@ -217,7 +217,7 @@ exec blueman-applet
 #exec gnome-sound-applet
 #exec syndaemon -i 2 -t -k -d
 #exec pactl load-module module-bluetooth-discover
-exec --no-startup-id xautolock -time 2 -detectsleep -locker "/opt/suspension.sh"
+exec --no-startup-id xautolock -time 8 -detectsleep -locker "/opt/suspension.sh"
 exec --no-startup-id syndaemon -i 0.5 -d -K
-
+exec xset s 60
 
