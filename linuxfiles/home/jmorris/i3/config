@@ -67,7 +67,7 @@ bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart du
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
+#bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
@@ -76,8 +76,8 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 # changed to vim-style navigation
 bindsym $mod+j focus down
 bindsym $mod+k focus up
-bindsym $mod+l focus left
-bindsym $mod+h focus right
+bindsym $mod+l focus right
+bindsym $mod+h focus left
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -86,10 +86,11 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+# changed to vim-style navigation
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -100,6 +101,7 @@ bindsym $mod+Shift+Right move right
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
+bindsym Mod1+Tab workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
@@ -272,28 +274,6 @@ mode "resize" {
 # Lock screen
 bindsym $mod+9 exec --no-startup-id i3lock -n -c 000000
 
-# Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id manjaro-hello
-exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
-# exec --no-startup-id blueman
-# exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
-# exec --no-startup-id xautolock -time 10 -locker 'i3lock -n -c 000000'
-
-exec --no-startup-id xautolock -detectsleep \
-#          -notify  600 -notifier "xset dpms force off" \
-          -time     10 -locker   "i3lock -nc 000000" \
-          -killtime 20 -killer   "systemctl suspend" &
-
-
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
 #
 # Color palette used for the terminal ( ~/.extend.Xresources file )
 # Colors are gathered based on the documentation:
@@ -453,6 +433,7 @@ mode "$mode_gaps_outer" {
 
 
 
+# Autostart applications
 exec blueman-applet
 #exec --no-startup-id xautolock -time 2 -detectsleep -locker "/opt/suspension.sh"
 #exec --no-startup-id syndaemon -i 0.5 -d -K  # for touchpad touching movment
@@ -460,5 +441,27 @@ exec xset s 60
 exec xset m 4/1 3
 exec synology-cloud-station-drive autostart
 
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+#exec --no-startup-id manjaro-hello
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+exec --no-startup-id clipit
+# exec --no-startup-id blueman
+# exec_always --no-startup-id sbxkb
+exec --no-startup-id start_conky_maia
+# exec --no-startup-id start_conky_green
+# exec --no-startup-id xautolock -time 10 -locker 'i3lock -n -c 000000'
+
+exec --no-startup-id xautolock -detectsleep \
+          -time     10 -locker   "i3lock -nc 000000" \
+          -killtime 20 -killer   "systemctl suspend" &
+#          -notify  600 -notifier "xset dpms force off" \
+
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
 
 
+exec --no-startup-id amixer sset Master unmute
+exec --no-startup-id amixer sset Master mute
