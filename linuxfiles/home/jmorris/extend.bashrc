@@ -13,7 +13,8 @@
 #esac
 
 PROMPT_COMMAND='history -a'
-
+HISTSIZE=1000000
+HISTFILESIZE=100000
 use_color=true
 
 # Set colorful PS1 only on colorful terminals.
