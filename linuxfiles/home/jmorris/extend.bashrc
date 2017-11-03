@@ -3,14 +3,16 @@
 #
 
 # Change the window title of X terminals
-case ${TERM} in
-	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
-		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
-		;;
-	screen*)
-		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
-		;;
-esac
+#case ${TERM} in
+#	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
+#		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
+#		;;
+#	screen*)
+#		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
+#		;;
+#esac
+
+PROMPT_COMMAND='history -a'
 
 use_color=true
 
@@ -125,3 +127,5 @@ alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color
 alias mirrors='sudo pacman-mirrors -g'
 alias printer='system-config-printer'
 alias update='yaourt -Syua'
+alias vim='nvim'
+alias sudo='sudo '

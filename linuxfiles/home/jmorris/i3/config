@@ -50,6 +50,11 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 ################################################################################################
 
+
+# fix mute button
+bindsym XF86AudioMute exec --no-startup-id "/usr/bin/amixer sset Master toggle"
+
+
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec "xbacklight -inc 5; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; notify-send 'brightness down'"
@@ -434,6 +439,8 @@ mode "$mode_gaps_outer" {
 
 
 # Autostart applications
+# putting here to avoid race condition
+exec --no-startup-id amixer sset Master unmute
 exec blueman-applet
 #exec --no-startup-id xautolock -time 2 -detectsleep -locker "/opt/suspension.sh"
 #exec --no-startup-id syndaemon -i 0.5 -d -K  # for touchpad touching movment
@@ -463,5 +470,4 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 
-exec --no-startup-id amixer sset Master unmute
 exec --no-startup-id amixer sset Master mute
