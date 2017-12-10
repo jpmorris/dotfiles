@@ -440,7 +440,7 @@ mode "$mode_gaps_outer" {
 
 # Autostart applications
 # putting here to avoid race condition
-exec --no-startup-id amixer sset Master unmute
+#exec --no-startup-id amixer sset Master unmute
 exec blueman-applet
 #exec --no-startup-id xautolock -time 2 -detectsleep -locker "/opt/suspension.sh"
 #exec --no-startup-id syndaemon -i 0.5 -d -K  # for touchpad touching movment

@@ -1,15 +1,16 @@
+# Important commands:
+# sudo systemctl <enable | start | status> resume@jmorris
+# sudo journalctl -u -b resume@jmorris
+
 [Unit]
-Description= Mute on Wake
-After=suspend.target
+Description=Lock on Wake
+Before=suspend.target
 
 [Service]
 User=jmorris
-Type=forking
+Type=simple
 Environment=DISPLAY=:0
-#ExecStartPre=/usr/local/bin/ssh-connect.sh
-ExecStartPre=/usr/bin/amixer sset Master unmute ; /usr/bin/amixer sset Master mute
 ExecStart=/usr/bin/i3lock -nc 000000
-#ExecStart=/usr/bin/i3lock -nc 000000
 
 [Install]
 WantedBy=suspend.target

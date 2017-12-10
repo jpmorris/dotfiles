@@ -1,0 +1,11 @@
+[Unit]
+Description=Mute on Sleep
+Before=sleep.target
+
+[Service]
+User=jmorris
+Type=simple
+ExecStart=/usr/bin/sudo -u jmorris env XDG_RUNTIME_DIR=/run/user/1000 /usr/bin/pactl set-sink-mute 0 true
+
+[Install]
+WantedBy=sleep.target
