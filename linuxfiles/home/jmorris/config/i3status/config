@@ -89,5 +89,5 @@ battery 1 {
 
 tztime local {
         # format = "%Y-%m-%d %H:%M:%S"
-        format = " %d.%m. %H:%M "
+        format = " %m.%d.%y %-I:%M "
 }
