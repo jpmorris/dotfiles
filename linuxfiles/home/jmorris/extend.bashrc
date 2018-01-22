@@ -118,6 +118,8 @@ export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1
 
 # fix "xdg-open fork-bomb" export your preferred browser from here
 export BROWSER=/usr/bin/palemoon
+export EDITOR=/usr/bin/vim
+
 
 alias con='nano $HOME/.i3/config'
 alias comp='nano $HOME/.config/compton.conf'
