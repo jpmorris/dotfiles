@@ -467,7 +467,7 @@ exec --no-startup-id start_conky_maia
 exec --no-startup-id xautolock -detectsleep \
           -time     10 -locker   "i3lock -nc 000000" \
           -killtime 20 -killer   "systemctl suspend" \
-          -corners --++ &
+          -corners ---+ &
 #          -notify  600 -notifier "xset dpms force off" \
 
 exec_always --no-startup-id ff-theme-util
