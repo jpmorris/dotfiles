@@ -191,8 +191,10 @@ inoremap JJ <Esc>
 " Move between split screens
 noremap <C-h> <C-w>h
 noremap <C-l> <C-w>l
+noremap <C-d> <C-w>j
+noremap <C-u> <C-w>k
 " easymotion search
-map <C-u> <Leader><Leader>s
+map <C-i> <Leader><Leader>s
 " easier page up/down movement
 noremap <C-j> <C-d>
 noremap <C-k> <C-u>
