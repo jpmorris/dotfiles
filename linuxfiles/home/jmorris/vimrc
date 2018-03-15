@@ -207,6 +207,7 @@ let g:python_host_prog = '/opt/anaconda3/envs/vimpython2/bin/python'
 " R                                 {{{
 Plug 'roxma/nvim-completion-manager'
 Plug 'jalvesaq/Nvim-R'
+let R_assign = 0
 Plug 'gaalcaras/ncm-R'
 Plug 'sirver/UltiSnips'
 Plug 'lervag/vimtex'
