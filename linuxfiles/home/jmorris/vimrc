@@ -1,4 +1,4 @@
-" This file has marker code folds:
+﻿" This file has marker code folds:
 " zo - open a code fold
 " zc - close a fold
 " zr - open all folds
@@ -35,11 +35,22 @@
 " S->                       " indent
 
 
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
+" ENCODING                          {{{
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
+" }}}
 " PRELIMS                           {{{
 set nocompatible        " disable vi compatability; allow exclusive-vim features
-syntax enable           " syntax highlighting
+syntax on               " syntax highlighting
 filetype plugin on      " load filetype plugins for the filetype
 filetype indent on      " load indent rules for the filetype
 " }}}
@@ -172,7 +183,7 @@ set matchtime=2
 set number                              " set line numbers
 set numberwidth=4                       " max 4 gutter columns
 set backspace=indent,eol,start          " backspace over breaks
-set fileformats="unix,dos,mac"          " try eol formats when reading
+"set fileformats="unix,dos,mac"          " try eol formats when reading
 set list                                " show invisible characters like spaces
 set foldmethod=manual                   " Folding Stuffs
 " }}}
@@ -201,11 +212,15 @@ Plug 'scrooloose/nerdtree'
 " PYTHON                            {{{
 "Plug 'python-mode/python-mode'
 "let g:pymode_python = 'python3'
-let g:python3_host_prog = '/opt/anaconda3/envs/vimpython3/bin/python'
-let g:python_host_prog = '/opt/anaconda3/envs/vimpython2/bin/python'
+if g:is_nix
+  let g:python3_host_prog = '/opt/anaconda3/envs/vimpython3/bin/python'
+  let g:python_host_prog = '/opt/anaconda3/envs/vimpython2/bin/python'
+endif
 " }}}
 " R                                 {{{
-Plug 'roxma/nvim-completion-manager'
+if has("nvim")
+    Plug 'roxma/nvim-completion-manager'
+endif
 Plug 'jalvesaq/Nvim-R'
 let R_assign = 0
 Plug 'gaalcaras/ncm-R'
@@ -254,13 +269,14 @@ set cmdheight=2                 " use a status bar that is 2 rows high
 set laststatus=2                " tell VIM to always put a status line in
 set noshowmode
 " provides a beautiful status line for VIM via Airline
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 let g:airline_inactive_collapse = 1
 let g:airline_section_y = "%{airline#util#wrap(airline#parts#ffenc() . ' ' . g:ui_type, 0)}"
 " enable powerline symbols in status line
 let g:airline_powerline_fonts = 1
 " set a default status line theme
-if !exists('g:airline_theme') | let g:airline_theme = 'gruvbox' | endif
+if !exists('g:airline_theme') | let g:airline_theme = 'molokai' | endif
 if !is_gui | let g:airline_theme = 'dark' | endif
 " show ruler and other relevant information in statusline
 if has('cmdline_info')
@@ -294,7 +310,7 @@ if has('persistent_undo')
   set undofile                  " have a long persisting undo data
   set undolevels=1000           " Maximum number of changes that can be undone
   set undoreload=10000          " Maximum number lines to save for undo on a buffer reload
-  set undodir=~/.vim/tmp/undo,/tmp
+  "set undodir=~/.vim/tmp/undo,/tmp
 endif
 " undo tree
 Plug 'sjl/gundo.vim'
