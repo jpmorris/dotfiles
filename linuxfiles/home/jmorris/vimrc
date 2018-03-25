@@ -180,7 +180,7 @@ Plug 'jtratner/vim-flavored-markdown'           " Github flavored markdown
 " MISC                              {{{
 set showmatch                           " blink matching parenthesis
 set matchtime=2
-set number                              " set line numbers
+set number relativenumber               " hyprid line numbers
 set numberwidth=4                       " max 4 gutter columns
 set backspace=indent,eol,start          " backspace over breaks
 "set fileformats="unix,dos,mac"          " try eol formats when reading
@@ -243,7 +243,6 @@ endif
 set ignorecase                          " makes searches ignore case
 set smartcase                           " if pattern has uppercase, be case-sensitive
 set magic                               " use magic mode when searching/replacing
-set gdefault                            " search/replace globally (on a line) by default
 set incsearch                           " show search matches as you type
 set hlsearch                            " highlight search terms
 Plug 'nelstrom/vim-visual-star-search'  " search under cursor using * or #
