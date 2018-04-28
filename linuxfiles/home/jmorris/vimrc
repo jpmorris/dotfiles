@@ -209,13 +209,17 @@ vnoremap <Space> za                     " toggle fold on the current fold using 
 " NERDTREE                          {{{
 Plug 'scrooloose/nerdtree'
 " }}}
-" PYTHON                            {{{
-"Plug 'python-mode/python-mode'
-"let g:pymode_python = 'python3'
+ "PYTHON                            {{{
+Plug 'python-mode/python-mode', {'branch': 'develop'}
+let g:pymode_python = 'python3'
 if g:is_nix
   let g:python3_host_prog = '/opt/anaconda3/envs/vimpython3/bin/python'
   let g:python_host_prog = '/opt/anaconda3/envs/vimpython2/bin/python'
 endif
+Plug 'jpalardy/vim-slime'
+let g:slime_target = "tmux"
+vmap <leader>ss <Plug>SlimeRegionSend
+nmap <leader>l <Plug>SlimeLineSend
 " }}}
 " R                                 {{{
 if has("nvim")
