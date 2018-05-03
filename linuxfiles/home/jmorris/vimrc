@@ -208,6 +208,7 @@ vnoremap <Space> za                     " toggle fold on the current fold using 
 " }}}
 " NERDTREE                          {{{
 Plug 'scrooloose/nerdtree'
+let NERDTreeShowHideen=1
 " }}}
  "PYTHON                            {{{
 Plug 'python-mode/python-mode', {'branch': 'develop'}
