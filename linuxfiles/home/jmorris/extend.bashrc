@@ -12,10 +12,6 @@
 #		;;
 #esac
 
-PROMPT_COMMAND='history -a'
-HISTSIZE=1000000
-HISTFILESIZE=100000
-use_color=true
 
 # Set colorful PS1 only on colorful terminals.
 # dircolors --print-database uses its own built-in database
@@ -119,6 +115,22 @@ export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1
 # fix "xdg-open fork-bomb" export your preferred browser from here
 export BROWSER=/usr/bin/palemoon
 export EDITOR=/usr/bin/vim
+
+
+# Maximum number of history lines in memory
+export HISTSIZE=50000
+# Maximum number of history lines on disk
+export HISTFILESIZE=100000
+# Ignore duplicate lines
+export HISTCONTROL=ignoredups:erasedups
+# When the shell exits, append to the history file
+#  instead of overwriting it
+shopt -s histappend
+
+# After each command, append to the history file
+#  and reread it
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+
 
 
 alias con='nano $HOME/.i3/config'
