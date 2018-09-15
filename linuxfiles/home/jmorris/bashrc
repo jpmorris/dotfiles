@@ -36,4 +36,4 @@ colors() {
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 
 # new stuff
-export PATH=$PATH:/opt/anaconda3/bin:
+export PATH=$PATH:/opt/anaconda3/bin:/home/jmorris/.gem/ruby/2.5.0/bin:
