@@ -137,4 +137,4 @@ load-module module-filter-apply
 
 ### Make some devices default
 set-card-profile alsa_card.pci-0000_00_1b.0 output:analog-stereo
-set-default-sink alsa_output.pci-0000_00_1b.0.analog-stereo
+#set-default-sink alsa_output.pci-0000_00_1b.0.analog-stereo
