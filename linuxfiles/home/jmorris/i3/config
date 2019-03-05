@@ -263,6 +263,8 @@ for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 
+for_window [class="^jetbrains-.+"][window_type=dialog] focus
+
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
@@ -501,13 +503,24 @@ exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 # exec --no-startup-id xautolock -time 10 -locker 'i3lock -n -c 000000'
 
-exec --no-startup-id xautolock -detectsleep \
-          -time     10 -locker   "i3lock -nc 000000" \
-          -killtime 20 -killer   "systemctl suspend"
-#          -killtime 20 -killer   "systemctl suspend" \
+exec --no-startup-id xidlehook --not-when-fullscreen \
+--timer normal 60 \
+    'xrandr --output eDP1 --brightness .1' \
+    'xrandr --output eDP1 --brightness 1' \
+--timer primary 600 \
+    'xrandr --output eDP1 --brightness 1; i3lock -nc 000000' \
+    '' \
+--timer normal 1200 \
+    'grep 0 /sys/class/power_supply/AC/online > /dev/null && eystemctl suspend' \
+    '' &
+
+#exec --no-startup-id xautolock -detectsleep \
+#          -time     10 -locker   "i3lock -nc 000000" \
 #          -killtime 20 -killer   "/opt/suspend.sh" \
 #          -corners ---+ \
 #          -cornersize 15 &
+#          -killtime 20 -killer   "systemctl suspend"
+#          -killtime 20 -killer   "systemctl suspend" \
 #          -notify  600 -notifier "xset dpms force off" \
 
 exec_always --no-startup-id ff-theme-util
