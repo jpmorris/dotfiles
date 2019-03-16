@@ -269,9 +269,9 @@ mode "resize" {
 
 # Autostart applications
 exec --no-startup-id numlockx on
-exec --no-startup-id xautolock -detectsleep \
-                     -time 10 -locker 'i3lock -d -c 000000' \
-                     -killtime 120 -killer "systemctl suspend"
+#exec --no-startup-id xautolock -detectsleep \
+#                     -time 10 -locker 'i3lock -d -c 000000' \
+#                     -killtime 120 -killer "systemctl suspend"
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -279,7 +279,18 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 #exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
+exec_always --no-startlup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
+
+exec --no-startup-id xidlehook --not-when-fullscreen \
+--timer normal 60 \
+    'xrandr --output DP-0.8 --brightness .1 --output DP-2.8 --brightness .1 --output DP-4.8 --brightness .1' \
+    'xrandr --output DP-0.8 --brightness 1 --output DP-2.8 --brightness 1 --output DP-4.8 --brightness 1' \
+--timer primary 600 \
+    'xrandr --output DP-0.8 --brightness 1 --output DP-2.8 --brightness 1 --output DP-4.8 --brightness 1; i3lock -nc 000000' \
+    '' \
+--timer normal 1200 \
+    'systemctl suspend' \
+    '' &
 
 # Theme colors
 client.focused #b0c4bb #2f2f38 #b0c4bb #81a2be #81a2be
