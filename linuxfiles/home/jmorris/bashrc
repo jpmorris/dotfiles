@@ -37,3 +37,7 @@ colors() {
 
 # new stuff
 export PATH=$PATH:/opt/anaconda3/bin:/home/jmorris/.gem/ruby/2.5.0/bin:
+
+export PATH=$PATH:/home/jmorris/bin
+
+source '/home/jmorris/lib/azure-cli/az.completion'
