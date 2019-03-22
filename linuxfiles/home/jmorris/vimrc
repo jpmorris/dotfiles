@@ -225,7 +225,7 @@ nmap <leader>l <Plug>SlimeLineSend
 " }}}
 " R                                 {{{
 if has("nvim")
-    Plug 'roxma/nvim-completion-manager'
+    Plug 'ncm2/ncm2'
 endif
 Plug 'jalvesaq/Nvim-R'
 let R_assign = 0
