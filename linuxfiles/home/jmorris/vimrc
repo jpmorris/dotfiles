@@ -71,6 +71,7 @@ elseif exists("$TERM")        | let g:ui_type = "TERM"
 else | let g:ui_type = "????" | endif
 "}}}
 " BACKUP/RECOVER                    {{{
+set backup
 set backupdir=~/.vimtmp/backup//
 set directory=~/.vimtmp/swap//
 set undodir=~/.vimtmp/undo//
