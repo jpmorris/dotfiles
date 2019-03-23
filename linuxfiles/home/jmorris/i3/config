@@ -505,8 +505,11 @@ exec --no-startup-id start_conky_maia
 
 exec --no-startup-id xidlehook --not-when-fullscreen \
 --timer normal 60 \
-    'xrandr --output eDP1 --brightness .1' \
-    'xrandr --output eDP1 --brightness 1' \
+# might need to disable screensave through xset and let this take over for more control
+#    'xrandr --output eDP1 --brightness .1' \
+#    'xrandr --output eDP1 --brightness 1' \
+    'myredshift 0.1' \
+    'myredsfhit 1' \
 --timer primary 600 \
     'xrandr --output eDP1 --brightness 1; i3lock -nc 000000' \
     '' \

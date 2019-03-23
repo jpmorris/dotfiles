@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+
+lat=37.0
+long=-76.9
+
+if [ -z "$1" ]
+  then
+    echo "No brightness supplied"
+    echo "Usage: myredshift BRIGHTNESS [temperature]"
+else
+  brightness=$1
+fi
+
+if [ "$2" ]; then
+  temp=$2
+  echo $temp > /tmp/monitor_temperature
+elif [ -f /tmp/monitor_temperature ]; then
+  temp=$( cat /tmp/monitor_temperature )
+else
+  temp="6500K"
+fi
+
+
+redshift -P -l $lat:$long -m randr -O $temp -g 0.8 -b $brightness
+
