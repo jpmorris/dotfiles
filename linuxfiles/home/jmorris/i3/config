@@ -507,9 +507,9 @@ exec --no-startup-id xidlehook --not-when-fullscreen \
 # might need to disable screensave through xset and let this take over for more control
 #    'xrandr --output eDP1 --brightness .1' \
 #    'xrandr --output eDP1 --brightness 1' \
---timer normal 60 'myredshift 0.1' 'myredshift 1' \
+--timer normal 60 'myredshift -b 0.1' 'myredshift -b 1' \
 --timer primary 600 \
-    'xrandr --output eDP1 --brightness 1; i3lock -nc 000000' \
+    'myredshift -b 0.1; i3lock -nc 000000' \
     '' \
 --timer normal 1200 \
     'grep 0 /sys/class/power_supply/AC/online > /dev/null && eystemctl suspend' \

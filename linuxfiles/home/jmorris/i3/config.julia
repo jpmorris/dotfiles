@@ -279,16 +279,16 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 #exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startlup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
+exec_always --no-startup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
 
 exec --no-startup-id xidlehook --not-when-fullscreen \
 --timer normal 60 \
-    'xrandr --output DP-0.8 --brightness .1 --output DP-2.8 --brightness .1 --output DP-4.8 --brightness .1' \
-    'xrandr --output DP-0.8 --brightness 1 --output DP-2.8 --brightness 1 --output DP-4.8 --brightness 1' \
+    'myredshift -b 0.1' \
+    'myredshift -o' \
 --timer primary 600 \
-    'xrandr --output DP-0.8 --brightness 1 --output DP-2.8 --brightness 1 --output DP-4.8 --brightness 1; i3lock -nc 000000' \
+    'myredshift -b 1; i3lock -nc 000000' \
     '' \
---timer normal 1200 \
+--timer normal 3600 \
     'systemctl suspend' \
     '' &
 
