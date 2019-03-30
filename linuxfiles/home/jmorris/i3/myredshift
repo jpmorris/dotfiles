@@ -5,13 +5,10 @@ long=-76.9
 
 
 print_usage() {
-  printf "Usage: ..."
+  printf "Usage: [-h] [-O <temp>] [-g <gamma>] [-b <brightness>]\n";
+  exit 1;
 }
 
-# default values
-temp="6500K"
-gamma="1"
-brightness="1"
 
 # if previous values exist use those
 if [ -f /tmp/monitor_temperature_previous ]; then
@@ -21,16 +18,34 @@ if [ -f /tmp/monitor_temperature_previous ]; then
 fi
 
 # if new values are specified replace previous with those
-while getopts 'O:g:b:o' flag; do
+while getopts 'O:g:b:o:h' flag; do
   case "${flag}" in
     O) temp=${OPTARG} ;;
     g) gamma=${OPTARG} ;;
     b) brightness="${OPTARG}" ;;
     o) oldvals='true' ;;
-    *) print_usage
-       exit 1 ;;
+    h) print_usage ;;
+    *) print_usage ;;
   esac
 done
+
+# if nothing is entered exit
+if [ -z "${temp}" ] && [ -z "${gamma}" ] && [ -z "${brightness}" ]; then
+   print_usage
+fi
+
+# default values if others are entered and no old values found
+if [ -z "${temp}" ]; then
+  temp="6500K"
+fi
+if [ -z "${gamma}" ]; then
+  temp="1"
+fi
+if [ -z "${brightness}" ]; then
+  temp="1"
+fi
+
+
 
 # if old values requested (values before previous) then use those
 if [ $oldvals ]; then
