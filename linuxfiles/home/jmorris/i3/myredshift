@@ -5,7 +5,7 @@ long=-76.9
 
 
 print_usage() {
-  printf "Usage: [-h] [-O <temp>] [-g <gamma>] [-b <brightness>]\n";
+  printf "Usage: [-h] [-r] [-O <temp>] [-g <gamma>] [-b <brightness>]\n";
   exit 1;
 }
 
@@ -18,33 +18,35 @@ if [ -f /tmp/monitor_temperature_previous ]; then
 fi
 
 # if new values are specified replace previous with those
-while getopts 'O:g:b:o:h' flag; do
+while getopts 'O:g:b:orh' flag; do
   case "${flag}" in
-    O) temp=${OPTARG} ;;
-    g) gamma=${OPTARG} ;;
-    b) brightness="${OPTARG}" ;;
+    O) temp=${OPTARG}; O=${OPTARG} ;;
+    g) gamma=${OPTARG}; g=${OPTARG} ;;
+    b) brightness="${OPTARG}"; b=${OPTARG} ;;
     o) oldvals='true' ;;
+    r) reset='true' ;;
     h) print_usage ;;
     *) print_usage ;;
   esac
 done
 
+
 # if nothing is entered exit
-if [ -z "${temp}" ] && [ -z "${gamma}" ] && [ -z "${brightness}" ]; then
+if [[ -z $O && -z $g && -z $b && -z $reset && -z $oldvals ]]; then
    print_usage
 fi
 
+
 # default values if others are entered and no old values found
-if [ -z "${temp}" ]; then
+if [[ -n $reset ]]; then
   temp="6500K"
 fi
-if [ -z "${gamma}" ]; then
-  temp="1"
+if [[ -n $reset ]]; then
+  gamma="1"
 fi
-if [ -z "${brightness}" ]; then
-  temp="1"
+if [[ -n $reset ]]; then
+  brightness="1"
 fi
-
 
 
 # if old values requested (values before previous) then use those
@@ -53,6 +55,11 @@ if [ $oldvals ]; then
   gamma=$(cat /tmp/monitor_temperature_old | sed -r 's/(.*) (.*) (.*)/\2/')
   brightness=$(cat /tmp/monitor_temperature_old | sed -r 's/(.*) (.*) (.*)/\3/')
 fi
+
+echo $temp
+echo $gamma
+echo $brightness
+
 
 cp /tmp/monitor_temperature_previous /tmp/monitor_temperature_old
 echo "$temp $gamma $brightness" > /tmp/monitor_temperature_previous
