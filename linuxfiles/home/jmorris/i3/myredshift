@@ -56,9 +56,10 @@ if [ $oldvals ]; then
   brightness=$(cat /tmp/monitor_temperature_old | sed -r 's/(.*) (.*) (.*)/\3/')
 fi
 
-echo $temp
-echo $gamma
-echo $brightness
+# for debug
+#echo $temp
+#echo $gamma
+#echo $brightness
 
 
 cp /tmp/monitor_temperature_previous /tmp/monitor_temperature_old

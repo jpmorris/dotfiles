@@ -285,15 +285,9 @@ exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
 
 exec --no-startup-id xidlehook --not-when-fullscreen \
---timer normal 60 \
-    'myredshift -b 0.1' \
-    'myredshift -o' \
---timer primary 600 \
-    'myredshift -b 1; i3lock -nc 000000' \
-    '' \
---timer normal 3600 \
-    'systemctl suspend' \
-    '' &
+--timer normal 60 'myredshift -b 0.1' 'myredshift -o' \
+--timer primary 600 'myredshift -b 1; i3lock -nc 000000' '' \
+--timer normal 3600 'systemctl suspend' '' &
 
 # Theme colors
 client.focused #b0c4bb #2f2f38 #b0c4bb #81a2be #81a2be
