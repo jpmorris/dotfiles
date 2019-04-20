@@ -5,7 +5,7 @@ long=-76.9
 
 
 print_usage() {
-  printf "Usage: [-h] [-r] [-O <temp>] [-g <gamma>] [-b <brightness>]\n";
+  printf "Usage: [-h] [-r] [-o] [-O <temp>] [-g <gamma>] [-b <brightness>]\n";
   exit 1;
 }
 
