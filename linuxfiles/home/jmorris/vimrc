@@ -19,7 +19,7 @@
 " :Autoformat               " format file
 " C-n                       " add space around char
 " zf                        " create fold
-" zc                        " close fold
+ "zc                       " close fold
 " zo                        " open fold
 " gf                        " edit file under cursor
 " S-j                       " join line below
@@ -209,7 +209,7 @@ vnoremap <Space> za                     " toggle fold on the current fold using 
 " }}}
 " NERDTREE                          {{{
 Plug 'scrooloose/nerdtree'
-let NERDTreeShowHideen=1
+let NERDTreeShowHidden=1
 " }}}
  "PYTHON                            {{{
 Plug 'python-mode/python-mode', {'branch': 'develop'}
