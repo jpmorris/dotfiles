@@ -12,7 +12,7 @@
 " keybind ref:
 " http://vimdoc.sourceforge.net/htmldoc/vimindex.html
 
-" IMPORTAN KEYBINDS
+" IMPORTANT KEYBINDS
 " meta-(shift)-p            " Cycle through yanks
 " :Yanks                    " Show yanks
 " C-m                       " Comment current text or seletion
@@ -202,8 +202,8 @@ inoremap JJ <Esc>
 noremap j gj|                           " override j for long wrapped lines
 noremap k gk|                           " override k for long wrapped lines
 nmap <leader>b= ggVG=''                 " auto-indent the current buffer
-vnoremap < <gv                          " indenting text in visual mode does not leave the mode
-vnoremap > >gv                          " indenting text in visual mode does not leave the mode
+"vnoremap < <gv                          " indenting text in visual mode does not leave the mode
+"vnoremap > >gv                          " indenting text in visual mode does not leave the mode
 nnoremap <Space> za                     " toggle fold on the current fold using <SPACE> key
 vnoremap <Space> za                     " toggle fold on the current fold using <SPACE> key
 " }}}
@@ -214,10 +214,10 @@ let NERDTreeShowHidden=1
  "PYTHON                            {{{
 Plug 'python-mode/python-mode', {'branch': 'develop'}
 let g:pymode_python = 'python3'
-if g:is_nix
-  let g:python3_host_prog = '/opt/anaconda3/envs/vimpython3/bin/python'
-  let g:python_host_prog = '/opt/anaconda3/envs/vimpython2/bin/python'
-endif
+"if g:is_nix
+"  let g:python3_host_prog = '/opt/anaconda3/envs/vimpython3/bin/python'
+"  let g:python_host_prog = '/opt/anaconda3/envs/vimpython2/bin/python'
+"endif
 Plug 'jpalardy/vim-slime'
 let g:slime_target = "tmux"
 vmap <leader>ss <Plug>SlimeRegionSend
@@ -324,7 +324,6 @@ nnoremap <leader>tgu :GundoToggle<CR>
 " WHITESPACE                        {{{
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 " }}}
-
 
 Plug 'tomasr/molokai'
 call plug#end()
