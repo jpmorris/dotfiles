@@ -503,6 +503,11 @@ exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 # exec --no-startup-id xautolock -time 10 -locker 'i3lock -n -c 000000'
 
+exec --no-startup-id google-chrome-stable
+exec --no-startup-id veracrypt
+
+
+
 exec --no-startup-id xidlehook --not-when-fullscreen \
 --timer normal 60 'myredshift -b 0.1' 'myredshift -o' \
 --timer primary 600 'myredshift -b 1; i3lock -nc 000000' '' \

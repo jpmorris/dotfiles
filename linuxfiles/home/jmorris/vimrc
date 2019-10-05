@@ -211,6 +211,11 @@ vnoremap <Space> za                     " toggle fold on the current fold using 
 Plug 'scrooloose/nerdtree'
 let NERDTreeShowHidden=1
 " }}}
+" PROSE                             {{{
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/goyo.vim'
+Plug 'honza/writer.vim'
+" }}}
  "PYTHON                            {{{
 Plug 'python-mode/python-mode', {'branch': 'develop'}
 let g:pymode_python = 'python3'
