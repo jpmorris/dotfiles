@@ -1,0 +1,4 @@
+set clipboard+=ideaput
+set ideajoin
+
+source ~/.vimrc

@@ -229,7 +229,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-
+# for quick screenshots - otherwise use flameshot
 bindsym $mod+Shift+Print --release exec "scrot -s /home/jmorris/Pictures/screenshot_%Y%m%d_%H%M%S.png -e 'xclip -selection clipboard -t image/png < $f'"
 
 # Set shut down, restart and locking features
@@ -273,73 +273,37 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# Autostart applications
-exec --no-startup-id numlockx on
-#exec --no-startup-id xautolock -detectsleep \
-#                     -time 10 -locker 'i3lock -d -c 000000' \
-#                     -killtime 120 -killer "systemctl suspend"
+# AUTOSTART APPLICATIONS
+
+# bar
+exec_always --no-startup-id /$HOME/.config/polybar/polybar_allmonitors.sh
+# nitrogenfor wallpaper
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id numlockx on
+
+# tray apps
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
+exec --no-startup-id synology-cloud-station-drive autostart
 #exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
 
+#exec --no-startup-id xautolock -detectsleep \
+#                     -time 10 -locker 'i3lock -d -c 000000' \
+#                     -killtime 120 -killer "systemctl suspend"
 exec --no-startup-id xidlehook --not-when-fullscreen \
 --timer normal 60 'myredshift -b 0.1' 'myredshift -o' \
 --timer primary 600 'myredshift -b 1; i3lock -nc 000000' '' \
 --timer normal 3600 'systemctl suspend' '' &
 
 # Theme colors
-client.focused #b0c4bb #2f2f38 #b0c4bb #81a2be #81a2be
-client.focused_inactive #b0c4bb #2f2f38 #b0c4bb #688486 #688486
-client.unfocused #b0c4bb #2f2f38 #b0c4bb #688486 #688486
-client.urgent #b0c4bb #2f2f38 #b0c4bb #688486 #688486
-client.placeholder #b0c4bb #2f2f38 #b0c4bb #688486 #688486
+#client.focused #b0c4bb #2f2f38 #b0c4bb #81a2be #81a2be
+#client.focused_inactive #b0c4bb #2f2f38 #b0c4bb #688486 #688486
+#client.unfocused #b0c4bb #2f2f38 #b0c4bb #688486 #688486
+#client.urgent #b0c4bb #2f2f38 #b0c4bb #688486 #688486
+#client.placeholder #b0c4bb #2f2f38 #b0c4bb #688486 #688486
+#
+#client.background #2f2f38
 
-client.background #2f2f38
-
-# Gaps
-gaps inner 10
-gaps outer -4
-
-smart_gaps on
-
-# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
