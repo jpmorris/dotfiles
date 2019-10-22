@@ -61,7 +61,7 @@ module-margin-right = 2
 
 ;font-0 = fixed:pixelsize=10;1
 ;font-1 = fixed:pixelsize=10;1
-font-0 = "DejaVu Sans Mono:style=Regular"
+font-0 = "DejaVu Sans Mono:style=Regular:size=10"
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ;font-1 = "Unifont Upper:fontformat=truetype:size=8:antialias=false;0"
 font-2 = "siji:pixelsize=10;1"
@@ -70,11 +70,11 @@ font-2 = "siji:pixelsize=10;1"
 ;font-0 = fixed:pixelsize=8:weight=bold;0
 ;font-1 = unifont:fontformat=truetype:size=8:weight=bold:antialias=false;0
 ;font-2 = "Wuncon siji:pixelsize=8;1"
+font-3 = Weather Icons:size=12;1
 
 modules-left = i3
 ;modules-center = alsa pulseaudio
-modules-right = alsa pulseaudio xbacklight battery0 battery1 filesystem  xkeyboard memory cpu wlan eth temperature date powermenu
-
+modules-right = alsa pulseaudio xbacklight battery0 battery1 filesystem  xkeyboard memory cpu wlan eth temperature openweathermap-simple-houston openweathermap-simple-silverspring popup-calendar powermenu
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
@@ -314,6 +314,26 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.blue}
 
 label = %date% %time%
+
+[module/popup-calendar]
+type = custom/script
+exec = ~/.config/polybar/popup-calendar.sh
+interval = 5
+click-left = ~/.config/polybar/popup-calendar.sh --popup
+
+
+[module/openweathermap-simple-houston]
+type = custom/script
+exec = ~/.config/polybar/openweathermap-simple-houston.sh
+interval = 600
+label-font = 3
+
+[module/openweathermap-simple-silverspring]
+type = custom/script
+exec = ~/.config/polybar/openweathermap-simple-silverspring.sh
+interval = 600
+label-font = 3
+
 
 [module/pulseaudio]
 type = internal/pulseaudio
