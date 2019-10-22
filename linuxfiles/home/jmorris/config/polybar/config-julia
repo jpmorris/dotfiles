@@ -25,7 +25,14 @@ foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
+
+ok = #0a6cf5
+recover = #cc33ff
+warn = #ff9900
 alert = #bd2c40
+
+blue = #0a6cf5
+yellow = #ffb52a
 
 [bar/i3wm_bar]
 monitor = ${env:MONITOR:}
@@ -33,7 +40,7 @@ width = 100%
 height = 27
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 6.0
+;radius = 6.0
 fixed-center = false
 bottom = true
 
@@ -41,10 +48,10 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
-line-color = #f00
+;line-color = #f00
 
-border-size = 4
-border-color = #00000000
+;border-size = 4
+;border-color = #00000000
 
 padding-left = 0
 padding-right = 2
@@ -52,14 +59,22 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
+;font-0 = fixed:pixelsize=10;1
+;font-1 = fixed:pixelsize=10;1
+font-0 = "DejaVu Sans Mono:style=Regular:size=10"
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+;font-1 = "Unifont Upper:fontformat=truetype:size=8:antialias=false;0"
+font-2 = "siji:pixelsize=10;1"
+;font-2 = "Unifont Upper:fontformat=truetype:size=8:antialias=false;0"
+;font-2 = ""Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular"
+;font-0 = fixed:pixelsize=8:weight=bold;0
+;font-1 = unifont:fontformat=truetype:size=8:weight=bold:antialias=false;0
+;font-2 = "Wuncon siji:pixelsize=8;1"
+font-3 = Weather Icons:size=12;1
 
 modules-left = i3
-modules-center = alsa pulseaudio
-modules-right = filesystem xkeyboard memory cpu eth temperature date powermenu
-
+;modules-center = alsa pulseaudio
+modules-right = alsa pulseaudio filesystem xkeyboard memory cpu eth temperature openweathermap-simple-houston openweathermap-simple-silverspring popup-calendar powermenu
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
@@ -88,15 +103,15 @@ blacklist-0 = num lock
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+format-prefix-underline = ${colors.ok}
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+label-layout-underline = ${colors.ok}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+label-indicator-background = ${colors.ok}
+label-indicator-underline = ${colors.ok}
 
 [module/filesystem]
 type = internal/fs
@@ -105,8 +120,11 @@ interval = 25
 mount-0 = /
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted-underline = ${colors.ok}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
+
+
 
 [module/bspwm]
 type = internal/bspwm
@@ -207,9 +225,19 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
+format = <ramp-load>
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+;format-underline = #f90000
+ramp-load-0 = "low "
+ramp-load-0-underline = ${colors.ok}
+ramp-load-1 = "med "
+ramp-load-1-underline = ${colors.ok}
+ramp-load-2 = "med "
+ramp-load-2-underline = ${colors.warn}
+ramp-load-3 = "high"
+ramp-load-3-underline = ${colors.alert}
+;format-underline = ${colors.ok}
 label = %percentage:2%%
 
 [module/memory]
@@ -217,16 +245,27 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+;format-underline = #4bffdc
+;format-underline = ${colors.ok}
+format = <ramp-used>
+ramp-used-0 = low
+ramp-used-0-underline = ${colors.ok}
+ramp-used-1 = medium
+ramp-used-1-underline = ${colors.ok}
+ramp-used-2 = medium
+ramp-used-2-underline = ${colors.warn}
+ramp-used-3 = high
+ramp-used-3-underline = ${colors.alert}
 label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = net1
+interface = wlp3s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+;format-connected-underline = #9f78e1
+format-connected-underline = ${colors.ok}
 label-connected = %essid%
 
 format-disconnected =
@@ -247,8 +286,10 @@ type = internal/network
 interface = enp0s25
 interval = 3.0
 
-format-connected-underline = #55aa55
+;format-connected-underline = #55aa55
+format-connected-underline = ${colors.ok}
 format-connected-prefix = " "
+;format-connected-prefix-foreground = ${colors.foreground-alt}
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -265,14 +306,34 @@ interval = 5
 date = " %Y-%m-%d"
 ;date-alt =
 
-time = %H:%M:%S
+time = %I:%M:%S
 ;time-alt = %H:%M
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = ${colors.blue}
 
 label = %date% %time%
+
+[module/popup-calendar]
+type = custom/script
+exec = ~/.config/polybar/popup-calendar.sh
+interval = 5
+click-left = ~/.config/polybar/popup-calendar.sh --popup
+
+
+[module/openweathermap-simple-houston]
+type = custom/script
+exec = ~/.config/polybar/openweathermap-simple-houston.sh
+interval = 600
+label-font = 3
+
+[module/openweathermap-simple-silverspring]
+type = custom/script
+exec = ~/.config/polybar/openweathermap-simple-silverspring.sh
+interval = 600
+label-font = 3
+
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -329,21 +390,23 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-[module/battery]
+[module/battery0]
 type = internal/battery
 battery = BAT0
 adapter = ADP1
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = ${colors.recover}
 
 format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-underline = ${colors.warn}
+;format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+;format-full-prefix-foreground = ${colors.ok}
+format-full-underline = ${colors.ok}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -362,19 +425,58 @@ animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
+
+[module/battery1]
+type = internal/battery
+battery = BAT1
+adapter = ADP1
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.recover}
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${colors.warn}
+;format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+;format-full-prefix-foreground = ${colors.ok}
+format-full-underline = ${colors.ok}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+
+
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+;format-underline = #f50a4d
+format-underline = ${colors.ok}
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+format-warn-underline = ${colors.alert}
 
 label = %temperature-c%
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+label-warn-foreground = ${colors.alert}
 
 ramp-0 = 
 ramp-1 = 
@@ -389,9 +491,9 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = ${colors.ok}
 label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-close-foreground = ${colors.ok}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
@@ -419,7 +521,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+;margin-top = 5
+;margin-bottom = 5
 
 ; vim:ft=dosini
