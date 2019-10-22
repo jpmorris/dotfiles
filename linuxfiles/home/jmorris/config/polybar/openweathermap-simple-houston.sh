@@ -26,7 +26,7 @@ get_icon() {
 
 KEY="2b134888cd336b0d9854655111bb0cdb"
 CITY="4699066"
-UNITS="metric"
+UNITS="imperial"
 SYMBOL="°"
 
 API="https://api.openweathermap.org/data/2.5"

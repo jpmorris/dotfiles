@@ -44,7 +44,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
+# move focused window/home/jmorris/dotfiles/linuxfiles/home/jmorris/config/i3/config.julia
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
@@ -216,6 +216,9 @@ for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
+for_window [class="Yad" title="yad-calendar"] floating enable
+
+for_window [class="^jetbrains-.+"][window_type=dialog] focus
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
