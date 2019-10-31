@@ -54,7 +54,7 @@ line-size = 3
 ;border-color = #00000000
 
 padding-left = 0
-padding-right = 2
+padding-right = 26
 
 module-margin-left = 1
 module-margin-right = 2
@@ -320,6 +320,7 @@ type = custom/script
 exec = ~/.config/polybar/popup-calendar.sh
 interval = 5
 click-left = ~/.config/polybar/popup-calendar.sh --popup
+label-margin = 3
 
 
 [module/openweathermap-simple-houston]
