@@ -57,8 +57,8 @@ bindsym XF86AudioMute exec --no-startup-id "/usr/bin/amixer sset Master toggle"
 
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 5; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "bright +"
+bindsym XF86MonBrightnessDown exec "bright -"
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -73,8 +73,6 @@ bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart du
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 #bindsym $mod+Shift+Print --release exec --no-startup-id "scrot -s -e xclip -selection clipboard -t image/png < /home/jmorris/Pictures/$f"
-bindsym $mod+Shift+Print --release exec "scrot -s /home/jmorris/Pictures/screenshot_%Y%m%d_%H%M%S.png -e 'xclip -selection clipboard -t image/png < $f'"
-
 
 #bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill

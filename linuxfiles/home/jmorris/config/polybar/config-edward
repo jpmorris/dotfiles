@@ -74,7 +74,7 @@ font-3 = Weather Icons:size=12;1
 
 modules-left = i3
 ;modules-center = alsa pulseaudio
-modules-right = alsa pulseaudio xbacklight battery0 battery1 filesystem  xkeyboard memory cpu wlan eth temperature openweathermap-simple-houston openweathermap-simple-silverspring popup-calendar powermenu
+modules-right = alsa pulseaudio battery0 filesystem  xkeyboard memory cpu wlan eth temperature openweathermap-simple-silverspring popup-calendar powermenu
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
@@ -260,7 +260,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp3s0
+interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -322,12 +322,6 @@ interval = 5
 click-left = ~/.config/polybar/popup-calendar.sh --popup
 label-margin = 3
 
-
-[module/openweathermap-simple-houston]
-type = custom/script
-exec = ~/.config/polybar/openweathermap-simple-houston.sh
-interval = 600
-label-font = 3
 
 [module/openweathermap-simple-silverspring]
 type = custom/script
