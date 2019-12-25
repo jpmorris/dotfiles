@@ -53,7 +53,7 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 
 # fix mute button
-bindsym XF86AudioMute exec --no-startup-id "/usr/bin/amixer sset Master toggle"
+bindsym XF86AudioMute exec --no-startup-id "/usr/bin/pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle"
 
 
 # Screen brightness controls
@@ -496,7 +496,7 @@ exec xset m 4/1 3
 exec synology-cloud-station-drive autostart
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+#exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -504,20 +504,20 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 # exec --no-startup-id blueman
 # exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
+#exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 # exec --no-startup-id xautolock -time 10 -locker 'i3lock -n -c 000000'
 
 exec --no-startup-id google-chrome-stable
 exec --no-startup-id veracrypt
-
+exec --no-startup-id "/usr/bin/pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle"
 
 
 exec --no-startup-id xidlehook --not-when-fullscreen \
 --timer normal 60 'myredshift -b 0.1' 'myredshift -o' \
 --timer primary 600 'myredshift -b 1; i3lock -nc 000000' '' \
 --timer normal 1200 \
-    'grep 0 /sys/class/power_supply/AC/online > /dev/null && eystemctl suspend' \
+    'grep 0 /sys/class/power_supply/AC0/online > /dev/null && eystemctl suspend' \
     '' &
 
 #exec --no-startup-id xautolock -detectsleep \
@@ -533,4 +533,3 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 
-exec --no-startup-id amixer sset Master mute
