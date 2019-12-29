@@ -5,7 +5,7 @@ set $mod Mod4
 set $mod1 Mod1
 
 
-new_window pixel 1
+new_window pixel 5
 new_float normal
 
 
@@ -297,7 +297,7 @@ exec_always --no-startup-id fix_xcursor
 #                     -time 10 -locker 'i3lock -d -c 000000' \
 #                     -killtime 120 -killer "systemctl suspend"
 exec --no-startup-id xidlehook --not-when-fullscreen \
---timer normal 60 'myredshift -b 0.1' 'myredshift -o' \
+--timer normal 300 'myredshift -b 0.1' 'myredshift -o' \
 --timer primary 600 'myredshift -b 1; i3lock -nc 000000' '' \
 --timer normal 3600 'systemctl suspend' '' &
 
