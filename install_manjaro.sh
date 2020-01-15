@@ -5,15 +5,15 @@ read bitlockerkey
 
 sudo pacman -S yay
 
-yay -Syyuu
+yay --noconfirm -Syyuu
 
-yay -S google-chrome arandr neovim vlc numlockx thunderbird freerdp remmina xfce4-notes-plugin teamviewer meld polychromatic openrazer-meta redshift firefox spotify flameshot xclip veracrypt synology-cloud-station-drive slack-desktop anydesk
+yay --noconfirm -S google-chrome arandr neovim vlc numlockx thunderbird freerdp remmina xfce4-notes-plugin teamviewer meld polychromatic openrazer-meta redshift firefox spotify flameshot xclip veracrypt synology-cloud-station-drive slack-desktop anydesk
 
 # polybar
-yay -S polybar siji nitrogen rofi weather-icons
+yay --noconfirm -S polybar siji nitrogen rofi weather-icons
 
 # optional
-yay -S virtualbox 
+yay --noconfirm -S virtualbox 
 
 # 
 

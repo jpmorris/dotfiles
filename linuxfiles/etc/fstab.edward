@@ -4,9 +4,8 @@
 # be used with UUID= as a more robust way to name devices that works even if
 # disks are added and removed. See fstab(5).
 #
-# <file system>             			<mount point>  		<type>  <options>  						<dump>  <pass>
-UUID=a637e37e-0ea0-401e-be23-56d839d02e11 	/              		ext4    defaults,noatime,discard 				0 	1
-tmpfs                                     	/tmp           		tmpfs   defaults,noatime,mode=1777 				0 	0
-UUID=801E20DF1E20CFC8				/mnt/commonDrive	ntfs	defaults,uid=jmorris,gid=jmorris,dmask=022,fmask=133	0	2	
-/dev/nvme0n1p4	/mnt/dislocker	fuse.dislocker recovery-password=PASSWORDGOESHERE 0 0
-/mnt/dislocker/dislocker-file	/mnt/commonDrive	auto	defaults,gid=jmorris,uid=jmorris,umask=0022	0	0
+# <file system>             			<mount point>  		<type>  	<options>  						<dump>  <pass>
+UUID=a637e37e-0ea0-401e-be23-56d839d02e11 	/              		ext4    	defaults,noatime,discard 				0 	1
+tmpfs                                     	/tmp           		tmpfs   	defaults,noatime,mode=1777 				0 	0
+/dev/nvme0n1p4					/mnt/dislocker		fuse.dislocker 	recovery-password=PASSWORDGOESHERE 			0 	0
+/mnt/dislocker/dislocker-file			/mnt/commonDrive	auto		defaults,gid=jmorris,uid=jmorris,umask=0022,fmask=133	0	0
