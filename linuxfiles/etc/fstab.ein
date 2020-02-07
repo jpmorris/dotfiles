@@ -5,7 +5,7 @@
 # disks are added and removed. See fstab(5).
 #
 # <file system>             			<mount point>  		<type>  	<options>  						<dump>  <pass>
-UUID=a637e37e-0ea0-401e-be23-56d839d02e11 	/              		ext4    	defaults,noatime,discard 				0 	1
+UUID=d89e7257-baad-473a-96a1-1751c25483d4 	/              		ext4    	defaults,noatime,discard 				0 	1
 tmpfs                                     	/tmp           		tmpfs   	defaults,noatime,mode=1777 				0 	0
-/dev/nvme0n1p4					/mnt/dislocker		fuse.dislocker 	recovery-password=PASSWORDGOESHERE 			0 	0
-/mnt/dislocker/dislocker-file			/mnt/commonDrive	auto		defaults,gid=jmorris,uid=jmorris,umask=0022,fmask=133	0	0
+/dev/mmcblk0p1					/mnt/commonDrive	ntfs		defaults,gid=jmorris,uid=jmorris,umask=0022,fmask=133	0	0
+UUID=a5c7ce9d-7bee-43dd-969a-1da9ba4389ff	none			swap		defaults						0	0

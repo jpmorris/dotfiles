@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# you need to modify /etc/lightdm/lightdm.conf for the 'startup script' to run this at lightdm start
 
 
 function ActivateDual {

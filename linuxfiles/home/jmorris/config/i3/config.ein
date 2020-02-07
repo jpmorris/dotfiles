@@ -57,8 +57,8 @@ bindsym XF86AudioMute exec --no-startup-id "/usr/bin/pactl set-sink-mute alsa_ou
 
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "bright +"
-bindsym XF86MonBrightnessDown exec "bright -"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 5; notytify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; notify-send 'brightness down'" 
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -260,7 +260,7 @@ for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Skype"] floating enable border normal
 for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
-#for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="Yad" title="yad-calendar"] floating enable
 
@@ -509,7 +509,6 @@ exec --no-startup-id clipit
 # exec --no-startup-id xautolock -time 10 -locker 'i3lock -n -c 000000'
 
 exec --no-startup-id google-chrome-stable
-exec --no-startup-id optimus-manager-qt
 exec --no-startup-id veracrypt
 exec --no-startup-id "/usr/bin/pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle"
 
