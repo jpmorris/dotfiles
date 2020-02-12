@@ -5,8 +5,8 @@
 " zm - close all folds
 
 " FOR NEW INSTALL
-" 1. Run Plug Install
-" 2. go into python mode and run
+" 1. Run :PlugInstall
+" 2. go into .vim/python-mode and run
 " git clone --recursive https://github.com/python-mode/python-mode
 
 " keybind ref:
