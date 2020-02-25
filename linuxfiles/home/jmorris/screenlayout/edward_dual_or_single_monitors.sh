@@ -7,29 +7,48 @@ function ActivateDual {
     echo "Switching to DUAL MONITORS"
     xrandr --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-0 --mode 1920x1080 --pos 2560x0 --rotate normal --output DP-4 --off --output DP-5 --off --output eDP-1-1 --mode 2560x1440 --pos 0x0 --rotate normal
 }
-function ActivateSingle {
-    echo "Switching to LAPTOP ONLY"
+function ActivateTriple {
+    echo "Switching to TRIPLE MONITORS"
+    xrandr --output eDP-1 --mode 2560x1440 --pos 3840x0 --rotate normal --output DVI-I-2-2 --mode 1920x1080 --pos 1920x0 --rotate normal --output DVI-I-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
+}
+
+function ActivateIntelSingle {
+    echo "Switching to LAPTOP ONLY - INTEL"
     xrandr --output eDP-1 --mode 2560x1440 --pos 0x0 --rotate normal
 }
 
-function HDMIConnected {
-    xrandr | grep "^HDMI-0" | grep connected
+function ActivateNVIDIASingle {
+    echo "Switching to LAPTOP ONLY - NVIDIA"
+    xrandr --output eDP-1-1 --mode 2560x1440 --pos 0x0 --rotate normal
 }
 
-## MONITOR doesn't do anything because it's not preserved between script executions
-# actual script
-##while true
-##do
-    if HDMIConnected
-    then
-        ActivateDual
-    fi
+function HDMIConnected {
+    xrandr | grep "^HDMI-0 connected"
+}
+function DockConnected {
+    xrandr | grep "^DVI-I-1-1 connected"
+}
 
-    if ! HDMIConnected
-    then
-        ActivateSingle
-    fi
+function NVIDIADetected {
+    xrandr | grep "^eDP-1-1"
+}
 
-    ##sleep 1s
-##done
+# HDMI is connected
+if DockConnected
+then
+    ActivateTriple
+fi
+# HDMI is not connected
+if ! DockConnected
+then
+  # NVIDIA drivers loaded so laptop display is named eDP-1-1
+  if NVIDIADetected
+  then
+    ActivateNVIDIASingle
+  # Intel drivers loaded so laptop display is named eDP-1
+  else
+    ActivateIntelSingle
+  fi
+fi
+
 

@@ -11,7 +11,7 @@ sudo pacman -S yay
 
 yay --noconfirm -Syyuu
 
-yay --noconfirm -S google-chrome arandr neovim vlc numlockx thunderbird freerdp remmina xfce4-notes-plugin teamviewer meld polychromatic openrazer-meta redshift firefox spotify flameshot xclip veracrypt synology-cloud-station-drive slack-desktop anydesk skypeforlinux zoom python-notify2
+yay --noconfirm -S google-chrome arandr neovim vlc numlockx thunderbird freerdp remmina xfce4-notes-plugin teamviewer meld polychromatic openrazer-meta redshift firefox spotify flameshot xclip veracrypt synology-cloud-station-drive slack-desktop anydesk skypeforlinux zoom python-notify2 xidlehook
 
 # touchpad
 yay --noconfirm -S xf86-input-libinput

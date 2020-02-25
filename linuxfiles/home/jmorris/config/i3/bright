@@ -1,6 +1,13 @@
 #!/bin/bash
 
-MON="eDP1"    # Discover monitor name with: xrandr | grep " connected"
+# name of laptop display when in intel mode
+MON="eDP-1"    # Discover monitor name with: xrandr | grep " connected"
+# name of laptop display when in nvidia mode
+if xrandr | grep eDP-1-1 > /dev/null ;
+then
+  MON="eDP-1-1"
+fi
+
 STEP=5          # Step Up/Down brightnes by: 5 = ".05", 10 = ".10", etc.
 
 CurrBright=$( xrandr --verbose --current | grep ^"$MON" -A5 | tail -n1 )
