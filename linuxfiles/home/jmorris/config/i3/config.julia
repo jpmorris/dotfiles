@@ -277,9 +277,14 @@ mode "resize" {
 }
 
 # AUTOSTART APPLICATIONS
+bar {
+	status_command i3status
+	i3bar_command i3bar
+	position bottom
+}
 
 # bar
-exec_always --no-startup-id /$HOME/.config/polybar/polybar_allmonitors.sh
+#exec_always --no-startup-id /$HOME/.config/polybar/polybar_allmonitors.sh
 # nitrogenfor wallpaper
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id numlockx on
