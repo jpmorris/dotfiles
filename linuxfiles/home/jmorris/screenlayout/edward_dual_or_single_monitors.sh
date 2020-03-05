@@ -2,7 +2,6 @@
 
 # you need to modify /etc/lightdm/lightdm.conf for the 'startup script' to run this at lightdm start
 
-date >> /tmp/udev.log
 # GET LAPTOP NAME
 if xrandr | grep "^eDP-1-1"
 then
