@@ -28,12 +28,21 @@ then
   RIGHTDISPLAYNAME="DVI-I-3-2"
 fi
 
-# if both displays are connected
-LEFTDISPLAYCONNECTED=$(xrandr | grep "$LEFTDISPLAYNAME connected ")
-RIGHTDISPLAYCONNECTED=$(xrandr | grep "$RIGHTDISPLAYNAME connected ")
-if [[ -z "$LEFTDISPLAYCONNECTED" ]] && [[ -z "$RIGHTDISPLAYCONNECTED" ]]
+# if either monitors are not detected then just show laptop
+if [[ -z "$LEFTDISPLAYNAME" ]] || [[ -z "$RIGHTDISPLAYNAME" ]]
 then
-  xrandr --output $LAPTOPDISPLAYNAME --mode 2560x1440 --pos 0x0 --rotate normal --output $RIGHTDISPLAYNAME --off --output $LEFTDISPLAYNAME --off
+  xrandr --output $LAPTOPDISPLAYNAME --primary --mode 2560x1440 --pos 0x0 --rotate normal
 else
-  xrandr --output $LAPTOPDISPLAYNAME --mode 2560x1440 --pos 3840x0 --rotate normal --output $RIGHTDISPLAYNAME --mode 1920x1080 --pos 1920x0 --rotate normal --output $LEFTDISPLAYNAME --primary --mode 1920x1080 --pos 0x0 --rotate normal
+  LEFTDISPLAYCONNECTED=$(xrandr | grep "$LEFTDISPLAYNAME connected ")
+  RIGHTDISPLAYCONNECTED=$(xrandr | grep "$RIGHTDISPLAYNAME connected ")
+  # if both monitors are connected then display both
+  if [[ -z "$LEFTDISPLAYCONNECTED" ]] && [[ -z "$RIGHTDISPLAYCONNECTED" ]]
+  then
+    xrandr --output $LAPTOPDISPLAYNAME --mode 2560x1440 --pos 0x0 --rotate normal --output $RIGHTDISPLAYNAME --off --output $LEFTDISPLAYNAME --off
+  # else display only laptop
+  else
+    xrandr --output $LAPTOPDISPLAYNAME --mode 2560x1440 --pos 3840x0 --rotate normal --output $RIGHTDISPLAYNAME --mode 1920x1080 --pos 1920x0 --rotate normal --output $LEFTDISPLAYNAME --primary --mode 1920x1080 --pos 0x0 --rotate normal
+  fi
 fi
+
+
