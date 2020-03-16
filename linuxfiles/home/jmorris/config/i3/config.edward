@@ -98,11 +98,15 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 bindsym $mod+Shift+h move left
 
+bindsym $mod+$mod1+Shift+h move workspace to output left
+bindsym $mod+$mod1+Shift+l move workspace to output right
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
@@ -532,8 +536,8 @@ exec --no-startup-id optimus-manager-qt
 exec --no-startup-id veracrypt
 exec --no-startup-id slack
 exec --no-startup-id remmina
-exec --no-startup-id teamviewer
-exec --no-startup-id anydesk
+#exec --no-startup-id teamviewer
+#exec --no-startup-id anydesk
 exec --no-startup-id "/usr/bin/pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle"
 
 

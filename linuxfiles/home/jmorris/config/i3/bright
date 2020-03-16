@@ -1,8 +1,12 @@
 #!/bin/bash
 
 # name of laptop display when in intel mode
-MON="eDP-1"    # Discover monitor name with: xrandr | grep " connected"
+MON="eDP1"    # Discover monitor name with: xrandr | grep " connected"
 # name of laptop display when in nvidia mode
+if xrandr | grep eDP-1 > /dev/null ;
+then
+  MON="eDP-1"
+fi
 if xrandr | grep eDP-1-1 > /dev/null ;
 then
   MON="eDP-1-1"

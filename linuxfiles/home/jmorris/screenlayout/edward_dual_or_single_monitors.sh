@@ -2,52 +2,46 @@
 
 # you need to modify /etc/lightdm/lightdm.conf for the 'startup script' to run this at lightdm start
 
-
-function ActivateDual {
-    echo "Switching to DUAL MONITORS"
-    xrandr --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output HDMI-0 --mode 1920x1080 --pos 2560x0 --rotate normal --output DP-4 --off --output DP-5 --off --output eDP-1-1 --mode 2560x1440 --pos 0x0 --rotate normal
-}
-function ActivateTriple {
-    echo "Switching to TRIPLE MONITORS"
-    xrandr --output eDP-1 --mode 2560x1440 --pos 3840x0 --rotate normal --output DVI-I-2-2 --mode 1920x1080 --pos 1920x0 --rotate normal --output DVI-I-1-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal
-}
-
-function ActivateIntelSingle {
-    echo "Switching to LAPTOP ONLY - INTEL"
-    xrandr --output eDP-1 --mode 2560x1440 --pos 0x0 --rotate normal
-}
-
-function ActivateNVIDIASingle {
-    echo "Switching to LAPTOP ONLY - NVIDIA"
-    xrandr --output eDP-1-1 --mode 2560x1440 --pos 0x0 --rotate normal
-}
-
-function HDMIConnected {
-    xrandr | grep "^HDMI-0 connected"
-}
-function DockConnected {
-    xrandr | grep "^DVI-I-1-1 connected"
-}
-
-function NVIDIADetected {
-    xrandr | grep "^eDP-1-1"
-}
-
-# HDMI is connected
-if DockConnected
+# GET LAPTOP NAME
+if xrandr | grep "^eDP-1-1"
 then
-    ActivateTriple
+  LAPTOPDISPLAYNAME="eDP-1-1"
+else
+  LAPTOPDISPLAYNAME="eDP-1"
 fi
-# HDMI is not connected
-if ! DockConnected
+
+# GET OTHER MONITOR NAMES
+if xrandr | grep "^DVI-I-1-1"
 then
-  # NVIDIA drivers loaded so laptop display is named eDP-1-1
-  if NVIDIADetected
+  LEFTDISPLAYNAME="DVI-I-1-1"
+elif xrandr | grep "^DVI-I-2-1"
+then
+  LEFTDISPLAYNAME="DVI-I-2-1"
+fi
+
+# GET OTHER MONITOR NAMES
+if xrandr | grep "^DVI-I-2-2"
+then
+  RIGHTDISPLAYNAME="DVI-I-2-2"
+elif xrandr | grep "^DVI-I-3-2"
+then
+  RIGHTDISPLAYNAME="DVI-I-3-2"
+fi
+
+# if either monitors are not detected then just show laptop
+if [[ -z "$LEFTDISPLAYNAME" ]] || [[ -z "$RIGHTDISPLAYNAME" ]]
+then
+  xrandr --output $LAPTOPDISPLAYNAME --primary --mode 2560x1440 --pos 0x0 --rotate normal
+else
+  LEFTDISPLAYCONNECTED=$(xrandr | grep "$LEFTDISPLAYNAME connected ")
+  RIGHTDISPLAYCONNECTED=$(xrandr | grep "$RIGHTDISPLAYNAME connected ")
+  # if both monitors are connected then display both
+  if [[ -z "$LEFTDISPLAYCONNECTED" ]] && [[ -z "$RIGHTDISPLAYCONNECTED" ]]
   then
-    ActivateNVIDIASingle
-  # Intel drivers loaded so laptop display is named eDP-1
+    xrandr --output $LAPTOPDISPLAYNAME --mode 2560x1440 --pos 0x0 --rotate normal --output $RIGHTDISPLAYNAME --off --output $LEFTDISPLAYNAME --off
+  # else display only laptop
   else
-    ActivateIntelSingle
+    xrandr --output $LAPTOPDISPLAYNAME --mode 2560x1440 --pos 3840x0 --rotate normal --output $RIGHTDISPLAYNAME --mode 1920x1080 --pos 1920x0 --rotate normal --output $LEFTDISPLAYNAME --primary --mode 1920x1080 --pos 0x0 --rotate normal
   fi
 fi
 
