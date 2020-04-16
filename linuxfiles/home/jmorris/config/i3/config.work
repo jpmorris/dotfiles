@@ -1,8 +1,8 @@
 set $mod Mod1
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
-set $mod Mod1
-set $mod1 Mod4
+set $mod Mod4
+set $mod1 Mod1
 
 
 new_window pixel 1

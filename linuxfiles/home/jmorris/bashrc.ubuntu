@@ -157,3 +157,4 @@ fi
 JAVA_HOME=/usr/lib/jvm/java-8-oracle/
 export PATH=/opt/anaconda3/bin:$PATH
 
+source .bash_profile
