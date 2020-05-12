@@ -22,8 +22,8 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod1+Return exec i3-sensible-terminal
+bindsym $mod+Return exec terminator
+bindsym $mod1+Return exec terminator
 
 # Window kill command
 bindsym $mod+Shift+q kill
@@ -109,15 +109,15 @@ set $ws7 7
 set $ws8 8
 set $ws9 9
 
-workspace 1 output DP-0.8
-workspace 2 output DP-0.8
-workspace 3 output DP-0.8
-workspace 4 output DP-2.8
-workspace 5 output DP-2.8
-workspace 6 output DP-2.8
-workspace 7 output DP-4.8
-workspace 8 output DP-4.8
-workspace 9 output DP-4.8
+workspace 1 output DP-4-8
+workspace 2 output DP-4-8
+workspace 3 output DP-4-8
+workspace 4 output DP-3-8
+workspace 5 output DP-3-8
+workspace 6 output DP-3-8
+workspace 7 output DP-2-8
+workspace 8 output DP-2-8
+workspace 9 output DP-2-8
 
 
 # switch to workspace
@@ -287,7 +287,7 @@ bar {
 #exec_always --no-startup-id /$HOME/.config/polybar/polybar_allmonitors.sh
 # nitrogenfor wallpaper
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id numlockx on
 
 # tray apps
@@ -304,9 +304,9 @@ exec_always --no-startup-id fix_xcursor
 #                     -time 10 -locker 'i3lock -d -c 000000' \
 #                     -killtime 120 -killer "systemctl suspend"
 exec --no-startup-id xidlehook --not-when-fullscreen \
---timer normal 300 'myredshift -b 0.1' 'myredshift -o' \
---timer primary 600 'myredshift -b 1; i3lock -nc 000000' '' \
---timer normal 3600 'systemctl suspend' '' &
+--timer 300 'myredshift -b 0.1' 'myredshift -o' \
+--timer 600 'myredshift -b 1; i3lock -nc 000000' '' \
+--timer 3600 'systemctl suspend' '' &
 
 # Theme colors
 #client.focused #b0c4bb #2f2f38 #b0c4bb #81a2be #81a2be
