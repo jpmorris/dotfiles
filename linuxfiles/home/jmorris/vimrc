@@ -81,12 +81,7 @@ Plug 'chrisbra/Recover.vim'
 set noerrorbells                        " don't beep
 set visualbell t_vb=                    " don't beep, remove visual bell char
 " }}}
-" CLIPBOARD                         {{{
-if g:is_nix && has('unnamedplus')
-  set clipboard=unnamedplus,unnamed
-else
-  set clipboard+=unnamed
-endif
+set clipboard^=unnamedplus,unnamed
 "  store and cycle through previous clipboard entries
 Plug 'maxbrunsfeld/vim-yankstack'
 " }}}
