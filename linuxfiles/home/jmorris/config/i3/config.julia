@@ -30,8 +30,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod1+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id rofi -show run
-bindsym $mod1+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id rofi -run-list-command "~/dotfiles/linuxfiles/home/jmorris/scripts/alias.sh" -run-command "/bin/bash -i -c {cmd}"  -show run
+bindsym $mod1+d exec --no-startup-id rofi -run-list-command "~/dotfiles/linuxfiles/home/jmorris/scripts/alias.sh" -run-command "/bin/bash -i -c {cmd}"  -show run
 
 # change focus
 bindsym $mod+j focus down
