@@ -41,15 +41,32 @@ rm -rf ~/.bashrc
 ln -s ~/dotfiles/linuxfiles/home/jmorris/bashrc ~/.bashrc
 ln -s ~/dotfiles/linuxfiles/home/jmorris/extend.bashrc ~/.extend.bashrc
 
+echo '-----------------CONFIGURING DEFAULT APPS----------------------------'
+mv ~/.config/mimeapps.list ~/.config/mimeapps.list.old
+ln -s ~/dotfiles/linuxfiles/home/jmorris/config/mimeapps.list ~/.config/
+ln -s ~/dotfiles/linuxfiles/home/jmorris/local/share/applications/google-chrome-stable.desktop \
+  ~/.local/share/applications/
+
 #i3
 echo '-----------------CONFIGURING COMMON i3----------------------------'
 mkdir -p ~/.config/i3
 
+#i3
+echo '-----------------CONFIGURING LOCK AND SLEEP----------------------------'
+sudo ln -s ~/dotfiles/linuxfiles/etc/systemd/system/resume\@jmorris.service /etc/systemd/system/
+sudo ln -s ~/dotfiles/linuxfiles/etc/systemd/system/suspend\@jmorris.service /etc/systemd/system/
+
 
 # redshift
-if [ "$HOSTNAME" = julia ] || [ "$HOSTNAME" = edward] || [ "$HOSTNAME" = lin]; then
-  echo '-----------------CONFIGURING REDSHIFT----------------------------'
-  sudo ln -s ~/dotfiles/linuxfiles/usr/bin/myredshift /usr/bin/myredshift
+sudo ln -s ~/dotfiles/linuxfiles/usr/bin/myredshift /usr/bin/myredshift
+
+
+# SYSTEM SPECIFIC
+if [ "$HOSTNAME" = ein ] || [ "$HOSTNAME" = edward] || [ "$HOSTNAME" = lin]; then
+  echo '-----------------CONFIGURING BLUETOOTH----------------------------'
+  yay -S pulseaudio-bluetooth
+  # /etc/pulse/default.pa must be liked over; see respective system setup
+
 fi
 
 
@@ -68,13 +85,23 @@ fi
 if [ "$HOSTNAME" = lin]; then
   echo '-----------------CONFIGURING LIN SPECIFIC----------------------------'
   ln -s ~/dotfiles/linuxfiles/home/jmorris/config/i3/config.lin ~/.config/i3/config
+  mkdir ~/.config/i3status
+  ln -s ~/dotfiles/linuxfiles/home/jmorris/config/i3status/config.lin ~/.config/i3status/config
+  sudo ln -s ~/dotfiles/linuxfiles/etc/pulse/default.pa.lin /etc/pulse/default.pa
+  # battery warning
+  crontab -l > mycron
+  echo "*/5 * * * * ~/dotfiles/linuxfiles/home/jmorris/scripts/low_batt_warn_and_hibernate.sh" >> mycron
+  crontab mycron
+  rm mycron
+
 fi
 
 
 if [ "$HOSTNAME" = ein]; then
   echo '-----------------CONFIGURING EIN SPECIFIC----------------------------'
   # fstab
-  sudo cp dotfiles/linuxfiles/etc/fstab.ein /etc/fstab
+  # TODO: these fstab files should be used as a reference or use APPENDS in case partioning changes
+  #sudo cp dotfiles/linuxfiles/etc/fstab.ein /etc/fstab
   # polybar
   yay --noconfirm -S polybar siji nitrogen rofi weather-icons
   # specilized kernel
