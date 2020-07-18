@@ -109,15 +109,15 @@ set $ws7 7
 set $ws8 8
 set $ws9 9
 
-workspace 1 output rdp1
-workspace 2 output rdp1
-workspace 3 output rdp1
+workspace 1 output rdp0
+workspace 2 output rdp0
+workspace 3 output rdp0
 workspace 4 output rdp2
 workspace 5 output rdp2
 workspace 6 output rdp2
-workspace 7 output rdp0
-workspace 8 output rdp0
-workspace 9 output rdp0
+workspace 7 output rdp1
+workspace 8 output rdp1
+workspace 9 output rdp1
 
 
 
@@ -290,7 +290,11 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 #exec --no-startup-id nm-applet
 #exec --no-startup-id xfce4-power-manager
 #exec --no-startup-id pamac-tray
-#exec --no-startup-id clipit
+exec --no-startup-id clipit
+exec --no-startup-id xfce4-notes
+exec --no-startup-id slack-desktop
+exec --no-startup-id firefox
+exec --no-startup-id pycharm
 #exec_always --no-startup-id ff-theme-util
 #exec_always --no-startup-id fix_xcursor
 #exec_always --no-startup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
