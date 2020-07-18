@@ -1,3 +1,14 @@
+" values to set in JETBRAINS:
+" VIM:
+" C-h - jump up half-page
+" C-v - block select
+"
+" IDE:
+" C-b - Jump to Source
+" C-i - Acejump (like easyjump)
+" C-o - CHANGE IDE KEY to jump to last location (vims 'prev mark')
+
+
 set clipboard+=ideaput
 set ideajoin
 
