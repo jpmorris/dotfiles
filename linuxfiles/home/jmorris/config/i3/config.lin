@@ -28,13 +28,13 @@ font xft:Noto Sans 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminal
+bindsym $mod+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
+bindsym $mod+d exec --no-startup-id rofi -show run
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -515,9 +515,9 @@ exec --no-startup-id veracrypt
 
 
 exec --no-startup-id xidlehook --not-when-fullscreen \
---timer normal 60 'myredshift -b 0.1' 'myredshift -o' \
---timer primary 600 'myredshift -b 1; i3lock -nc 000000' '' \
---timer normal 1200 \
+--timer 60 'myredshift -b 0.1' 'myredshift -o' \
+--timer 600 'myredshift -b 1; i3lock -nc 000000' '' \
+--timer 1200 \
     'grep 0 /sys/class/power_supply/AC/online > /dev/null && eystemctl suspend' \
     '' &
 

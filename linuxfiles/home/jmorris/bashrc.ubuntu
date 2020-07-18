@@ -154,7 +154,6 @@ then
    fi
 fi
 
-
 export http_proxy=http://preproxy.uscis.dhs.gov:80
 export https_proxy=$http_proxy
 export HTTP_PROXY=$http_proxy
