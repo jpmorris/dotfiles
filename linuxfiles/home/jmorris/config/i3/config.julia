@@ -243,8 +243,9 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# for quick screenshots - otherwise use flameshot
-bindsym $mod+Shift+Print --release exec "scrot -s /home/jmorris/Pictures/screenshot_%Y%m%d_%H%M%S.png -e 'xclip -selection clipboard -t image/png < $f'"
+# for full screen shots
+bindsym $mod+Shift+Print --release exec "scrot /home/jmorris/Pictures/screenshot_%Y%m%d_%H%M%S.png -e 'xclip -selection clipboard -t image/png < $f'"
+# hotkey for selection screenshots
 bindsym Print --release exec "flameshot gui"
 
 # Set shut down, restart and locking features
