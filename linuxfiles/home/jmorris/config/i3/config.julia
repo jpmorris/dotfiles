@@ -109,15 +109,24 @@ set $ws7 7
 set $ws8 8
 set $ws9 9
 
-workspace 1 output DP-0.8
-workspace 2 output DP-0.8
-workspace 3 output DP-0.8
-workspace 4 output DP-2.8
-workspace 5 output DP-2.8
-workspace 6 output DP-2.8
-workspace 7 output DP-4.8
-workspace 8 output DP-4.8
-workspace 9 output DP-4.8
+#workspace 1 output DP-0.8
+#workspace 2 output DP-0.8
+#workspace 3 output DP-0.8
+#workspace 4 output DP-2.8
+#workspace 5 output DP-2.8
+#workspace 6 output DP-2.8
+#workspace 7 output DP-4.8
+#workspace 8 output DP-4.8
+#workspace 9 output DP-4.8
+workspace 1 output DP-2-8
+workspace 2 output DP-2-8
+workspace 3 output DP-2-8
+workspace 4 output DP-3-8
+workspace 5 output DP-3-8
+workspace 6 output DP-3-8
+workspace 7 output DP-4-8
+workspace 8 output DP-4-8
+workspace 9 output DP-4-8
 
 
 # switch to workspace
@@ -218,7 +227,9 @@ for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="Yad" title="yad-calendar"] floating enable
 
+
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
+for_window [class="origin.exe"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -234,6 +245,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # for quick screenshots - otherwise use flameshot
 bindsym $mod+Shift+Print --release exec "scrot -s /home/jmorris/Pictures/screenshot_%Y%m%d_%H%M%S.png -e 'xclip -selection clipboard -t image/png < $f'"
+bindsym Print --release exec "flameshot gui"
 
 # Set shut down, restart and locking features
 bindsym $mod+0 mode "$mode_system"
@@ -281,7 +293,7 @@ bar {
 	status_command i3status
 	i3bar_command i3bar
 	position bottom
-	tray_output DP-0.8
+	tray_output DP-2-8
 }
 
 # bar
@@ -291,7 +303,7 @@ bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart du
 exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id numlockx on
 
-# tray apps
+# default startup
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
@@ -299,9 +311,21 @@ exec --no-startup-id clipit
 exec --no-startup-id solaar
 exec --no-startup-id flameshot
 exec --no-startup-id slack
+exec --no-startup-id pasystray
 exec --no-startup-id synology-cloud-station-drive autostart
 #exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+
+
+# default location
+assign [instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] $ws2
+assign [class="Thunderbird"] $ws3
+assign [class="Veracrypt"] $ws3
+assign [class="org.remmina.Remmina"] $ws9
+assign [class="Anydesk.bin"] $ws9
+assign [class="Slack"] $ws5
+assign [class="jetbrains-pycharm"] $ws4
+
 
 #exec --no-startup-id xautolock -detectsleep \
 #                     -time 10 -locker 'i3lock -d -c 000000' \

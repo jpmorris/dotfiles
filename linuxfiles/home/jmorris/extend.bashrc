@@ -147,5 +147,6 @@ alias sudo='sudo '
 alias redshifton='myredshift -O 1500K -b 0.4 -g 1.4'
 alias redshiftoff='myredshift -r'
 alias tylercam='vlc  rtsp://admin:ashland1@192.168.1.170:554'
+alias kiracam='vlc  rtsp://admin:ashland1@192.168.1.178:554'
 alias cartoonnetwork='vlc http://192.168.1.98:5004/auto/v757'
 

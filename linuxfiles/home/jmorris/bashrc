@@ -35,13 +35,6 @@ colors() {
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 
-# new stuff
-export PATH=$PATH:/opt/anaconda3/bin:/home/jmorris/.gem/ruby/2.5.0/bin:
-export PATH=$PATH:/home/jmorris/bin
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_us.UTF-8
-
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
