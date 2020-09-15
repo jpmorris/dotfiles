@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# convert produces huge files without -compress zip
+#
+
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         -f|--filename) filename="$2"; shift ;;
@@ -19,7 +23,7 @@ if [[ "$adf" -eq 1 ]]; then
     --device "airscan:w0:Brother" \
     --progress \
     --source ADF \
-    --format=tiff \
+    --format tiff \
     --resolution 300 \
     --batch=/tmp/out%d.tiff
   convert -compress zip /tmp/out*.tiff $filename
