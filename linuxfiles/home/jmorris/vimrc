@@ -195,9 +195,12 @@ noremap <C-j> <C-d>
 noremap <C-k> <C-u>
 inoremap jj <Esc>
 inoremap JJ <Esc>
-noremap j gj|                           " override j for long wrapped lines
-noremap k gk|                           " override k for long wrapped lines
-nmap <leader>b= ggVG=''                 " auto-indent the current buffer
+" override j for long wrapped lines
+noremap j gj
+" override k for long wrapped lines
+noremap k gk
+" auto-indent the current buffer
+nmap <leader>b= ggVG=''
 "vnoremap < <gv                          " indenting text in visual mode does not leave the mode
 "vnoremap > >gv                          " indenting text in visual mode does not leave the mode
 "below: toggle code folding; comments after these lines break ideavim
@@ -232,8 +235,8 @@ endif
 Plug 'jalvesaq/Nvim-R'
 let R_assign = 0
 Plug 'gaalcaras/ncm-R'
-Plug 'sirver/UltiSnips'
-Plug 'lervag/vimtex'
+"Plug 'sirver/UltiSnips'                " currently broken on macos"
+"Plug 'lervag/vimtex'
 " }}}
 " READ/WRITE                        {{{
 set autoread                            " watch for file changes

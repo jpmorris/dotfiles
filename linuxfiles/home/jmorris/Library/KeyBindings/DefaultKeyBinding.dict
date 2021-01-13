@@ -1,0 +1,49 @@
+/*
+PUT THIS FILE IN ~/Library/KeyBindings/DefaultKeyBinding.dict
+This file remaps the key bindings of a single user on Mac OS X 10.5 to more closely
+match default behavior on Windows systems.
+
+This customization is for the CTRL keyboard with the option/win -> command/alt swapped.  This
+swap is left and NOT switched in system preferences key mappings so preserve desired alt-tab
+behavior
+
+Here is a rough cheatsheet for syntax.
+Key Modifiers
+^ : Ctrl
+$ : Shift
+~ : Option (Alt)
+@ : Command (Apple)
+# : Numeric Keypad
+
+Non-Printable Key Codes
+
+Up Arrow:     \UF700        Backspace:    \U0008        F1:           \UF704
+Down Arrow:   \UF701        Tab:          \U0009        F2:           \UF705
+Left Arrow:   \UF702        Escape:       \U001B        F3:           \UF706
+Right Arrow:  \UF703        Enter:        \U000A        ...
+Insert:       \UF727        Page Up:      \UF72C
+Delete:       \UF728        Page Down:    \UF72D
+Home:         \UF729        Print Screen: \UF72E
+End:          \UF72B        Scroll Lock:  \UF72F
+Break:        \UF732        Pause:        \UF730
+SysReq:       \UF731        Menu:         \UF735
+Help:         \UF746
+
+NOTE: typically the Windows 'Insert' key is mapped to what Macs call 'Help'.
+Regular Mac keyboards don't even have the Insert key, but provide 'Fn' instead,
+which is completely different.
+*/
+{
+  "^z"  = "undo:";                                             /* Ctrl + z */
+  "^x"  = "cut:";                                              /* Ctrl + x */
+  "^c"  = "copy:";                                             /* Ctrl + c */
+  "^v"  = "paste:";                                            /* Ctrl + v */
+  "~\UF702"  = "moveToBeginningOfLine:";                       /* Alt + Left Arrow */
+  "~\UF703"  = "moveToEndOfLine:";                             /* Alt + Right Arrow */
+  "~$\UF702"  = "moveToBeginningOfLineAndModifySelection:";    /* Alt + Shift + Left Arrow */
+  "~$\UF703"  = "moveToEndOfLineAndModifySelection:";          /* Alt + Shift + Right Arrow */
+  "^\UF702"  = "moveWordBackward:";                            /* Ctrl + LeftArrow */
+  "^\UF703"  = "moveWordForward:";                             /* Ctrl + RightArrow */
+  "^$\UF702"  = "moveWordBackwardAndModifySelection:";         /* Ctrl + Shift + LeftArrow */
+  "^$\UF703"  = "moveWordForwardAndModifySelection:";          /* Ctrl + Shift + RightArrow */
+}
