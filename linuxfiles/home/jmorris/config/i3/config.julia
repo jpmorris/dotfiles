@@ -112,21 +112,21 @@ set $ws9 9
 workspace 1 output DP-0.8
 workspace 2 output DP-0.8
 workspace 3 output DP-0.8
-workspace 4 output DP-2.8
-workspace 5 output DP-2.8
-workspace 6 output DP-2.8
-workspace 7 output DP-4.8
-workspace 8 output DP-4.8
-workspace 9 output DP-4.8
-#workspace 1 output DP-2-8
-#workspace 2 output DP-2-8
-#workspace 3 output DP-2-8
+workspace 4 output DP-3
+workspace 5 output DP-3
+workspace 6 output DP-3
+workspace 7 output DP-5
+workspace 8 output DP-5
+workspace 9 output DP-5
+#workspace 1 output DP-3
+#workspace 2 output DP-3
+#workspace 3 output DP-3
 #workspace 4 output DP-3-8
 #workspace 5 output DP-3-8
 #workspace 6 output DP-3-8
-#workspace 7 output DP-4-8
-#workspace 8 output DP-4-8
-#workspace 9 output DP-4-8
+#workspace 7 output DP-5
+#workspace 8 output DP-5
+#workspace 9 output DP-5
 
 
 # switch to workspace
@@ -306,7 +306,8 @@ exec --no-startup-id numlockx on
 
 # default startup
 exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
+# this blocks disabling the power button via /etc/systemd/logind.conf
+#exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id solaar
