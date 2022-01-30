@@ -531,7 +531,7 @@ exec --no-startup-id xidlehook --not-when-fullscreen \
 --timer 60 'myredshift -b 0.1' 'myredshift -o' \
 --timer 600 'myredshift -b 1; i3lock -nc 000000' '' \
 --timer 1200 \
-    'grep 0 /sys/class/power_supply/AC/online > /dev/null && eystemctl suspend' \
+    'grep 0 /sys/class/power_supply/AC/online > /dev/null && systemctl suspend' \
     '' &
 
 #exec --no-startup-id xautolock -detectsleep \
