@@ -307,20 +307,22 @@ exec --no-startup-id numlockx on
 # default startup
 exec --no-startup-id nm-applet
 # this blocks disabling the power button via /etc/systemd/logind.conf
-#exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
+# exec --no-startup-id clipit
+exec --no-startup-id copyq
 exec --no-startup-id solaar
 exec --no-startup-id flameshot
 exec --no-startup-id slack
 exec --no-startup-id pasystray
-exec --no-startup-id synology-cloud-station-drive autostart
+#exec --no-startup-id nextcloud
+exec --no-startup-id xfce4-notes
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 #exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 
-# default location
+ #default location
 assign [instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] $ws2
 assign [class="Thunderbird"] $ws3
 assign [class="Veracrypt"] $ws3
