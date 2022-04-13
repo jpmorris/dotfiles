@@ -53,8 +53,8 @@ mkdir -p ~/.config/i3
 
 #i3
 echo '-----------------CONFIGURING LOCK AND SLEEP----------------------------'
-sudo ln -s ~/dotfiles/linuxfiles/etc/systemd/system/resume\@jmorris.service /etc/systemd/system/
-sudo ln -s ~/dotfiles/linuxfiles/etc/systemd/system/suspend\@jmorris.service /etc/systemd/system/
+#sudo ln -s ~/dotfiles/linuxfiles/etc/systemd/system/resume\@jmorris.service /etc/systemd/system/
+#sudo ln -s ~/dotfiles/linuxfiles/etc/systemd/system/suspend\@jmorris.service /etc/systemd/system/
 
 
 # redshift
@@ -64,7 +64,7 @@ sudo ln -s ~/dotfiles/linuxfiles/usr/bin/myredshift /usr/bin/myredshift
 # SYSTEM SPECIFIC
 if [ "$HOSTNAME" = ein ] || [ "$HOSTNAME" = edward] || [ "$HOSTNAME" = lin]; then
   echo '-----------------CONFIGURING BLUETOOTH----------------------------'
-  yay -S pulseaudio-bluetooth
+#  yay -S pulseaudio-bluetooth
   # /etc/pulse/default.pa must be liked over; see respective system setup
 
 fi
@@ -84,10 +84,10 @@ fi
 
 if [ "$HOSTNAME" = lin]; then
   echo '-----------------CONFIGURING LIN SPECIFIC----------------------------'
-  ln -s ~/dotfiles/linuxfiles/home/jmorris/config/i3/config.lin ~/.config/i3/config
-  mkdir ~/.config/i3status
-  ln -s ~/dotfiles/linuxfiles/home/jmorris/config/i3status/config.lin ~/.config/i3status/config
-  sudo ln -s ~/dotfiles/linuxfiles/etc/pulse/default.pa.lin /etc/pulse/default.pa
+  ln -s ~/dotfiles/linuxfiles/home/jmorris/config/i3/config.laptop ~/.config/i3/config
+#  mkdir ~/.config/i3status
+#  ln -s ~/dotfiles/linuxfiles/home/jmorris/config/i3status/config.lin ~/.config/i3status/config
+#  sudo ln -s ~/dotfiles/linuxfiles/etc/pulse/default.pa.lin /etc/pulse/default.pa
   # battery warning
   crontab -l > mycron
   echo "*/5 * * * * ~/dotfiles/linuxfiles/home/jmorris/scripts/low_batt_warn_and_hibernate.sh" >> mycron
