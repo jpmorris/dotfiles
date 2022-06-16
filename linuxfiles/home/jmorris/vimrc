@@ -19,7 +19,7 @@
 " :Autoformat               " format file
 " C-n                       " add space around char
 " zf                        " create fold
- "zc                       " close fold
+ "zc                        " close fold
 " zo                        " open fold
 " gf                        " edit file under cursor
 " S-j                       " join line below
@@ -28,10 +28,11 @@
 " i C-X <>                  " complete commands in insert mode
 " C-G                       " display current file name and position
 " ''                        " cursor to the first CHAR of line before the last jump
+" C-i                       " jump forward in jumplist
+" C-o                       " jump backard on jumplist
 
 " OTHER IDE CHANGES
 " C-m                       " comment block
-" C-i                       " easymotion
 " S->                       " indent
 
 
@@ -130,7 +131,7 @@ endif
 " }}}
 " EASYMOTION                        {{{
 Plug 'easymotion/vim-easymotion'
-map <C-i> <Leader><Leader>s
+map <leader> <Plug>(easymotion-prefix)
 " }}}
 " EDGE SCROLLING                    {{{
 set scrolloff=7                         " keep lines off edges of the screen when scrolling
@@ -225,7 +226,7 @@ let g:pymode_python = 'python3'
 "endif
 Plug 'jpalardy/vim-slime'
 let g:slime_target = "tmux"
-vmap <leader>ss <Plug>SlimeRegionSend
+"vmap <leader>ss <Plug>SlimeRegionSend
 nmap <leader>l <Plug>SlimeLineSend
 " }}}
 " R                                 {{{
