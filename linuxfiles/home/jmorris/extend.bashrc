@@ -151,5 +151,6 @@ alias tylercam='vlc rtsp://admin:ashland1@192.168.1.201:554'
 alias kiracam='vlc rtsp://admin:ashland1@192.168.1.202:554'
 alias frontdoorcam='vlc rtsp://admin:dwarves2!!@192.168.50.10:554'
 alias backdoorcam='vlc rtsp://admin:dwarves2!!@192.168.50.11:554'
+alias backyardcam='vlc rtsp://admin:dwarves2!!@192.168.50.12:554'
 alias cartoonnetwork='vlc http://192.168.1.40:5004/auto/v757'
 
