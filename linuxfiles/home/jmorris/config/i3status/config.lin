@@ -49,7 +49,7 @@ ethernet _first_ {
 
 battery 0 {
         # format = "%status %percentage %remaining %emptytime"
-        format = " BAT0 %status %percentage %remaining"
+        format = " BAT0 %status %percentage %remaining hrs left"
         format_down = "No battery"
         last_full_capacity = false
         integer_battery_capacity = true
@@ -89,7 +89,7 @@ battery 0 {
 
 tztime time{
         # format = "%Y-%m-%d %H:%M:%S"
-        format = "%-I:%M "
+        format = "%-I:%M %p"
 }
 
 tztime date{
