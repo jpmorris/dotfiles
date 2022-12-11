@@ -1,10 +1,13 @@
 # TO RUN:
-# download install_manjaro.sh from github and run on newly installed manjaro machine
+# ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa
+# go to github and setup new ssh key
+# git clone git@github.com:jpmorris/dotfiles.git
+
 
 # for surface go
 
 cd ~
-sudo pacman-mirrors --fasttrack
+sudo pacman-mirrors --country United_States
 sudo pacman --noconfirm -S yay
 
 yay --noconfirm -Syyu
@@ -13,19 +16,15 @@ echo '-----------------INSTALLING COMMON PACKAGES----------------------------'
 yay --noconfirm -S google-chrome arandr neovim vlc numlockx thunderbird freerdp remmina \
 xfce4-notes-plugin teamviewer meld redshift firefox spotify \
 flameshot xclip veracrypt synology-cloud-station-drive slack-desktop anydesk skypeforlinux \
-zoom powertop solaar xidlehook rofi terminator pavucontrol
-
-# dotfiles
-echo '-----------------INSTALLING DOTFILES----------------------------'
-ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa
-git clone https://github.com/jpmorris/dotfiles.git
+zoom powertop solaar xidlehook rofi terminator pavucontrol patch make slack pasystray \
+pcmanfm system-config-print betterbird visual-studio-code-bin ffmpegthumbnaler evince dunst \
+ntfd-bin jq anydesk
 
 # vim
 echo '-----------------INSTALLING VIM----------------------------'
 yay --noconfirm -S python-pip
-yay --noconfirm -S python2-pip
-sudo pip install neovim
-sudo pip2 install neovim
+#yay --noconfirm -S python2-pip
+pip install neovim
 ln -s ~/dotfiles/linuxfiles/home/jmorris/vimrc ~/.vimrc
 ln -s ~/dotfiles/linuxfiles/home/jmorris/vim ~/.vim
 ln -s ~/dotfiles/linuxfiles/home/jmorris/ideavimrc ~/.ideavimrc
@@ -44,6 +43,7 @@ ln -s ~/dotfiles/linuxfiles/home/jmorris/extend.bashrc ~/.extend.bashrc
 echo '-----------------CONFIGURING DEFAULT APPS----------------------------'
 mv ~/.config/mimeapps.list ~/.config/mimeapps.list.old
 ln -s ~/dotfiles/linuxfiles/home/jmorris/config/mimeapps.list ~/.config/
+mkdir ~/.local/share/applications
 ln -s ~/dotfiles/linuxfiles/home/jmorris/local/share/applications/google-chrome-stable.desktop \
   ~/.local/share/applications/
 
@@ -62,7 +62,7 @@ sudo ln -s ~/dotfiles/linuxfiles/usr/bin/myredshift /usr/bin/myredshift
 
 
 # SYSTEM SPECIFIC
-if [ "$HOSTNAME" = ein ] || [ "$HOSTNAME" = edward] || [ "$HOSTNAME" = lin]; then
+if [ "$HOSTNAME" = ein ] || [ "$HOSTNAME" = edward ] || [ "$HOSTNAME" = lin ]; then
   echo '-----------------CONFIGURING BLUETOOTH----------------------------'
 #  yay -S pulseaudio-bluetooth
   # /etc/pulse/default.pa must be liked over; see respective system setup
@@ -73,7 +73,8 @@ fi
 if [ "$HOSTNAME" = julia ]; then
   echo '-----------------CONFIGURING JULIA SPECIFIC----------------------------'
   # nitrogen (-background)
-  rm -rf ~/.config/nitrogen/*
+  rm -rf ~/.config/nitrogen
+  mkdir ~/.config/nitrogen
   ln -s ~/dotfiles/linuxfiles/home/jmorris/config/nitrogen/nitrogen.cfg ~/.config/nitrogen/
   ln -s ~/dotfiles/linuxfiles/home/jmorris/config/nitrogen/bg-saved.cfg ~/.config/nitrogen/
   ln -s ~/dotfiles/linuxfiles/home/jmorris/Pictures/brooklyn_bridge_at_night-wallpaper-7680x1440.jpg /home/jmorris/Pictures/
@@ -82,7 +83,7 @@ if [ "$HOSTNAME" = julia ]; then
   ln -s ~/dotfiles/linuxfiles/home/jmorris/config/i3/config.julia ~/.config/i3/config
 fi
 
-if [ "$HOSTNAME" = lin]; then
+if [ "$HOSTNAME" = lin ]; then
   echo '-----------------CONFIGURING LIN SPECIFIC----------------------------'
   ln -s ~/dotfiles/linuxfiles/home/jmorris/config/i3/config.laptop ~/.config/i3/config
 #  mkdir ~/.config/i3status
@@ -97,7 +98,7 @@ if [ "$HOSTNAME" = lin]; then
 fi
 
 
-if [ "$HOSTNAME" = ein]; then
+if [ "$HOSTNAME" = ein ]; then
   echo '-----------------CONFIGURING EIN SPECIFIC----------------------------'
   # fstab
   # TODO: these fstab files should be used as a reference or use APPENDS in case partioning changes
@@ -113,7 +114,7 @@ if [ "$HOSTNAME" = ein]; then
   ln -s ~/dotfiles/linuxfiles/home/jmorris/config/i3/config.ein ~/.config/i3/config
 fi
 
-if [ "$HOSTNAME" = edward]; then
+if [ "$HOSTNAME" = edward ]; then
   echo "what is the bitlocker recovery password?"
   read bitlockerkey
   # touchpad
@@ -148,4 +149,7 @@ if [ "$HOSTNAME" = edward]; then
   sudo sed -e '/GRUB_CMDLINE_LINUX_DEFAULT/s/"$/ button.lid_init_state=open i915.enable_rc6=0"/' /etc/default/grub -i
   sudo update-grub
 fi
+
+echo 'Now:'
+echo '  * run system-config-printer and add network printer already setup on spike'
 
