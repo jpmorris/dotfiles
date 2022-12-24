@@ -28,54 +28,103 @@ secondary = #8ABEB7
 alert = #A54242
 disabled = #707880
 
-[bar/example]
+[bar/polybar-ultrawide]
 width = 100%
 height = 24pt
 radius = 6
-monitor = ${env:MONITOR:}
-
+monitor = DP-2
 bottom = true
-
 ; dpi = 96
-
 background = ${colors.background}
 foreground = ${colors.foreground}
-
 line-size = 3pt
-
 border-size = 4pt
 border-color = #00000000
-
 padding-left = 0
 padding-right = 1
-
 module-margin = 1
-
 separator = |
 separator-foreground = ${colors.disabled}
-
 font-0 = monospace;2
 font-1 = Font Awesome 5 Free: style=Solid: pixelsize=11
 font-2 = Font Awesome 5 Brands: pixelsize=11
 font-3 = Material Icons: style=Regular: pixelsize=13; 2
-
+font-4 = Weather Icons: size=12;1
 #modules-left = xworkspaces xwindow
 modules-left = i3
 #modules-right = filesystem pulseaudio-control-output xkeyboard memory cpu wlan eth clickdate
 modules-right = weather filesystem pulseaudio-control-output xkeyboard memory cpu eth clickdate
-
 cursor-click = pointer
 cursor-scroll = ns-resize
-
 enable-ipc = true
-
-tray-position = ${env:TRAY_POSITION:}
-
 ; wm-restack = generic
 ; wm-restack = bspwm
 ;wm-restack = i3
-
 ; override-redirect = true
+;
+[bar/polybar]
+width = 100%
+height = 24pt
+radius = 6
+monitor = HDMI-0
+bottom = true
+; dpi = 96
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3pt
+border-size = 4pt
+border-color = #00000000
+padding-left = 0
+padding-right = 1
+module-margin = 1
+separator = |
+separator-foreground = ${colors.disabled}
+font-0 = monospace;2
+font-1 = Font Awesome 5 Free: style=Solid: pixelsize=11
+font-2 = Font Awesome 5 Brands: pixelsize=11
+font-3 = Material Icons: style=Regular: pixelsize=13; 2
+font-4 = Weather Icons: size=12;1
+#modules-left = xworkspaces xwindow
+modules-left = i3
+#modules-right = filesystem pulseaudio-control-output xkeyboard memory cpu wlan eth clickdate
+modules-right = weather filesystem pulseaudio-control-output xkeyboard memory cpu eth clickdate
+cursor-click = pointer
+cursor-scroll = ns-resize
+enable-ipc = true
+; wm-restack = generic
+; wm-restack = bspwm
+;wm-restack = i3
+; override-redirect = true
+[bar/polybar-minimal]
+width = 100%
+height = 24pt
+radius = 6
+monitor = DP-4.8
+bottom = true
+; dpi = 96
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3pt
+border-size = 4pt
+border-color = #00000000
+padding-left = 0
+padding-right = 1
+module-margin = 1
+separator = |
+separator-foreground = ${colors.disabled}
+font-0 = monospace;2
+font-1 = Font Awesome 5 Free: style=Solid: pixelsize=11
+font-2 = Font Awesome 5 Brands: pixelsize=11
+font-3 = Material Icons: style=Regular: pixelsize=13; 2
+font-4 = Weather Icons: size=12;1
+#modules-left = xworkspaces xwindow
+modules-left = i3
+modules-right = clickdate
+#modules-right = filesystem pulseaudio-control-output xkeyboard memory cpu wlan eth clickdate
+cursor-click = pointer
+cursor-scroll = ns-resize
+enable-ipc = true
+tray-position = right
 
 [module/xworkspaces]
 type = internal/xworkspaces
@@ -103,10 +152,10 @@ label = %title:0:60:...%
 [module/filesystem]
 type = internal/fs
 interval = 25
-
+click-left = pcmanfm
 mount-0 = /
 
-label-mounted = %{F#F0C674}%mountpoint%%{F-} %percentage_used%%
+label-mounted = %{A1:pcmanfm:}%{F#F0C674}%mountpoint%%{F-} %percentage_used%% %{A}
 
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.disabled}
@@ -126,7 +175,7 @@ label-muted-foreground = ${colors.disabled}
 [module/pulseaudio-control-output]
 type = custom/script
 tail = true
-format-underline = ${colors.cyan}
+;format-underline = ${colors.primary}
 ;label-padding = 1
 label-foreground = ${colors.foreground}
 
@@ -275,7 +324,7 @@ label-separator-foreground = #ffb52a
 [module/clickdate]
 type = custom/script
 format-prefix-foreground = ${colors.accent}
-exec = date +'  %a. %d %b. %Y ~ %H:%M'
+exec = date +'  %a. %d %b. %Y ~ %I:%M %p'
 tail = false
 interval = 5
 click-left = gsimplecal
@@ -283,9 +332,10 @@ click-right = betterbird
 
 [module/weather]
 type = custom/script
-exec = busctl --user -j get-property io.ntfd /weather openweathermap.strings RenderedTemplate | jq -r .data
+exec = ~/.config/polybar/openweathermap-simple-silverspring.sh
 interval = 60
-label-font = 3
+label-font = 0
+click-left = google-chrome-stable https://www.wunderground.com/weather/us/md/silver-spring/KMDSILVE241?utm_source=HomeCard&utm_content=Button&cm_ven=HomeCardButton
 
 
 ; vim:ft=dosini

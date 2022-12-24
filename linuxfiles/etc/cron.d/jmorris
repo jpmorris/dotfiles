@@ -1,0 +1,5 @@
+15 11 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window https://excella.unanet.biz/excella/action/time
+15 11 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window https://outlook.office.com/mail/inbox
+# to delete clipboard history
+*/4 * * * * jmorris DISPLAY=:0 /home/jmorris/dotfiles/linuxfiles/home/jmorris/scripts/clear_clipboard.sh
+0 * * * * jmorris cp /etc/cron.d/jmorris /home/jmorris/dotfiles/linuxfiles/etc/cron.d/jmorris

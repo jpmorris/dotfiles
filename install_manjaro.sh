@@ -18,7 +18,7 @@ xfce4-notes-plugin teamviewer meld redshift firefox spotify \
 flameshot xclip veracrypt synology-cloud-station-drive slack-desktop anydesk skypeforlinux \
 zoom powertop solaar xidlehook rofi terminator pavucontrol patch make slack pasystray \
 pcmanfm system-config-print betterbird visual-studio-code-bin ffmpegthumbnaler evince dunst \
-ntfd-bin jq anydesk
+ntfd-bin jq anydesk copyq redshift xidlehook
 
 # vim
 echo '-----------------INSTALLING VIM----------------------------'
@@ -81,6 +81,9 @@ if [ "$HOSTNAME" = julia ]; then
   # screen layout
   echo "~/dotfiles/linuxfiles/home/jmorris/screenlayout/default.sh" >> ~/.xprofile
   ln -s ~/dotfiles/linuxfiles/home/jmorris/config/i3/config.julia ~/.config/i3/config
+  ln -s ~/dotfiles/linuxfiles/home/jmorris/config/polybar/config.ini ~/config/polybar/
+  ln -s ~/dotfiles/linuxfiles/home/jmorris/config/polybar/launch.sh ~/config/polybar/
+  ln -s ~/dotfiles/linuxfiles/home/jmorris/config/polybar/openweathermap-simple-silverspring.sh ~/config/polybar/
 fi
 
 if [ "$HOSTNAME" = lin ]; then

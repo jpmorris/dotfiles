@@ -22,16 +22,18 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 
-bindsym $mod+Return exec terminator
-bindsym $mod1+Return exec terminator
+#bindsym $mod+Return exec terminator
+#bindsym $mod1+Return exec terminator
+bindsym $mod+Return exec alacritty
+bindsym $mod1+Return exec alacritty
 
 # Window kill command
 bindsym $mod+Shift+q kill
 bindsym $mod1+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id rofi -run-list-command "~/dotfiles/linuxfiles/home/jmorris/scripts/alias.sh" -run-command "/bin/bash -i -c {cmd}"  -show run
-bindsym $mod1+d exec --no-startup-id rofi -run-list-command "~/dotfiles/linuxfiles/home/jmorris/scripts/alias.sh" -run-command "/bin/bash -i -c {cmd}"  -show run
+bindsym $mod+d exec --no-startup-id  ~/.config/rofi/launchers/type-1/launcher.sh
+bindsym $mod1+d exec --no-startup-id ~/.config/rofi/launchers/type-1/launcher.sh
 
 # change focus
 bindsym $mod+j focus down
@@ -336,10 +338,13 @@ assign [class="jetbrains-pycharm"] $ws4
 #exec --no-startup-id xautolock -detectsleep \
 #                     -time 10 -locker 'i3lock -d -c 000000' \
 #                     -killtime 120 -killer "systemctl suspend"
+#exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio \
+#--timer 300 'myredshift -b 0.1' 'myredshift -o' \
+#--timer 600 'myredshift -b 1; i3lock -nc 000000' '' \
+#--timer 3600 'systemctl suspend' '' &
+# suspend currently not working
 exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio \
---timer 300 'myredshift -b 0.1' 'myredshift -o' \
---timer 600 'myredshift -b 1; i3lock -nc 000000' '' \
---timer 3600 'systemctl suspend' '' &
+--timer 300 'myredshift -b 0.1' 'myredshift -o' --timer 600 'myredshift -b 1; i3lock -nc 000000' ''
 
 # Theme colors
 #client.focused #b0c4bb #2f2f38 #b0c4bb #81a2be #81a2be
