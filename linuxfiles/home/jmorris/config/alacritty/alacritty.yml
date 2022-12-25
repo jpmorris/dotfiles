@@ -49,7 +49,7 @@ window:
     x: 6
     y: 5
 
-  # Spread additional padding evenly around the terminal content.
+   #Spread additional padding evenly around the terminal content.
   dynamic_padding: true
 
   # Window decorations
@@ -377,7 +377,8 @@ live_config_reload: true
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /usr/bin/zsh
+  #  program: /usr/bin/zsh
+  program: /bin/bash
   args:
     - --login
 
