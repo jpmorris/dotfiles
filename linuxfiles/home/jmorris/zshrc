@@ -107,6 +107,7 @@ alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color
 alias mirrors='sudo pacman-mirrors -g'
 alias vim='nvim'
 alias sudo='sudo '
+alias bg='bg && disown'
 alias scan='~/dotfiles/linuxfiles/home/jmorris/scripts/scan.sh'
 alias redshifton='myredshift -O 1500K -b 0.4 -g 1.4'
 alias redshiftoff='myredshift -r'

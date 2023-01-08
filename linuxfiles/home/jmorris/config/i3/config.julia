@@ -304,7 +304,9 @@ mode "resize" {
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # nitrogenfor wallpaper
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+# picom is compositor -- doesn't seem worth it
+#exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+exec --no-startup-id nitrogen --restore
 exec --no-startup-id numlockx on
 
 # default startup
