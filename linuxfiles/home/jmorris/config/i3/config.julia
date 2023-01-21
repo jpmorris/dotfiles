@@ -343,8 +343,8 @@ exec google-chrome-stable --profile-directory=Default --app-id=mdpkiolbdkhdjpekf
 assign [class="Google-chrome" instance="crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi"] $ws2
 
 # google voice
-exec google-chrome-stable --profile-directory=Default --app-id=bhacinadenbkojblbakackhneiahcgkb
-assign [class="Google-chrome" instance="crx_bhacinadenbkojblbakackhneiahcgkb"] $ws2
+exec google-chrome-stable --app="https://voice.google.com"
+assign [instance="voice.google.com"] $ws2
 
 
 # Setup xss-lock daemon
