@@ -330,6 +330,7 @@ exec_always --no-startup-id fix_xcursor
  #default location
 assign [instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] $ws2
 assign [class="Thunderbird"] $ws3
+assign [class="betterbird"] $ws3
 assign [class="Veracrypt"] $ws3
 assign [class="org.remmina.Remmina"] $ws9
 assign [class="Anydesk.bin"] $ws9
