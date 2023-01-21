@@ -336,6 +336,16 @@ assign [class="Anydesk.bin"] $ws9
 assign [class="Slack"] $ws5
 assign [class="jetbrains-pycharm"] $ws4
 
+
+# google chat
+exec google-chrome-stable --profile-directory=Default --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
+assign [class="Google-chrome" instance="crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi"] $ws2
+
+# google voice
+exec google-chrome-stable --profile-directory=Default --app-id=bhacinadenbkojblbakackhneiahcgkb
+assign [class="Google-chrome" instance="crx_bhacinadenbkojblbakackhneiahcgkb"] $ws2
+
+
 # Setup xss-lock daemon
 # xset - screensaver time - xset x <timeout - time before dim> <cycle - additional time before lock/lockscreen >
 exec_always --no-startup-id xset s 150 100
