@@ -4,7 +4,7 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=Docs
-Exec=/usr/bin/google-chrome-stable
+Exec=/usr/bin/google-chrome-stable  --enable-features=VaapiVideoDecoder --use-gl=desktop
 #Icon=chrome-aohghmighlieiainnegkcijnfilokake-Default
 #NoDisplay=true
 #StartupWMClass=crx_aohghmighlieiainnegkcijnfilokake

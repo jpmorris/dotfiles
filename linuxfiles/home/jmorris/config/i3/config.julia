@@ -338,13 +338,20 @@ assign [class="Slack"] $ws5
 assign [class="jetbrains-pycharm"] $ws4
 
 
-# google chat
-exec google-chrome-stable --profile-directory=Default --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
+# GOOGLE CHAT
 assign [class="Google-chrome" instance="crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi"] $ws2
+exec google-chrome-stable --profile-directory=Default --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
 
-# google voice
-exec google-chrome-stable --app="https://voice.google.com"
+# GOOGLE VOICE
 assign [instance="voice.google.com"] $ws2
+# personal number
+exec google-chrome-stable --app="https://voice.google.com/u/0/messages?itemId=g.Group%20Message.H4XV4tTbyAHIAL5pYkyxZw"
+# junk number
+exec google-chrome-stable --app="https://voice.google.com/u/1/messages?itemId=g.Group%20Message.H4XV4tTbyAHIAL5pYkyxZw"
+
+# MESSAGES.GOOGLE.COM - messages on phone - provider number
+assign [class="Google-chrome" instance="crx_hpfldicfbfomlpcikngkocigghgafkph"] $ws2
+exec google-chrome-stable --profile-directory=Default --app-id=hpfldicfbfomlpcikngkocigghgafkph
 
 
 # Setup xss-lock daemon
