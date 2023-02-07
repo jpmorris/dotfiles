@@ -328,7 +328,6 @@ exec_always --no-startup-id fix_xcursor
 
 
  #default location
-assign [instance="crx_nckgahadagoaajjgafhacjanaoiihapd"] $ws2
 assign [class="Thunderbird"] $ws3
 assign [class="betterbird"] $ws3
 assign [class="Veracrypt"] $ws3
@@ -337,21 +336,29 @@ assign [class="Anydesk.bin"] $ws9
 assign [class="Slack"] $ws5
 assign [class="jetbrains-pycharm"] $ws4
 
-
+# ___AUTO LAUNCH MESSAGING SERVICES___
 # GOOGLE CHAT
 assign [class="Google-chrome" instance="crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi"] $ws2
 exec google-chrome-stable --profile-directory=Default --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
 
-# GOOGLE VOICE
-assign [instance="voice.google.com"] $ws2
-# personal number
-exec google-chrome-stable --app="https://voice.google.com/u/0/messages?itemId=g.Group%20Message.H4XV4tTbyAHIAL5pYkyxZw"
-# junk number
-exec google-chrome-stable --app="https://voice.google.com/u/1/messages?itemId=g.Group%20Message.H4XV4tTbyAHIAL5pYkyxZw"
-
 # MESSAGES.GOOGLE.COM - messages on phone - provider number
 assign [class="Google-chrome" instance="crx_hpfldicfbfomlpcikngkocigghgafkph"] $ws2
 exec google-chrome-stable --profile-directory=Default --app-id=hpfldicfbfomlpcikngkocigghgafkph
+
+# GOOGLE VOICE
+# to create WPA for google voice you need to
+# - go to voice.google.com of account you want to auto-launch
+# - three dots -> more tools -> create shortcut (select open as window)
+# - go to chrome://apps launch the newly created app
+# - use xprop to get classname
+
+# personal number
+assign [class="Google-chrome" instance="crx_bhacinadenbkojblbakackhneiahcgkb"] $ws2
+exec google-chrrom-stable --profile-directory=Default --app_id=bhacinadenbkojblbakackhneiahcgkb
+# junk number
+assign [class="Google-chrome" instance="crx_nnjlgmkenicdieemeigkiipfcodbkgak"] $ws2
+exec google-chrrom-stable --profile-directory=Default --app_id=nnjlgmkenicdieemeigkiipfcodbkgak
+
 
 
 # Setup xss-lock daemon
