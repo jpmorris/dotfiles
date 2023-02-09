@@ -354,10 +354,10 @@ exec google-chrome-stable --profile-directory=Default --app-id=hpfldicfbfomlpcik
 
 # personal number
 assign [class="Google-chrome" instance="crx_bhacinadenbkojblbakackhneiahcgkb"] $ws2
-exec google-chrrom-stable --profile-directory=Default --app_id=bhacinadenbkojblbakackhneiahcgkb
+exec google-chrome-stable --profile-directory=Default --app_id=bhacinadenbkojblbakackhneiahcgkb
 # junk number
 assign [class="Google-chrome" instance="crx_nnjlgmkenicdieemeigkiipfcodbkgak"] $ws2
-exec google-chrrom-stable --profile-directory=Default --app_id=nnjlgmkenicdieemeigkiipfcodbkgak
+exec google-chrome-stable --profile-directory=Default --app_id=nnjlgmkenicdieemeigkiipfcodbkgak
 
 
 
