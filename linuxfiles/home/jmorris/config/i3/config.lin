@@ -502,14 +502,21 @@ exec --no-startup-id veracrypt
 assign [class="Google-chrome" instance="crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi"] $ws2
 exec google-chrome-stable --profile-directory=Default --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
 
-# google voice -
-# to install:
-# go to voice.google.com, then go to the browser (3 dots), chose more tools -> create shortcut
-# make sure to select 'open as new window'
-# the instance ID will probalby be different and need to be changed below
-assign [instance="voice.google.com"] $ws2
-exec google-chrome-stable --app="https://voice.google.com"
 
+
+# GOOGLE VOICE
+# to create WPA for google voice you need to
+# - go to voice.google.com of account you want to auto-launch
+# - three dots -> more tools -> create shortcut (select open as window)
+# - go to chrome://apps launch the newly created app
+# - use xprop to get classname
+
+# personal number
+assign [class="Google-chrome" instance="crx_bhacinadenbkojblbakackhneiahcgkb"] $ws2
+exec google-chrome-stable --profile-directory=Default --app-id=bhacinadenbkojblbakackhneiahcgkb
+# junk number
+assign [class="Google-chrome" instance="crx_nnjlgmkenicdieemeigkiipfcodbkgak"] $ws2
+exec google-chrome-stable --profile-directory=Default --app-id=nnjlgmkenicdieemeigkiipfcodbkgak
 
 #exec --no-startup-id xidlehook --not-when-fullscreen \
 #--timer 60 'myredshift -b 0.1' 'myredshift -o' \
