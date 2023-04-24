@@ -8,9 +8,7 @@ set $mod1 Mod1
 new_window pixel 5
 new_float normal
 
-
 hide_edge_borders none
-
 
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
@@ -18,18 +16,12 @@ bindsym $mod+n border normal
 
 font xft:URWGothic-Book 11
 
-
 floating_modifier $mod
 
-
-#bindsym $mod+Return exec terminator
-#bindsym $mod1+Return exec terminator
 bindsym $mod+Return exec alacritty
 bindsym $mod1+Return exec alacritty
 
-# Window kill command
 bindsym $mod+Shift+q kill
-bindsym $mod1+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id  ~/.config/rofi/launchers/type-1/launcher.sh
@@ -46,7 +38,6 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window/home/jmorris/dotfiles/linuxfiles/home/jmorris/config/i3/config.julia
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
@@ -200,19 +191,19 @@ bindsym --whole-window $mod+button5 workspace prev
 # Open specific applications in floating mode
 #for_window [class="Google-chrome"] border none
 for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="Calamares"] floating enable border normal
+for_window [class="calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
 for_window [title="File Transfer*"] floating enable
+for_window [class="fpakman"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
 for_window [title="i3_help"] floating enable sticky enable border normal
-for_window [class="Lightdm-gtk-greeter-settings"] floating enable
+for_window [class="Lightdm-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="Manjaro-hello"] floating enable
 for_window [class="Manjaro Settings Manager"] floating enable border normal
 for_window [title="MuseScore: Play Panel"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Oblogout"] fullscreen enable
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
 for_window [title="About Pale Moon"] floating enable
@@ -283,7 +274,8 @@ mode "resize" {
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Down resize grow heig:wq
+ht 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
@@ -337,6 +329,11 @@ assign [class="Anydesk.bin"] $ws9
 assign [class="Slack"] $ws5
 assign [class="jetbrains-pycharm"] $ws4
 
+
+# MESSAGING SERVICES
+# These windows below are checked to always be up via cron:
+# 0 * * * * jmorris DISPLAY=:0 /home/jmorris/dotfiles/linuxfiles/home/jmorris/scripts/launch_messaging_windows.sh
+
 # ___AUTO LAUNCH MESSAGING SERVICES___
 # GOOGLE CHAT
 assign [class="Google-chrome" instance="crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi"] $ws2
@@ -375,23 +372,13 @@ exec_always --no-startup-id xss-lock -- ~/dotfiles/linuxfiles/home/jmorris/scrip
 #  - on lid close: controlled by /etc/systemd/logind.conf
 # xss-lock should catch lid close and lock screen
 
-#exec --no-startup-id xautolock -detectsleep \
-#                     -time 10 -locker 'i3lock -d -c 000000' \
-#                     -killtime 120 -killer "systemctl suspend"
-#exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio \
-#--timer 300 'myredshift -b 0.1' 'myredshift -o' \
-#--timer 600 'myredshift -b 1; i3lock -nc 000000' '' \
-#--timer 3600 'systemctl suspend' '' &
-# suspend currently not working
-#exec --no-startup-id xidlehook --not-when-fullscreen --not-when-audio \ --timer 300 'myredshift -b 0.1' 'myredshift -o' --timer 600 'myredshift -b 1; i3lock -nc 000000' ''
+bindsym $mod+x mode "lock"
 
-# Theme colors
-client.focused #f2AA80 #2f2f38 #b0c4bb #81a2be #f2Aa80
-#client.focused #b0c4bb #2f2f38 #b0c4bb #81a2be #81a2be
-#client.focused_inactive #b0c4bb #2f2f38 #b0c4bb #688486 #688486
-#client.unfocused #b0c4bb #2f2f38 #b0c4bb #688486 #688486
-#client.urgent #b0c4bb #2f2f38 #b0c4bb #688486 #688486
-#client.placeholder #b0c4bb #2f2f38 #b0c4bb #688486 #688486
-#
-#client.background #2f2f38
+mode "lock" {
+    bindsym l exec i3lock --ignore-empty-password --tiling --image='~/dotfiles/linuxfiles/home/jmorris/Pictures/cyberpunk_cityscape.jpg' 2>/dev/null, mode "default"
+    # just force suspend. i3lock will be called automatically via lock.sh
+    bindsym s exec --no-startup-id sleep 1 && xset dpms force suspend , mode "default"
+}
+
+
 
