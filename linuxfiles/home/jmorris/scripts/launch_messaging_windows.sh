@@ -5,6 +5,6 @@
 grep -Po 'class="Google-chrome" instance="crx_\K.*(?=")' ~/.config/i3/config | while read -r line; do
     #echo $line
     if [[ ! $(xdotool search -classname $line) ]]; then
-        google-chrome-stable --profile-directory=Default --app-id=$line
+        google-chrome-stable --profile-directory=Default --app-id=$line &
     fi
 done

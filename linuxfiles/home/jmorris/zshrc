@@ -123,4 +123,5 @@ alias cartoonnetwork='vlc http://192.168.1.40:5004/auto/v757'
 bindkey -v
 bindkey -M viins jj vi-cmd-mode
 
+neofetch
 
