@@ -18,8 +18,8 @@ font xft:URWGothic-Book 11
 
 floating_modifier $mod
 
-bindsym $mod+Return exec alacritty
-bindsym $mod1+Return exec alacritty
+bindsym $mod+Return exec terminator
+bindsym $mod1+Return exec terminator
 
 bindsym $mod+Shift+q kill
 
@@ -48,8 +48,8 @@ bindsym $mod+Ctrl+m exec pavucontrol
 # Screen brightness controls
 # to get xbacklight working set /etc/dev/rules.d/backlight.rules
 # see: https://wiki.archlinux.org/title/backlight
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 5; bash ~/dotfiles/linuxfiles/home/jmorris/scripts/get_backlight_percentage.sh"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; bash ~/dotfiles/linuxfiles/home/jmorris/scripts/get_backlight_percentage.sh"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 2; bash ~/dotfiles/linuxfiles/home/jmorris/scripts/get_backlight_percentage.sh"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 2; bash ~/dotfiles/linuxfiles/home/jmorris/scripts/get_backlight_percentage.sh"
 # Sound keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -404,8 +404,12 @@ exec_always --no-startup-id polybar --reload polybar
 #############################
 
 # Set inner/outer gaps
-gaps inner 14
-gaps outer -2
+gaps inner 4
+# gaps inner -2
+# workaround  for polybar https://github.com/polybar/polybar/pull/2889
+gaps outer 0
+
+
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -468,7 +472,8 @@ exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 #exec --no-startup-id start_conky_maia
-exec --no-startup-id nextcloud
+#exec --no-startup-id nextcloud
+exec --no-startup-id syncthing-gtk
 # exec --no-startup-id start_conky_green
 #exec --no-startup-id xautolock -time 10 -locker blurlock
 #exec_always --no-startup-id ff-theme-util
