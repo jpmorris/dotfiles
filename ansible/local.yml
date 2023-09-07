@@ -1,0 +1,11 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: install vim
+      package:
+        name:
+          - neovim
+    - name:
+

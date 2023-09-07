@@ -1,3 +1,6 @@
+#
+# MIGRATE ALL THIS TO ANSIBLE
+#
 # TO RUN:
 # download from github and run on newly installed manjaro machine
 

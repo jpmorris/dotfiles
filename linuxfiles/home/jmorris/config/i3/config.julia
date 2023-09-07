@@ -1,3 +1,7 @@
+# important commands:
+# $mod+Shift+r
+
+
 set $mod Mod1
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
@@ -18,8 +22,8 @@ font xft:URWGothic-Book 11
 
 floating_modifier $mod
 
-bindsym $mod+Return exec alacritty
-bindsym $mod1+Return exec alacritty
+bindsym $mod+Return exec terminator
+bindsym $mod1+Return exec terminator
 
 bindsym $mod+Shift+q kill
 
@@ -274,8 +278,7 @@ mode "resize" {
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow heig:wq
-ht 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
@@ -334,6 +337,13 @@ assign [class="jetbrains-pycharm"] $ws4
 # These windows below are checked to always be up via cron:
 # 0 * * * * jmorris DISPLAY=:0 /home/jmorris/dotfiles/linuxfiles/home/jmorris/scripts/launch_messaging_windows.sh
 
+# If the below stops working the go to chrome://apps and
+# install apps again to make sure they are installed on this
+# machine
+# also might to uninstall/reinstall and change the bellow instance/app-id lines
+
+
+
 # ___AUTO LAUNCH MESSAGING SERVICES___
 # GOOGLE CHAT
 assign [class="Google-chrome" instance="crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi"] $ws2
@@ -347,12 +357,13 @@ exec google-chrome-stable --profile-directory=Default --app-id=hpfldicfbfomlpcik
 # to create WPA for google voice you need to
 # - go to voice.google.com of account you want to auto-launch
 # - three dots -> more tools -> create shortcut (select open as window)
+#     - shortcuts are created in .local/share/applications
 # - go to chrome://apps launch the newly created app
 # - use xprop to get classname
 
 # personal number
-assign [class="Google-chrome" instance="crx_bhacinadenbkojblbakackhneiahcgkb"] $ws2
-exec google-chrome-stable --profile-directory=Default --app-id=bhacinadenbkojblbakackhneiahcgkb
+assign [class="Google-chrome" instance="crx_bojjonegeadjcbekpnkhoalecdkdohbo"] $ws2
+exec google-chrome-stable --profile-directory=Default --app-id=bojjonegeadjcbekpnkhoalecdkdohbo
 # junk number
 assign [class="Google-chrome" instance="crx_nnjlgmkenicdieemeigkiipfcodbkgak"] $ws2
 exec google-chrome-stable --profile-directory=Default --app-id=nnjlgmkenicdieemeigkiipfcodbkgak

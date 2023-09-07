@@ -1,3 +1,6 @@
+#
+# MIGRATE THIS TO ANSIBLE
+#
 # TO RUN:
 # ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa
 # go to github and setup new ssh key
