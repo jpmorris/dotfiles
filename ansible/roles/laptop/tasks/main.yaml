@@ -1,0 +1,4 @@
+---
+
+- name: copy low_bat_warn_and_hibernate.sh script
+- name:

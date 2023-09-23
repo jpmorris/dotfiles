@@ -1,0 +1,43 @@
+---
+
+- name: Load a variable file based on the OS type
+  ansible.builtin.include_vars:
+    file: '{{ ansible_os_family | lower }}.yaml'
+
+- name: Install common packages on machines with desktop
+  become: true
+  become_user: jmorris
+  ansible.builtin.package:
+    name:
+      - "{{ google_chrome }}"
+      - "{{ terminator }}"
+      - "{{ vlc }}"
+      - "{{ xfce4_notes_plugin }}"
+      - "{{ meld }}"
+      - "{{ firefox }}"
+      - "{{ flameshot }}"
+
+- name: Install common packages on machines with desktop (AUR packages)
+  kewlfft.aur.aur:
+    name:
+      - "{{ anydesk }}"
+  become: true
+  become_user: aur_builder
+
+- name: Move mimeapps.list to old file
+  ansible.builtin.copy:
+    remote_src: true
+    src: $HOME/.config/mimeapps.list
+    dest: $HOME/.config/mimeapps.list.old
+
+- name: Copy mimeapps.list to .config
+  ansible.builtin.copy:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    owner: jmorris
+    group: jmorris
+    mode: '0644'
+  with_items:
+    - { src: mimeapps.list, dest: $HOME/.config/ }
+    - { src: google-chrome-stable.desktop, dest: $HOME/.local/share/applications/}
+

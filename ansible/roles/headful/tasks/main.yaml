@@ -1,0 +1,27 @@
+---
+
+- name: Load a variable file based on the OS type
+  ansible.builtin.include_vars:
+    file: '{{ ansible_os_family | lower }}.yaml'
+
+- name: Install common packages on non-VM desktops
+  ansible.builtin.package:
+    name:
+      - "{{ remmina }}"
+      - "{{ spotify }}"
+      - "{{ veracrypt }}"
+      - "{{ slack }}"
+      - "{{ pcmanfm }}"
+      - "{{ zoom }}"
+      - "{{ solaar }}"
+      - "{{ rofi }}"
+      - "{{ vscode }}"
+      - "{{ redshift }}"
+      - "{{ arandr }}"
+
+- name: Install common packages on workstations, laptops (AUR packages)
+  kewlfft.aur.aur:
+    name:
+      - "{{ betterbird }}"
+  become: true
+  become_user: aur_builder

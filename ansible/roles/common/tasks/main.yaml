@@ -1,0 +1,177 @@
+---
+#
+# Initial setup
+#
+
+- name: Update apt repo and cache on all Debian/Ubuntu boxes
+  when: ansible_os_family == 'Debian'
+  become: true
+  become_user: root
+  ansible.builtin.apt:
+    update_cache: true
+    force_apt_get: true
+    cache_valid_time: 3600
+
+- name: Update pcaman repo and cache on all Arch boxes
+  when: ansible_os_family == 'Archlinux'
+  become: true
+  become_user: root
+  community.general.pacman:
+    update_cache: true
+
+- name: Create the `aur_builder` user
+  become: true
+  become_user: root
+  when: ansible_os_family == 'Archlinux'
+  ansible.builtin.user:
+    name: aur_builder
+    create_home: true
+    group: wheel
+
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  become: true
+  become_user: root
+  when: ansible_os_family == 'Archlinux'
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: true
+    mode: "0644"
+    validate: 'visudo -cf %s'
+
+- name: Load a variable file based on the OS type
+  ansible.builtin.include_vars:
+    file: '{{ ansible_os_family | lower }}.yaml'
+
+#
+# ZSH
+#
+
+- name: Install zsh shell
+  ansible.builtin.package:
+    name:
+      - '{{ zsh }}'
+      - '{{ neofetch }}'
+
+- name: Check if .oh-my-zsh dir exists
+  ansible.builtin.stat:
+    path: $HOME/.oh-my-zsh
+  register: omz_dir
+
+- name: Install oh-my-zsh
+  ansible.builtin.shell:
+    cmd: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+    executable: "/usr/bin/sh"
+    register: my_output
+  when: not omz_dir.stat.exists
+  changed_when: my_output.rc != 0
+
+- name: Change oh-my-zsh permissions
+  ansible.builtin.file:
+    path: $HOME/.oh-my-zsh/cache/completions
+    mode: '0755'
+
+- name: Change shell
+  ansible.builtin.user:
+    name: jmorris
+    shell: /bin/zsh
+
+- name: Copy base zshrc over
+  ansible.builtin.copy:
+    src: zshrc
+    dest: $HOME/.zshrc
+    owner: jmorris
+    group: jmorris
+    mode: '0644'
+
+- name: Add prompt format/color
+  ansible.builtin.lineinfile:
+    path: $HOME/.zshrc
+    search_string: "prompt adam1"
+    line: "prompt adam1 {{ prompt_color }}"
+
+- name: Check for local zshalias
+  delegate_to: localhost
+  ansible.builtin.stat:
+    path: "{{ role_path }}/files/{{ inventory_hostname }}.zshalias"
+  register: zshalias
+
+- name: Create .zsh directory
+  ansible.builtin.file:
+    path: $HOME/.zsh
+    state: directory
+    mode: "0755"
+  when: zshalias.stat.exists
+
+- name: Copy additional files
+  ansible.builtin.copy:
+    src: "{{ inventory_hostname }}.zshalias"
+    dest: $HOME/.zsh/zshalias
+    owner: jmorris
+    group: jmorris
+    mode: '0644'
+  when: zshalias.stat.exists
+
+#
+# (N)VIM
+#
+
+- name: Install (neo)vim
+  ansible.builtin.package:
+    name:
+      - '{{ vim }}'
+      - '{{ neovim }}'
+
+- name: Copy vim files
+  ansible.builtin.copy:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    owner: jmorris
+    group: jmorris
+    mode: '0644'
+  with_items:
+    - { src: vim/, dest: $HOME/.vim }
+    - { src: vimrc, dest: $HOME/.vimrc }
+
+- name: Symbolic link neovim
+  ansible.builtin.file:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    state: '{{ item.state }}'
+    mode: '{{ item.mode }}'
+    owner: jmorris
+    group: jmorris
+  with_items:
+    - { src: $HOME/.vim, dest: $HOME/.config/nvim, state: link, mode: "0755" }
+    - { src: $HOME/.vimrc, dest: $HOME/.config/nvim/init.vim, state: link, mode: "0644"}
+
+- name: Create vim tempdirs
+  ansible.builtin.file:
+    path: '{{ item.path }}'
+    state: directory
+    mode: '0755'
+  with_items:
+    - { path: $HOME/.vimtmp/backup }
+    - { path: $HOME/.vimtmp/swap }
+    - { path: $HOME/.vimtmp/undo }
+
+- name: Check if plugins the last plugin exists
+  ansible.builtin.find:
+    path: $HOME/.vim/plugged
+  register: last_plugin_dir
+
+- name: Install vim plugins
+  ansible.builtin.command:
+    cmd: 'nvim -c "PlugInstall" -c ":qa!"'
+  register: nvim_plug_output
+  when: last_plugin_dir.examined < 10
+  changed_when: nvim_plug_output.rc != 0
+
+#
+# Default Apps
+#
+#
+# i3
+#
+#
+#

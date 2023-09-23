@@ -1,0 +1,28 @@
+---
+- name: All hosts
+  hosts: all
+  become: true
+  become_user: jmorris
+  roles:
+    - common
+
+- name: All hosts with general desktops
+  hosts: desktops
+  become: true
+  become_user: jmorris
+  roles:
+    - desktop
+
+- name: All headful servers - physical displays
+  hosts: workstations, laptops
+  become: true
+  become_user: jmorris
+  roles:
+    - headful
+
+- name: All i3 desktops
+  hosts: workstations, laptops
+  become: true
+  become_user: jmorris
+  roles:
+    - i3

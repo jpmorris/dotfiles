@@ -1,0 +1,23 @@
+servers:
+  hosts:
+    spike:
+      ansible_host: localhost
+workstations:
+  hosts:
+    julia:
+      ansible_host: 192.168.1.15
+laptops:
+  hosts:
+    lin:
+      ansible_host: 192.168.1.42
+virtualmachines:
+  hosts:
+    vicious:
+      ansbile_host: 192.168.1.34
+    vicious2:
+      ansible_host: 192.168.1.33
+windowmanager:
+  children:
+    laptops:
+    workstations:
+    

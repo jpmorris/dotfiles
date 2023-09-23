@@ -1,0 +1,42 @@
+---
+all:
+  vars:
+    ansible_user: "jmorris"
+    ansible_become: "yes"
+    ansible_become_method: "sudo"
+
+servers:
+  hosts:
+    spike:
+      ansible_host: localhost
+
+workstations:
+  hosts:
+    julia:
+      ansible_host: 192.168.1.15
+        
+laptops:
+  hosts:
+    lin:
+      ansible_host: 192.168.1.42
+
+vm_windowmanager:
+  hosts: 
+    vicious:
+      ansible_host: 192.168.1.33
+    vicious2:
+      ansible_host: 192.168.1.34
+      
+
+virtualmachines:
+  children:
+    vm_windowmanager:
+      
+
+desktops:
+  children:
+    workstations:
+    laptops:
+    vm_windowmanager:
+
+
