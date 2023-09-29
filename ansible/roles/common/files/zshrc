@@ -71,8 +71,8 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 
-if [ -f ~/.zsh/zshalias ]; then
-  source ~/.zsh/zshalias
+if [ -f ~/.aliases ]; then
+  source ~/.aliases
 fi
 
 # keep processes running

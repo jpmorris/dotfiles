@@ -44,6 +44,20 @@
     file: '{{ ansible_os_family | lower }}.yaml'
 
 #
+# BASH
+#
+- name: Copy bash files over
+  ansible.builtin.copy:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    owner: jmorris
+    group: jmorris
+    mode: '0644'
+  with_items:
+    - { src: bashrc, dest: $HOME/.bashrc }
+    - { src: extend.bashrc, dest: .extend.bashrc }
+
+#
 # ZSH
 #
 
@@ -93,24 +107,18 @@
 - name: Check for local zshalias
   delegate_to: localhost
   ansible.builtin.stat:
-    path: "{{ role_path }}/files/{{ inventory_hostname }}.zshalias"
-  register: zshalias
+    path: "{{ role_path }}/files/{{ inventory_hostname }}.aliases"
+  register: aliases
 
-- name: Create .zsh directory
-  ansible.builtin.file:
-    path: $HOME/.zsh
-    state: directory
-    mode: "0755"
-  when: zshalias.stat.exists
 
 - name: Copy additional files
   ansible.builtin.copy:
     src: "{{ inventory_hostname }}.zshalias"
-    dest: $HOME/.zsh/zshalias
+    dest: $HOME/.aliases
     owner: jmorris
     group: jmorris
     mode: '0644'
-  when: zshalias.stat.exists
+  when: aliases.stat.exists
 
 #
 # (N)VIM
