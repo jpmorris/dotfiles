@@ -144,7 +144,8 @@ let g:gitgutter_eager = 0               " do not lag
 let g:gitgutter_map_keys = 0            " we will remap mappings
 " }}}
 " INPUT/COMMENTING                  {{{
-Plug 'kana/vim-smartinput'              " add/remove punctuation pairs when typing
+"kana/vim-smartinput seems to break vscode
+"Plug 'kana/vim-smartinput'              " add/remove punctuation pairs when typing
 "Alternative commenter
 "Plug 'tpope/vim-commentary'             " add/remove comments for various langs
 Plug 'scrooloose/nerdcommenter'
