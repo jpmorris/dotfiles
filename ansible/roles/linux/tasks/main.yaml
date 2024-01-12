@@ -42,6 +42,13 @@
 - name: Load a variable file based on the OS type
   ansible.builtin.include_vars:
     file: '{{ ansible_os_family | lower }}.yaml'
+      
+- name: Pull dotfiles from github
+  ansible.builtin.git:
+    repo: git@github.com:jpmorris/dotfiles.git
+    dest: /home/jmorris/dotfiles
+
+      
 #
 # COMMON PACKAGES
 #
@@ -55,12 +62,12 @@
 # BASH
 #
 - name: Copy bash files over
-  ansible.builtin.copy:
+  ansible.builtin.file:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'
     owner: jmorris
     group: jmorris
-    mode: '0644'
+    state: link
   with_items:
     - { src: bashrc, dest: $HOME/.bashrc }
     - { src: extend.bashrc, dest: .extend.bashrc }

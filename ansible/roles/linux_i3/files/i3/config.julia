@@ -373,8 +373,9 @@ exec google-chrome-stable --profile-directory=Default --app-id=hpfldicfbfomlpcik
 # - use xprop to get classname
 
 # personal number
-assign [class="Google-chrome" instance="crx_bojjonegeadjcbekpnkhoalecdkdohbo"] $ws2
-exec google-chrome-stable --profile-directory=Default --app-id=bojjonegeadjcbekpnkhoalecdkdohbo
+assign [class="Google-chrome" instance="crx_bhacinadenbkojblbakackhneiahcgkb"] $ws2
+exec google-chrome-stable --profile-directory=Default --app-id=bhacinadenbkojblbakackhneiahcgkb
+#
 # junk number
 assign [class="Google-chrome" instance="crx_nnjlgmkenicdieemeigkiipfcodbkgak"] $ws2
 exec google-chrome-stable --profile-directory=Default --app-id=nnjlgmkenicdieemeigkiipfcodbkgak

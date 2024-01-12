@@ -1,10 +1,10 @@
 15 12 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window https://excella.unanet.biz/excella/action/time
 15 12 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window https://outlook.office.com/mail/inbox
 15 12 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window https://calendar.google.com
-15 12 * * 1-5 jmorris DISPLAY=:0 slack 
+15 12 * * 1-5 jmorris DISPLAY=:0 slack
 # make sure messaging windows are always up
 0 * * * * jmorris DISPLAY=:0 /home/jmorris/dotfiles/scripts/launch_messaging_windows.sh
 # to delete clipboard history
-*/4 * * * * jmorris DISPLAY=:0 /home/jmorris/dotfiles/linuxfiles/home/jmorris/scripts/clear_clipboard.sh
-# to backup cron 
+*/4 * * * * jmorris DISPLAY=:0 /home/jmorris/dotfiles/scripts/clear_clipboard.sh
+# to backup cron
 0 * * * * jmorris cp /etc/cron.d/jmorris /home/jmorris/dotfiles/linuxfiles/etc/cron.d/jmorris
