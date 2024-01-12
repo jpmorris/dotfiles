@@ -42,6 +42,14 @@
 - name: Load a variable file based on the OS type
   ansible.builtin.include_vars:
     file: '{{ ansible_os_family | lower }}.yaml'
+#
+# COMMON PACKAGES
+#
+- name: Install common packages
+  ansible.builtin.package:
+    name:
+      - "{{ neofetch }}"
+      - "{{ cal }}"
 
 #
 # ZSH
@@ -51,7 +59,6 @@
   ansible.builtin.package:
     name:
       - '{{ zsh }}'
-      - '{{ neofetch }}'
 
 - name: Check if .oh-my-zsh dir exists
   ansible.builtin.stat:

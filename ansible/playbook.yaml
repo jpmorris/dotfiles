@@ -1,28 +1,42 @@
 ---
-- name: All hosts
+#
+# linux
+#
+- name: All linux hosts
   hosts: all
   become: true
   become_user: jmorris
   roles:
-    - common
+    - linux
 
-- name: All hosts with general desktops
-  hosts: desktops
+- name: All linux hosts with general desktops
+  hosts: linux_desktops
   become: true
   become_user: jmorris
   roles:
-    - desktop
+    - linux_desktop
 
-- name: All headful servers - physical displays
-  hosts: workstations, laptops
+- name: All linux headful servers - physical displays
+  hosts: linux_workstations, linux_laptops
   become: true
   become_user: jmorris
   roles:
-    - headful
+    - linux_headful
 
 - name: All i3 desktops
-  hosts: workstations, laptops
+  hosts: julia, lin
   become: true
   become_user: jmorris
   roles:
-    - i3
+    - linux_i3
+#
+# windows
+#
+## NOT CLEAR THIS IS NEEDED, WINDOWS MACHINES CAN BE SETUP QUICK AND USUALLY ONLY USE A FEW
+#  DIFFERENT PACKAGES
+#- name: All windows machines
+#  hosts: windows_desktop
+#  become: true
+#  become_user: jmorris
+#  roles:
+#    - windows_desktop

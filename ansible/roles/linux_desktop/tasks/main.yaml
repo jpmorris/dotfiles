@@ -29,6 +29,9 @@
     remote_src: true
     src: $HOME/.config/mimeapps.list
     dest: $HOME/.config/mimeapps.list.old
+    owner: jmorris
+    group: jmorris
+    mode: '0644'
 
 - name: Copy mimeapps.list to .config
   ansible.builtin.copy:

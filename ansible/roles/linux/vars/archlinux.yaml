@@ -1,5 +1,6 @@
 ---
 zsh: zsh
-vim: vim
 neovim: neovim
+vim: vim
 neofetch: neofetch
+cal: util-linux

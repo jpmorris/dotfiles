@@ -5,38 +5,53 @@ all:
     ansible_become: "yes"
     ansible_become_method: "sudo"
 
-servers:
+linux_servers:
   hosts:
     spike:
       ansible_host: localhost
 
-workstations:
+linux_workstations:
   hosts:
     julia:
       ansible_host: 192.168.1.15
-        
-laptops:
+
+linux_laptops:
   hosts:
     lin:
       ansible_host: 192.168.1.42
+    chopin:
+      ansible_host: 192.168.1.35
 
-vm_windowmanager:
-  hosts: 
+linux_desktop_vm:
+  hosts:
     vicious:
       ansible_host: 192.168.1.33
-    vicious2:
+#
+# windows
+#
+windows_desktop:
+  hosts:
+    jet:
+      ansible_host: 192.168.1.31
+    faye:
+      ansible_host: 192.168.1.32
+    lin:
       ansible_host: 192.168.1.34
-      
+    chopin:
+      ansible_host: 192.168.1.35
+#
+# groups
+#
 
 virtualmachines:
   children:
-    vm_windowmanager:
-      
+    linux_desktop_vm:
 
-desktops:
+linux_desktops:
   children:
-    workstations:
-    laptops:
-    vm_windowmanager:
+    linux_workstations:
+    linux_latops:
+    linux_desktop_vm:
+
 
 
