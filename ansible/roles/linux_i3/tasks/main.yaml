@@ -1,12 +1,59 @@
 ---
 
-# - name: variables
-# - name: Copy i3 config
-# - name: Copy myredshift
-# - name: Copy nitrogen files
-# - name: Copy dunst
-#   # polybar
-# - name: Copy polybar
+- name: Link i3 config
+  ansible.builtin.file:
+    src: '{{ ansible_config_home }}/roles/linux_i3/files/i3/config.{{ inventory_hostname }}'
+    dest: $HOME/.config/i3/config
+    owner: jmorris
+    group: jmorris
+    state: link
+
+- name: Link nitrogen config
+  ansible.builtin.file:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    owner: jmorris
+    group: jmorris
+    state: link
+  with_items:
+    # need this as global variable
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/nitrogen/bg-saved.cfg.{{ inventory_hostname }}', dest: $HOME/.config/bg-saved.cfg }
+
+- name: Link dunst config
+  ansible.builtin.file:
+    src: '{{ ansible_config_home }}/roles/linux_i3/files/dunst/dunstrc.{{ inventory_hostname }}'
+    dest: $HOME/.config/dunst/dunstrc
+    owner: jmorris
+    group: jmorris
+    state: link
+
+- name: Link polybar config
+  ansible.builtin.file:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    owner: jmorris
+    group: jmorris
+    state: link
+  with_items:
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/config.ini.{{ inventory_hostname }}', dest: $HOME/.config/polybar/config.ini }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/openweathermap-simple-silverspring.sh', dest: $HOME/.config/polybar/openweathermap-simple-silverspring.sh }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/launch.sh', dest: $HOME/.config/polybar/launch.sh }
+
 # - name: install weather-icons
-#   # rofi
-# - name: Copy rofi
+
+- name: Install rofi
+  ansible.builtin.package:
+    name:
+      - "{{ linux_i3_rofi }}"
+
+- name: Link rofi config
+  ansible.builtin.file:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    owner: jmorris
+    group: jmorris
+    state: link
+  with_items:
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/colors/colors.rasi.{{ inventor_hostname }}', dest: $HOME/.config/rofi/colors.rasi }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launchers/type-1/launchers.sh', dest: $HOME/.config/rofi/launchers/type-1/launchers.sh }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launchers/type-1/shared/colors.rasi', dest: $HOME/.config/rofi/launchers/type-1/shared/colors.rasi }

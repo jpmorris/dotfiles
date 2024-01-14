@@ -9,18 +9,18 @@
   become_user: jmorris
   ansible.builtin.package:
     name:
-      - "{{ linux_google_chrome }}"
-      - "{{ linux_terminator }}"
-      - "{{ linux_vlc }}"
-      - "{{ linux_xfce4_notes_plugin }}"
-      - "{{ linux_meld }}"
-      - "{{ linux_firefox }}"
-      - "{{ linux_flameshot }}"
+      - "{{ linux_desktop_google_chrome }}"
+      - "{{ linux_desktop_terminator }}"
+      - "{{ linux_desktop_vlc }}"
+      - "{{ linux_desktop_xfce4_notes_plugin }}"
+      - "{{ linux_desktop_meld }}"
+      - "{{ linux_desktop_firefox }}"
+      - "{{ linux_desktop_flameshot }}"
 
 - name: Install common packages on machines with desktop (AUR packages)
   kewlfft.aur.aur:
     name:
-      - "{{ anydesk }}"
+      - "{{ linux_desktop_anydesk }}"
   become: true
   become_user: aur_builder
 

@@ -114,6 +114,11 @@
     group: jmorris
     state: link
       
+- name: Create .zsh dir
+  ansible.builtin.file:
+    path: $HOME/.zsh/
+    state: directory
+      
 - name: Create link to zshrc.extras
   ansible.builtin.file:
     src: '{{ ansible_config_home }}/roles/linux/files/zshrc.extras.{{ inventory_hostname }}'
@@ -121,12 +126,6 @@
     owner: jmorris
     group: jmorris
     state: link
-
-- name: Add prompt format/color
-  ansible.builtin.lineinfile:
-    path: $HOME/.zshrc
-    search_string: "prompt adam1"
-    line: "prompt adam1 {{ prompt_color }}"
 
 - name: Check for local zshalias
   delegate_to: localhost
@@ -186,7 +185,7 @@
     - { path: $HOME/.vimtmp/swap }
     - { path: $HOME/.vimtmp/undo }
 
-- name: Check if plugins the last plugin exists
+- name: Check if the last plugin exists
   ansible.builtin.find:
     path: $HOME/.vim/plugged
   register: last_plugin_dir

@@ -14,7 +14,6 @@
       - "{{ linux_headful_pcmanfm }}"
       - "{{ linux_headful_zoom }}"
       - "{{ linux_headful_solaar }}"
-      - "{{ linux_headful_rofi }}"
       - "{{ linux_headful_vscode }}"
       - "{{ linux_headful_redshift }}"
       - "{{ linux_headful_arandr }}"
@@ -22,6 +21,6 @@
 - name: Install common packages on workstations, laptops (AUR packages)
   kewlfft.aur.aur:
     name:
-      - "{{ betterbird }}"
+      - "{{ linux_headful_betterbird }}"
   become: true
   become_user: aur_builder

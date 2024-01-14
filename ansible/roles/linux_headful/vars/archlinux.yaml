@@ -6,7 +6,6 @@ linux_headful_slack: slack-desktop
 linux_headful_pcmanfm: pcmanfm
 linux_headful_zoom: zoom
 linux_headful_solaar: solaar
-linux_headful_rofi: rofi
 linux_headful_vscode: visual-studio-code-bin
 linux_headful_redshift: redshift
 linux_headful_arandr: arandr
