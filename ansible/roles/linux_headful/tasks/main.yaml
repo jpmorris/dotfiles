@@ -7,17 +7,17 @@
 - name: Install common packages on non-VM desktops
   ansible.builtin.package:
     name:
-      - "{{ remmina }}"
-      - "{{ spotify }}"
-      - "{{ veracrypt }}"
-      - "{{ slack }}"
-      - "{{ pcmanfm }}"
-      - "{{ zoom }}"
-      - "{{ solaar }}"
-      - "{{ rofi }}"
-      - "{{ vscode }}"
-      - "{{ redshift }}"
-      - "{{ arandr }}"
+      - "{{ linux_headful_remmina }}"
+      - "{{ linux_headful_spotify }}"
+      - "{{ linux_headful_veracrypt }}"
+      - "{{ linux_headful_slack }}"
+      - "{{ linux_headful_pcmanfm }}"
+      - "{{ linux_headful_zoom }}"
+      - "{{ linux_headful_solaar }}"
+      - "{{ linux_headful_rofi }}"
+      - "{{ linux_headful_vscode }}"
+      - "{{ linux_headful_redshift }}"
+      - "{{ linux_headful_arandr }}"
 
 - name: Install common packages on workstations, laptops (AUR packages)
   kewlfft.aur.aur:

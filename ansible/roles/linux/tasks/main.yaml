@@ -43,25 +43,26 @@
   ansible.builtin.include_vars:
     file: '{{ ansible_os_family | lower }}.yaml'
       
-- name: Pull dotfiles from github
+
+- name: Pull dotfiles from github if no local modifications
   ansible.builtin.git:
     repo: git@github.com:jpmorris/dotfiles.git
     dest: /home/jmorris/dotfiles
+    version: master
 
-      
 #
 # COMMON PACKAGES
 #
 - name: Install common packages
   ansible.builtin.package:
     name:
-      - "{{ neofetch }}"
-      - "{{ cal }}"
+      - "{{ linux_neofetch }}"
+      - "{{ linux_cal }}"
 
 #
 # BASH
 #
-- name: Copy bash files over
+- name: Bash symbolic link
   ansible.builtin.file:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'
@@ -69,8 +70,9 @@
     group: jmorris
     state: link
   with_items:
-    - { src: bashrc, dest: $HOME/.bashrc }
-    - { src: extend.bashrc, dest: .extend.bashrc }
+    # need this as global variable
+    - { src: '{{ ansible_config_home }}/roles/linux/files/bashrc', dest: $HOME/.bashrc }
+    - { src: /home/jmorris/dotfiles/ansible/roles/linux/files/extend.bashrc, dest: .extend.bashrc }
 
 #
 # ZSH
@@ -79,7 +81,7 @@
 - name: Install zsh shell
   ansible.builtin.package:
     name:
-      - '{{ zsh }}'
+      - '{{ linux_zsh }}'
 
 - name: Check if .oh-my-zsh dir exists
   ansible.builtin.stat:
@@ -104,13 +106,21 @@
     name: jmorris
     shell: /bin/zsh
 
-- name: Copy base zshrc over
-  ansible.builtin.copy:
-    src: zshrc
+- name: Create link to zshrc 
+  ansible.builtin.file:
+    src: '{{ ansible_config_home }}/roles/linux/files/zshrc'
     dest: $HOME/.zshrc
     owner: jmorris
     group: jmorris
-    mode: '0644'
+    state: link
+      
+- name: Create link to zshrc.extras
+  ansible.builtin.file:
+    src: '{{ ansible_config_home }}/roles/linux/files/zshrc.extras.{{ inventory_hostname }}'
+    dest: $HOME/.zsh/zshrc.extras
+    owner: jmorris
+    group: jmorris
+    state: link
 
 - name: Add prompt format/color
   ansible.builtin.lineinfile:
@@ -124,14 +134,13 @@
     path: "{{ role_path }}/files/{{ inventory_hostname }}.aliases"
   register: aliases
 
-
 - name: Copy additional files
-  ansible.builtin.copy:
-    src: "{{ inventory_hostname }}.zshalias"
+  ansible.builtin.file:
+    src: "{{ ansible_config_home }}/roles/linux/files/{{ inventory_hostname }}.zshalias"
     dest: $HOME/.aliases
     owner: jmorris
     group: jmorris
-    mode: '0644'
+    state: link
   when: aliases.stat.exists
 
 #
@@ -141,19 +150,19 @@
 - name: Install (neo)vim
   ansible.builtin.package:
     name:
-      - '{{ vim }}'
-      - '{{ neovim }}'
+      - '{{ linux_vim }}'
+      - '{{ linux_neovim }}'
 
 - name: Copy vim files
-  ansible.builtin.copy:
+  ansible.builtin.file:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'
     owner: jmorris
     group: jmorris
-    mode: '0644'
+    state: link
   with_items:
-    - { src: vim/, dest: $HOME/.vim }
-    - { src: vimrc, dest: $HOME/.vimrc }
+    - { src: '{{ ansible_config_home }}/roles/linux/files/vim/', dest: $HOME/.vim }
+    - { src: '{{ ansible_config_home }}/roles/linux/files/vimrc', dest: $HOME/.vimrc }
 
 - name: Symbolic link neovim
   ansible.builtin.file:
@@ -188,12 +197,3 @@
   register: nvim_plug_output
   when: last_plugin_dir.examined < 10
   changed_when: nvim_plug_output.rc != 0
-
-#
-# Default Apps
-#
-#
-# i3
-#
-#
-#

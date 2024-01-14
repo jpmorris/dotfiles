@@ -9,13 +9,13 @@
   become_user: jmorris
   ansible.builtin.package:
     name:
-      - "{{ google_chrome }}"
-      - "{{ terminator }}"
-      - "{{ vlc }}"
-      - "{{ xfce4_notes_plugin }}"
-      - "{{ meld }}"
-      - "{{ firefox }}"
-      - "{{ flameshot }}"
+      - "{{ linux_google_chrome }}"
+      - "{{ linux_terminator }}"
+      - "{{ linux_vlc }}"
+      - "{{ linux_xfce4_notes_plugin }}"
+      - "{{ linux_meld }}"
+      - "{{ linux_firefox }}"
+      - "{{ linux_flameshot }}"
 
 - name: Install common packages on machines with desktop (AUR packages)
   kewlfft.aur.aur:
@@ -43,4 +43,3 @@
   with_items:
     - { src: mimeapps.list, dest: $HOME/.config/ }
     - { src: google-chrome-stable.desktop, dest: $HOME/.local/share/applications/}
-

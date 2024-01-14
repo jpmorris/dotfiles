@@ -7,7 +7,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 autoload -Uz promptinit
 promptinit
-prompt adam1 red
 
 
 setopt histignorealldups sharehistory
@@ -73,6 +72,9 @@ zstyle ':completion:*' verbose true
 
 if [ -f ~/.aliases ]; then
   source ~/.aliases
+fi
+if [ -f ~/.zsh/zshrc.extras ]; then
+  source ~/.zsh/zshrc.extras
 fi
 
 # keep processes running

@@ -34,9 +34,9 @@
 #
 ## NOT CLEAR THIS IS NEEDED, WINDOWS MACHINES CAN BE SETUP QUICK AND USUALLY ONLY USE A FEW
 #  DIFFERENT PACKAGES
-#- name: All windows machines
-#  hosts: windows_desktop
-#  become: true
-#  become_user: jmorris
-#  roles:
-#    - windows_desktop
+# - name: All windows machines
+#   hosts: windows_desktop
+#   become: true
+#   become_user: jmorris
+#   roles:
+#     - windows_desktop

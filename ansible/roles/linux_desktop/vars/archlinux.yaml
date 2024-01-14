@@ -1,8 +1,9 @@
-google_chrome: google-chrome
-terminator: terminator
-vlc: vlc
-xfce4_notes_plugin: xfce4-notes-plugin
-meld: meld
-firefox: firefox
-flameshot: flameshot
-anydesk: anydesk-bin
+---
+linux_desktop_google_chrome: google-chrome
+linux_desktop_terminator: terminator
+linux_desktop_vlc: vlc
+linux_desktop_xfce4_notes_plugin: xfce4-notes-plugin
+linux_desktop_meld: meld
+linux_desktop_firefox: firefox
+linux_desktop_flameshot: flameshot
+linux_desktop_anydesk: anydesk-bin

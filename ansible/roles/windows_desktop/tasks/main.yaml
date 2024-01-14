@@ -1,9 +1,8 @@
 ---
 - name: Install packages
-  win_chocolatey:
+  chocolatey.chocolatey.win_chocolatey:
     name: '{{ item.name }}'
     state: '{{ item.state }}'
   with_items:
     - {name: "googlechrome", state: present}
     - {name: "conemu", state: present}
-

@@ -1,13 +1,14 @@
-remmina: remmina
-spotify: spotify
-veracrypt: veracrypt
-slack: slack-desktop
-pcmanfm: pcmanfm
-zoom: zoom
-solaar: solaar
-rofi: rofi
-vscode: visual-studio-code-bin
-redshift: redshift
-arandr: arandr
-betterbird: betterbird
-neovim: neovim
+---
+linux_headful_remmina: remmina
+linux_headful_spotify: spotify
+linux_headful_veracrypt: veracrypt
+linux_headful_slack: slack-desktop
+linux_headful_pcmanfm: pcmanfm
+linux_headful_zoom: zoom
+linux_headful_solaar: solaar
+linux_headful_rofi: rofi
+linux_headful_vscode: visual-studio-code-bin
+linux_headful_redshift: redshift
+linux_headful_arandr: arandr
+linux_headful_betterbird: betterbird
+linux_headful_neovim: neovim

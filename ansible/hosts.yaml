@@ -4,6 +4,7 @@ all:
     ansible_user: "jmorris"
     ansible_become: "yes"
     ansible_become_method: "sudo"
+    ansible_config_home: "/home/jmorris/dotfiles/ansible"
 
 linux_servers:
   hosts:
@@ -52,6 +53,3 @@ linux_desktops:
     linux_workstations:
     linux_latops:
     linux_desktop_vm:
-
-
-

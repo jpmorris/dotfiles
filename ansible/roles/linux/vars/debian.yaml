@@ -1,6 +1,6 @@
 ---
-zsh: zsh
-vim: vim
-neovim: neovim
-neofetch: neofetch
-cal: bsdmainutils
+linux_zsh: zsh
+linux_vim: vim
+linux_neovim: neovim
+linux_neofetch: neofetch
+linux_cal: bsdmainutils
