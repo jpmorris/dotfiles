@@ -1,5 +1,9 @@
 ---
 
+- name: Load a variable file based on the OS type
+  ansible.builtin.include_vars:
+    file: '{{ ansible_os_family | lower }}.yaml'
+
 - name: Link i3 config
   ansible.builtin.file:
     src: '{{ ansible_config_home }}/roles/linux_i3/files/i3/config.{{ inventory_hostname }}'
@@ -54,6 +58,6 @@
     group: jmorris
     state: link
   with_items:
-    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/colors/colors.rasi.{{ inventor_hostname }}', dest: $HOME/.config/rofi/colors.rasi }
-    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launchers/type-1/launchers.sh', dest: $HOME/.config/rofi/launchers/type-1/launchers.sh }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/colors/colors.rasi.{{ inventory_hostname }}', dest: $HOME/.config/rofi/colors/colors.rasi }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launchers/type-1/launcher.sh', dest: $HOME/.config/rofi/launchers/type-1/launcher.sh }
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launchers/type-1/shared/colors.rasi', dest: $HOME/.config/rofi/launchers/type-1/shared/colors.rasi }
