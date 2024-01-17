@@ -107,19 +107,22 @@
     name: jmorris
     shell: /bin/zsh
 
-- name: Create link to zshrc 
+- name: Create link to zshrc
   ansible.builtin.file:
     src: '{{ ansible_config_home }}/roles/linux/files/home/zshrc'
     dest: $HOME/.zshrc
     owner: jmorris
     group: jmorris
     state: link
-      
+
 - name: Create .zsh dir
   ansible.builtin.file:
     path: $HOME/.zsh/
     state: directory
-      
+    owner: jmorris
+    group: jmorris
+    mode: '0755'
+
 - name: Create link to zshrc.extras
   ansible.builtin.file:
     src: '{{ ansible_config_home }}/roles/linux/files/home/zshrc.extras.{{ inventory_hostname }}'
@@ -153,7 +156,7 @@
       - '{{ linux_vim }}'
       - '{{ linux_neovim }}'
 
-- name: Copy vim files
+- name: Create symbolic link vim files
   ansible.builtin.file:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'
@@ -164,13 +167,12 @@
     - { src: '{{ ansible_config_home }}/roles/linux/files/home/vim/', dest: $HOME/.vim }
     - { src: '{{ ansible_config_home }}/roles/linux/files/home/vimrc', dest: $HOME/.vimrc }
 
-- name: Copy vim files (root)
+- name: Crate symbolic link vim filesvim files (root)
   become: true
+  become_user: root
   ansible.builtin.file:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'
-    owner: root
-    group: root
     state: link
   with_items:
     - { src: '{{ ansible_config_home }}/roles/linux/files/home/vim/', dest: /root/.vim }
@@ -190,13 +192,12 @@
 
 - name: Symbolic link neovim (root)
   become: true
+  become_user: root
   ansible.builtin.file:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'
     state: '{{ item.state }}'
     mode: '{{ item.mode }}'
-    owner: root
-    group: root
   with_items:
     - { src: /root/.vim, dest: /root/.config/nvim, state: link, mode: "0755" }
     - { src: /root/.vimrc, dest: /root/.config/nvim/init.vim, state: link, mode: "0644"}
@@ -213,6 +214,7 @@
 
 - name: Create vim tempdirs (root)
   become: true
+  become_user: root
   ansible.builtin.file:
     path: '{{ item.path }}'
     state: directory
@@ -228,6 +230,8 @@
   register: last_plugin_dir
 
 - name: Check if plugin dir exists (root)
+  become: true
+  become_user: root
   ansible.builtin.find:
     path: /root/.vim/plugged
   register: last_plugin_dir_root
@@ -241,24 +245,9 @@
 
 - name: Install vim plugins (root)
   become: true
+  become_user: root
   ansible.builtin.command:
     cmd: 'nvim -c "PlugInstall" -c ":qa!"'
   register: nvim_plug_output
   when: last_plugin_dir.examined < 10
   changed_when: nvim_plug_output.rc != 0
-
-#
-# SYSTEMD LINKS
-#
-    
-- name: Create systemd links
-  ansible.builtin.file:
-    src: '{{ item.src }}'
-    dest: '{{ item.dest }}'
-    owner: jmorris
-    group: jmorris
-    state: link
-  with_items:
-    - { src: '{{ ansible_config_home }}/roles/linux/files/etc/systemd/logind.conf', dest: /etc/systemd/logind.conf }
-    - { src: '{{ ansible_config_home }}/roles/linux/files/etc/systemd/sleep.conf', dest: /etc/systemd/sleep.conf }
-    - { src: '{{ ansible_config_home }}/roles/linux/files/etc/systemd/system/suspend@jmorris.service', dest: /etc/systemd/system/suspend@jmorris.service }

@@ -29,6 +29,14 @@
   become_user: jmorris
   roles:
     - linux_i3
+
+- name: All linux laptops
+  hosts: linux_laptops
+  become: true
+  become_user: jmorris
+  roles:
+    - linux_laptop
+
 #
 # windows
 #
