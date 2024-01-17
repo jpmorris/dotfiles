@@ -102,6 +102,7 @@
     mode: '0755'
 
 - name: Change shell
+  become: true
   ansible.builtin.user:
     name: jmorris
     shell: /bin/zsh
@@ -185,7 +186,7 @@
     - { path: $HOME/.vimtmp/swap }
     - { path: $HOME/.vimtmp/undo }
 
-- name: Check if the last plugin exists
+- name: Check if plugin dir exists
   ansible.builtin.find:
     path: $HOME/.vim/plugged
   register: last_plugin_dir

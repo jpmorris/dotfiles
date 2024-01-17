@@ -12,7 +12,6 @@
       - "{{ linux_headful_veracrypt }}"
       - "{{ linux_headful_slack }}"
       - "{{ linux_headful_pcmanfm }}"
-      - "{{ linux_headful_zoom }}"
       - "{{ linux_headful_solaar }}"
       - "{{ linux_headful_vscode }}"
       - "{{ linux_headful_redshift }}"
@@ -22,5 +21,6 @@
   kewlfft.aur.aur:
     name:
       - "{{ linux_headful_betterbird }}"
+      - "{{ linux_headful_zoom }}"
   become: true
   become_user: aur_builder

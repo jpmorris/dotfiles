@@ -42,6 +42,8 @@
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/config.ini.{{ inventory_hostname }}', dest: $HOME/.config/polybar/config.ini }
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/openweathermap-simple-silverspring.sh', dest: $HOME/.config/polybar/openweathermap-simple-silverspring.sh }
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/launch.sh', dest: $HOME/.config/polybar/launch.sh }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/env.sh', dest: $HOME/.config/polybar/env.sh }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/redshift.sh', dest: $HOME/.config/polybar/redshift.sh }
 
 # - name: install weather-icons
 
