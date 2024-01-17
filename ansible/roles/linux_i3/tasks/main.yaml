@@ -21,7 +21,7 @@
     state: link
   with_items:
     # need this as global variable
-    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/nitrogen/bg-saved.cfg.{{ inventory_hostname }}', dest: $HOME/.config/bg-saved.cfg }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/nitrogen/bg-saved.cfg.{{ inventory_hostname }}', dest: $HOME/.config/nitrogen/bg-saved.cfg }
 
 - name: Link dunst config
   ansible.builtin.file:
@@ -31,7 +31,7 @@
     group: jmorris
     state: link
 
-- name: Link polybar config
+- name: Link polybar files
   ansible.builtin.file:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'
@@ -42,8 +42,15 @@
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/config.ini.{{ inventory_hostname }}', dest: $HOME/.config/polybar/config.ini }
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/openweathermap-simple-silverspring.sh', dest: $HOME/.config/polybar/openweathermap-simple-silverspring.sh }
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/launch.sh', dest: $HOME/.config/polybar/launch.sh }
-    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/env.sh', dest: $HOME/.config/polybar/env.sh }
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/redshift.sh', dest: $HOME/.config/polybar/redshift.sh }
+      
+- name: Create polybar redshift env.sh file
+  ansible.builtin.copy:
+    dest: $HOME/.config/polybar/env.sh
+    content: |
+      export REDSHIFT=on
+      export REDSHIFT_TEMP=4500
+      
 
 # - name: install weather-icons
 
@@ -63,3 +70,4 @@
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/colors/colors.rasi.{{ inventory_hostname }}', dest: $HOME/.config/rofi/colors/colors.rasi }
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launchers/type-1/launcher.sh', dest: $HOME/.config/rofi/launchers/type-1/launcher.sh }
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launchers/type-1/shared/colors.rasi', dest: $HOME/.config/rofi/launchers/type-1/shared/colors.rasi }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launchers/type-1/shared/fonts.rasi', dest: $HOME/.config/rofi/launchers/type-1/shared/fonts.rasi }
