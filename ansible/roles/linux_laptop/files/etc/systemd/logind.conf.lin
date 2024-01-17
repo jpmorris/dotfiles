@@ -30,7 +30,7 @@
 # switching to hibernate until issue is resolved
 #HandleLidSwitch=hibernate
 HandleLidSwitch=suspend-then-hibernate
-HibernateDelaySec=180s
+HibernateDelaySec=1800s
 HandleLidSwitchExternalPower=suspend-then-hibernate
 #HandleLidSwitchDocked=ignore
 #HandleRebootKey=reboot
