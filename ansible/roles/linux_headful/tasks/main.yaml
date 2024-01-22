@@ -25,7 +25,7 @@
   become: true
   become_user: aur_builder
 
-- name: Link xprofile and default monitor geometry
+- name: Link xprofile and default monitor geometry on julia
   ansible.builtin.file:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'
@@ -33,5 +33,6 @@
     group: jmorris
     state: link
   with_items:
-    - { src: '{{ ansible_config_home }}/roles/linux_headful/files/xprofile', dest: $HOME/.xprofile }
-    - { src: '{{ ansible_config_home }}/roles/linux_headful/screenlayout/default.sh.{{ inventory_hostname }}', dest: $HOME/.screenlayout/default.sh }
+    - { src: '{{ ansible_config_home }}/roles/linux_headful/files/screenlayout/xprofile.{{ inventory_hostname }}', dest: $HOME/.xprofile }
+    - { src: '{{ ansible_config_home }}/roles/linux_headful/files/screenlayout/default.sh.{{ inventory_hostname }}', dest: $HOME/.screenlayout/default.sh }
+  when: inventory_hostname == 'julia'
