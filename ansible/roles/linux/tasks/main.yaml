@@ -176,20 +176,10 @@
     owner: jmorris
     group: jmorris
     state: link
+    follow: false
   with_items:
     - { src: '{{ ansible_config_home }}/roles/linux/files/home/vim/', dest: /root/.vim }
     - { src: '{{ ansible_config_home }}/roles/linux/files/home/vimrc', dest: /root/.vimrc }
-
-- name: Symbolic link neovim
-  ansible.builtin.file:
-    src: '{{ item.src }}'
-    dest: '{{ item.dest }}'
-    owner: jmorris
-    group: jmorris
-    state: link
-  with_items:
-    - { src: $HOME/.vim, dest: $HOME/.config/nvim, state: link}
-    - { src: $HOME/.vimrc, dest: $HOME/.config/nvim/init.vim, state: link}
 
 - name: Symbolic link neovim (root)
   become: true
@@ -200,9 +190,23 @@
     owner: jmorris
     group: jmorris
     state: link
+    follow: false
   with_items:
-    - { src: /root/.vim, dest: /root/.config/nvim, state: link}
-    - { src: /root/.vimrc, dest: /root/.config/nvim/init.vim, state: link}
+    - { src: /root/.vim, dest: /root/.config/nvim}
+    - { src: /root/.vimrc, dest: /root/.config/nvim/init.vim}
+
+- name: Symbolic link neovim
+  become: true
+  ansible.builtin.file:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    owner: jmorris
+    group: jmorris
+    state: link
+  with_items:
+    - { src: $HOME/.vim, dest: $HOME/.config/nvim}
+    - { src: $HOME/.vimrc, dest: $HOME/.config/nvim/init.vim}
+
 
 - name: Create vim tempdirs
   ansible.builtin.file:

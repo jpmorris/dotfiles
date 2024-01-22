@@ -24,6 +24,11 @@
   become: true
   become_user: aur_builder
 
+- name: Check if mimeapps.list is a file
+  ansible.builtin.stat:
+    path: $HOME/.config/mimeapps.list
+  register: mimeappsfile
+
 - name: Move mimeapps.list to old file
   ansible.builtin.copy:
     remote_src: true
@@ -32,6 +37,7 @@
     owner: jmorris
     group: jmorris
     mode: '0644'
+  when: mimeappsfile.stat.islnk is defined and mimeappsfile.stat.islnk == False
 
 - name: Link mimeapps.list
   ansible.builtin.file:

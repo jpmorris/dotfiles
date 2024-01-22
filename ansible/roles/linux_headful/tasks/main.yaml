@@ -34,4 +34,4 @@
     state: link
   with_items:
     - { src: '{{ ansible_config_home }}/roles/linux_headful/files/xprofile', dest: $HOME/.xprofile }
-    - { src: '{{ ansible_config_home }}/roles/linux_desktop/.screenlayout/default.sh.{{ inventory_hostname }}', dest: $HOME/.screenlayout/default.sh }
+    - { src: '{{ ansible_config_home }}/roles/linux_headful/screenlayout/default.sh.{{ inventory_hostname }}', dest: $HOME/.screenlayout/default.sh }
