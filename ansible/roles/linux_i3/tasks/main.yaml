@@ -4,6 +4,10 @@
   ansible.builtin.include_vars:
     file: '{{ ansible_os_family | lower }}.yaml'
 
+- name: Copy monitor geometry default loader
+  ansible.builtin.file:
+    
+
 - name: Link i3 config
   ansible.builtin.file:
     src: '{{ ansible_config_home }}/roles/linux_i3/files/i3/config.{{ inventory_hostname }}'

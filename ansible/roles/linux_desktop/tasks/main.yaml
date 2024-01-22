@@ -33,13 +33,13 @@
     group: jmorris
     mode: '0644'
 
-- name: Copy mimeapps.list to .config
-  ansible.builtin.copy:
+- name: Link mimeapps.list
+  ansible.builtin.file:
     src: '{{ item.src }}'
     dest: '{{ item.dest }}'
     owner: jmorris
     group: jmorris
-    mode: '0644'
+    state: link
   with_items:
-    - { src: mimeapps.list, dest: $HOME/.config/ }
-    - { src: google-chrome-stable.desktop, dest: $HOME/.local/share/applications/}
+    - { src: '{{ ansible_config_home }}/roles/linux_desktop/files/mimeapps.list', dest: $HOME/.config/mimeapps.list }
+    - { src: '{{ ansible_config_home }}/roles/linux_desktop/files/google-chrome-stable.desktop', dest: $HOME/.local/share/applications/google-chrome-stable.desktop}

@@ -24,3 +24,14 @@
       - "{{ linux_headful_zoom }}"
   become: true
   become_user: aur_builder
+
+- name: Link xprofile and default monitor geometry
+  ansible.builtin.file:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    owner: jmorris
+    group: jmorris
+    state: link
+  with_items:
+    - { src: '{{ ansible_config_home }}/roles/linux_headful/files/xprofile', dest: $HOME/.xprofile }
+    - { src: '{{ ansible_config_home }}/roles/linux_desktop/.screenlayout/default.sh.{{ inventory_hostname }}', dest: $HOME/.screenlayout/default.sh }
