@@ -30,7 +30,7 @@
 # switching to hibernate until issue is resolved
 #HandleLidSwitch=hibernate
 HandleLidSwitch=suspend-then-hibernate
-HibernateDelaySec=1800s
+HibernateDelaySec=2m
 HandleLidSwitchExternalPower=suspend-then-hibernate
 #HandleLidSwitchDocked=ignore
 #HandleRebootKey=reboot
@@ -41,8 +41,10 @@ HandleLidSwitchExternalPower=suspend-then-hibernate
 #LidSwitchIgnoreInhibited=yes
 #RebootKeyIgnoreInhibited=no
 #HoldoffTimeoutSec=30s
+# Sleep on idle requires a program like xss-lock to communicate with systemd
+IdleAction=hibernate
 IdleAction=suspend-then-hibernate
-IdleActionSec=30min
+IdleActionSec=120s
 #RuntimeDirectorySize=10%
 #RuntimeDirectoryInodesMax=400k
 #RemoveIPC=yes

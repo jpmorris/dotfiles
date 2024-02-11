@@ -24,5 +24,6 @@
 #HibernateState=disk
 #HybridSleepMode=suspend platform shutdown
 #HybridSleepState=disk
-HibernateDelaySec=1800s
+# This controls time when you run 'systemctl suspend-then-hibernate' from CLI
+HibernateDelaySec=2m
 #HandleLidSwitch=suspend-then-hibernate
