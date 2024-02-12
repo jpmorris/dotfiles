@@ -1,3 +1,4 @@
+---
 #
 # SYSTEMD LINKS
 #
@@ -12,9 +13,23 @@
     group: jmorris
     state: link
   with_items:
-    - { src: '{{ ansible_config_home }}/roles/linux_laptop/files/etc/systemd/logind.conf.{{ inventory_hostname }}', dest: /etc/systemd/logind.conf }
-    - { src: '{{ ansible_config_home }}/roles/linux_laptop/files/etc/systemd/sleep.conf.{{ inventory_hostname }}', dest: /etc/systemd/sleep.conf }
     - { 
         src: '{{ ansible_config_home }}/roles/linux_laptop/files/etc/systemd/system/suspend@jmorris.service',
         dest: /etc/systemd/system/suspend@jmorris.service 
       }
+      
+#
+# SYSTEMD FILES - some suspend files cannot be symbolic links
+#
+- name: Copy systemd files
+  become: true
+  become_user: root
+  ansible.builtin.copy:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    owner: root
+    group: root
+    mode: '0644'
+  with_items:
+    - { src: '{{ ansible_config_home }}/roles/linux_laptop/files/etc/systemd/logind.conf.{{ inventory_hostname }}', dest: /etc/systemd/logind.conf }
+    - { src: '{{ ansible_config_home }}/roles/linux_laptop/files/etc/systemd/sleep.conf.{{ inventory_hostname }}', dest: /etc/systemd/sleep.conf }
