@@ -25,13 +25,12 @@
 #HandlePowerKey=poweroff
 #HandleSuspendKey=suspend
 #HandleHibernateKey=hibernate
-# suspend-then-hibrnate regrssion only allows hibernate at <5% battery
-# https://github.com/systemd/systemd/issues/25269
-# switching to hibernate until issue is resolved
-#HandleLidSwitch=hibernate
+# The time configuration for how long to wait in suspend before hibernating is controlled
+# in sleep.conf HibernateDelaySec
 HandleLidSwitch=suspend-then-hibernate
-HibernateDelaySec=2m
+#HandleLidSwitch=hibernate
 HandleLidSwitchExternalPower=suspend-then-hibernate
+#HandleLidSwitchExternalPower=suspend-then-hibernate
 #HandleLidSwitchDocked=ignore
 #HandleRebootKey=reboot
 #HandleRebootKeyLongPress=poweroff
@@ -42,9 +41,10 @@ HandleLidSwitchExternalPower=suspend-then-hibernate
 #RebootKeyIgnoreInhibited=no
 #HoldoffTimeoutSec=30s
 # Sleep on idle requires a program like xss-lock to communicate with systemd
-IdleAction=hibernate
+# See i3/config for idle sleep configuration
+#IdleAction=hibernate
 IdleAction=suspend-then-hibernate
-IdleActionSec=120s
+IdleActionSec=1800s
 #RuntimeDirectorySize=10%
 #RuntimeDirectoryInodesMax=400k
 #RemoveIPC=yes
