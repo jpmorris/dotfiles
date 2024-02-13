@@ -310,6 +310,9 @@ mode "resize" {
 #exec_always --no-startup-id /$HOME/.config/polybar/polybar_allmonitors.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # nitrogenfor wallpaper
+# dunst should start automatically with dbus, but if not check that another notifier
+# isn't also running and uninstall:
+# grep -ri org.freedesktop.notifications /usr/share/dbus-1/services
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 # picom is compositor -- doesn't seem worth it
 #exec --no-startup-id nitrogen --restore; sleep 1; picom -b
