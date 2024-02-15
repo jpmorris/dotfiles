@@ -386,15 +386,20 @@ exec google-chrome-stable --profile-directory=Default --app-id=nnjlgmkenicdieeme
 
 
 # Setup xss-lock daemon
-# xset - screensaver time - xset x <timeout - time before dim> <cycle - additional time before lock/lockscreen >
-exec_always --no-startup-id xset s 150 100
+# LOCK TIME
+# xset - screensaver/lock time -
+# xset x <timeout - time before dim> <cycle - additional time before lock/lockscreen >
+exec_always --no-startup-id xset s 150 1200
+# MONITOR BLANK TIME
 # xset - monitor blank time - dpms <standby> <suspend> <off>
-# standby, suspend, off probably all the same for lcd
+# monitor standby, suspend, off probably all the same for lcd
 exec_always --no-startup-id xset +dpms dpms 500 500 500
 # if locker doesnt redraw when executed look into --composite command for i3lock
 exec_always --no-startup-id xss-lock -- ~/dotfiles/linuxfiles/home/jmorris/scripts/lock.sh
 # sleep:
-#  - on idle: controlled by /etc/systemd/logind.conf
+# SUSPEND/HIBERNATE ON IDLE
+#  - on idle: controlled by /etc/systemd/logind.conf (must register with xss-lock)
+# SUSPEND/HIBERNATE ON LID CLOSE
 #  - on lid close: controlled by /etc/systemd/logind.conf
 # xss-lock should catch lid close and lock screen
 
