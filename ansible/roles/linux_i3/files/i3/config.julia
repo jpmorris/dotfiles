@@ -389,11 +389,11 @@ exec google-chrome-stable --profile-directory=Default --app-id=nnjlgmkenicdieeme
 # LOCK TIME
 # xset - screensaver/lock time -
 # xset x <timeout - time before dim> <cycle - additional time before lock/lockscreen >
-exec_always --no-startup-id xset s 150 1200
+exec_always --no-startup-id xset s 60 1600
 # MONITOR BLANK TIME
 # xset - monitor blank time - dpms <standby> <suspend> <off>
 # monitor standby, suspend, off probably all the same for lcd
-exec_always --no-startup-id xset +dpms dpms 500 500 500
+exec_always --no-startup-id xset +dpms dpms 1200 1200 1200
 # if locker doesnt redraw when executed look into --composite command for i3lock
 exec_always --no-startup-id xss-lock -- ~/dotfiles/linuxfiles/home/jmorris/scripts/lock.sh
 # sleep:
