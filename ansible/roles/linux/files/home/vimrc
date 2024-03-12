@@ -1,7 +1,7 @@
 ﻿" This file has marker code folds:
 " zo - open a code fold
 " zc - close a fold
-" zr - open all folds
+" zr - open all fold
 " zm - close all folds
 
 " FOR NEW INSTALL
@@ -117,8 +117,11 @@ if has("autocmd")
 endif
 " }}}
 " EASYMOTION                        {{{
-Plug 'easymotion/vim-easymotion'
-map <leader> <Plug>(easymotion-prefix)
+" easymotion is not supported by vscode-neovim
+"Plug 'easymotion/vim-easymotion'
+"map <leader> <Plug>(easymotion-prefix)
+Plug 'ggandor/leap.nvim'
+
 " }}}
 " EDGE SCROLLING                    {{{
 set scrolloff=7                         " keep lines off edges of the screen when scrolling
@@ -206,8 +209,9 @@ Plug 'junegunn/goyo.vim'
 Plug 'honza/writer.vim'
 " }}}
  "PYTHON                            {{{
-Plug 'python-mode/python-mode', {'branch': 'develop'}
-let g:pymode_python = 'python3'
+" python-mode breaks vscode
+"Plug 'python-mode/python-mode', {'branch': 'develop'}
+"let g:pymode_python = 'python3'
 "if g:is_nix
 "  let g:python3_host_prog = '/opt/anaconda3/envs/vimpython3/bin/python'
 "  let g:python_host_prog = '/opt/anaconda3/envs/vimpython2/bin/python'
@@ -354,4 +358,5 @@ hi SpellBad cterm=underline
 
 call plug#end()
 
+lua require('leap').create_default_mappings()
 " vim: ft=vim fdm=marker
