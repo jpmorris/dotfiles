@@ -43,14 +43,14 @@
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/openweathermap-simple-silverspring.sh', dest: $HOME/.config/polybar/openweathermap-simple-silverspring.sh }
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/launch.sh', dest: $HOME/.config/polybar/launch.sh }
     - { src: '{{ ansible_config_home }}/roles/linux_i3/files/polybar/redshift.sh', dest: $HOME/.config/polybar/redshift.sh }
-      
+
 - name: Create polybar redshift env.sh file
   ansible.builtin.copy:
     dest: $HOME/.config/polybar/env.sh
     content: |
       export REDSHIFT=on
       export REDSHIFT_TEMP=4500
-      
+
 
 # - name: install weather-icons
 
@@ -76,6 +76,7 @@
 # SYSTEMD LINKS
 #
 
+# TODO: Might need to run 'enable' after copying these files
 - name: Create systemd links
   become: true
   become_user: root
@@ -86,8 +87,8 @@
     group: jmorris
     state: link
   with_items:
-    - { 
+    - {
         src: '{{ ansible_config_home }}/roles/linux_i3/files/etc/systemd/system/suspend@jmorris.service.{{ inventory_hostname }}',
-        dest: /etc/systemd/system/suspend@jmorris.service 
+        dest: /etc/systemd/system/suspend@jmorris.service
       }
-     
+
