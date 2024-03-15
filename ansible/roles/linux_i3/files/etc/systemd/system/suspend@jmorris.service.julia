@@ -5,8 +5,8 @@ Before=sleep.target
 [Service]
 User=jmorris
 Type=simple
-Environment=DISPLAY=:0
-ExecStart=/usr/bin/pkill vlc
+ExecStart=/bin/bash -c '/usr/bin/killall -q vlc || echo "VLC was not running."'
+ExecStartPost=/usr/bin/sleep 5
 
 [Install]
 WantedBy=sleep.target
