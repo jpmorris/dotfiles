@@ -1,0 +1,12 @@
+[Unit]
+Description=Kill vlc on sleep (vlc will stay open at 100 cpu if not)
+Before=sleep.target
+
+[Service]
+User=jmorris
+Type=simple
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/pkill vlc
+
+[Install]
+WantedBy=sleep.target
