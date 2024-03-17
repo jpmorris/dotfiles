@@ -15,8 +15,10 @@ dir="$HOME/.config/rofi/launchers/type-1"
 theme='style-6'
 
 ## Run
-#    -run-list-command "~/dotfiles/linuxfiles/home/jmorris/scripts/alias.sh" \
 rofi \
-    -run-command "/bin/bash -i -c {cmd}" \
+    -run-list-command ". ~/.aliases" \
+    -run-command "/bin/bash -i -c '{cmd}'" \
     -show run \
     -theme ${dir}/${theme}.rasi
+    -rnow
+

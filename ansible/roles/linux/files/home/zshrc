@@ -82,3 +82,14 @@ setopt nohup
 # info screen when console starts
 neofetch
 
+2fa () {
+ # Get totp secret for given service
+ # Generate 2FA totp code and display on screen
+ echo "Your code for $s is ..."
+ code=$(oathtool -b --totp $(pass "$1" | head -n 1); )
+ ## Copy to clipboard too ##
+ ## if xclip command found  on Linux system ##
+ type -a xclip &>/dev/null
+ [ $? -eq 0 ] && { echo $code | xclip -sel clip; echo "*** Code copied to clipboard too ***"; }
+ echo "$code"
+}
