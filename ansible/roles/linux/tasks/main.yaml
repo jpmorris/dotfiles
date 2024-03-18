@@ -131,15 +131,15 @@
     group: jmorris
     state: link
 
-- name: Check for local zshalias
+- name: Check for local aliases file
   delegate_to: localhost
   ansible.builtin.stat:
-    path: "{{ role_path }}/files/aliases.{{ inventory_hostname }}"
+    path: "{{ role_path }}/files/home/aliases.{{ inventory_hostname }}"
   register: aliases
 
-- name: Copy additional files
+- name: Link aliases file
   ansible.builtin.file:
-    src: "{{ role_path }}/files/aliases.{{ inventory_hostname }}"
+    src: "{{ role_path }}/files/home/aliases.{{ inventory_hostname }}"
     dest: $HOME/.aliases
     owner: jmorris
     group: jmorris
