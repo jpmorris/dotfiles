@@ -15,12 +15,12 @@
       - "{{ linux_desktop_xfce4_notes_plugin }}"
       - "{{ linux_desktop_meld }}"
       - "{{ linux_desktop_firefox }}"
-      - "{{ linux_desktop_flameshot }}"
 
 - name: Install common packages on machines with desktop (AUR packages)
   kewlfft.aur.aur:
     name:
       - "{{ linux_desktop_anydesk }}"
+      - "{{ linux_desktop_flameshot }}"
   become: true
   become_user: aur_builder
 
