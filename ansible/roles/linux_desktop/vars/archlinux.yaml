@@ -5,5 +5,5 @@ linux_desktop_vlc: vlc
 linux_desktop_xfce4_notes_plugin: xfce4-notes-plugin
 linux_desktop_meld: meld
 linux_desktop_firefox: firefox
-linux_desktop_flameshot: flameshot
+linux_desktop_flameshot: flameshot-git
 linux_desktop_anydesk: anydesk-bin
