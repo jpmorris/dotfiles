@@ -6,7 +6,7 @@
 
 - name: Install common packages on machines with desktop
   become: true
-  become_user: jmorris
+  become_user: root
   ansible.builtin.package:
     name:
       - "{{ linux_desktop_google_chrome }}"
