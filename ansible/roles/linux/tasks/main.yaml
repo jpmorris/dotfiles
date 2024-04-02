@@ -192,8 +192,7 @@
     state: link
     follow: false
   with_items:
-    - { src: /root/.vim, dest: /root/.config/nvim}
-    - { src: /root/.vimrc, dest: /root/.config/nvim/init.vim}
+    - { src: '{{ ansible_config_home }}/roles/linux/files/home/config/nvim', dest: /root/.config/nvim}
 
 - name: Symbolic link neovim
   become: true
@@ -204,8 +203,7 @@
     group: jmorris
     state: link
   with_items:
-    - { src: $HOME/.vim, dest: $HOME/.config/nvim}
-    - { src: $HOME/.vimrc, dest: $HOME/.config/nvim/init.vim}
+    - { src: '{{ ansible_config_home }}/roles/linux/files/home/config/nvim', dest: $HOME/.config/nvim}
 
 
 - name: Create vim tempdirs
