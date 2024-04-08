@@ -9,6 +9,7 @@
   roles:
     - linux
 
+# any machine with a desktop whether or not physical, so also vms
 - name: All linux hosts with general desktops
   hosts: linux_desktops
   become: true
@@ -16,6 +17,7 @@
   roles:
     - linux_desktop
 
+# machines with physical display
 - name: All linux headful servers - physical displays
   hosts: linux_workstations, linux_laptops
   become: true

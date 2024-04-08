@@ -32,11 +32,32 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- quickfix navigation
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+--vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+--vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+--vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+--vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- replace word cursor is on
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+if (vim.g.vscode)
+then
+    local vscode = require('vscode-neovim')
+    -- leader shortcuts not supported in vscode; shift shortcuts not supported in neovim
+    vim.keymap.set("n", "<leader>qo", function() vscode.call('workbench.action.quickOpen') end)
+    vim.keymap.set("n", "<leader>fr", function() vscode.call('references-view.findReferences') end)
+    vim.keymap.set("n", "<leader>vp", function() vscode.call('workbench.actions.view.problems') end)
+    vim.keymap.set("n", "<leader>gr", function() vscode.call('editor.action.goToReferences') end)
+    vim.keymap.set("n", "<leader>fd", function() vscode.call('editor.action.formatDocument') end)
+    vim.keymap.set("n", "<leader>ff", function() vscode.call('workbench.action.findInFiles') end)
+    vim.keymap.set("n", "<leader>sc", function() vscode.call('workbench.action.showCommands') end)
+    vim.keymap.set("n", "<leader>tp", function() vscode.call('workbench.action.togglePanel') end)
+    -- see ~/.config/Code/User/keybindings.json for extra mappings
+    
+
+    --
+    -- run debug
+    --
+    -- open problems
+    -- run selection in debug
+end

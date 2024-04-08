@@ -31,7 +31,39 @@ colors() {
 	done
 }
 
+# in terminator need to remove the default keybinds for this to work
+# strangly had to open with a blank config to delete the keybinds first
+# `terminator -g emptyconfig` (where emptyconfig is an empty file)
+cd() {
+    local target="$@"
+    if [[ $# -eq 0 ]]; then
+        # Handle 'cd' without arguments; change to the $HOME directory.
+        target="$HOME"
+    elif [[ $1 == "--" ]]; then
+        # Handle 'autocd' shopt, that is just a directory name entered without
+        # the preceding 'cd' command. In that case the first argument will be
+        # '--' with the target directory defined by the remaining arguments.
+        shift
+        target="$@"
+    fi
+
+    # Note, if the target directory is the same as the current directory
+    # do nothing since we don't want to populate the directory stack
+    # with consecutive repeat entries.
+    if [[ "$target" != "$PWD" ]]; then
+        builtin pushd "$target" 1>/dev/null
+    fi
+}
+# Alt-Left: rotate back in the directory stack.
+bind -x '"\C-x\C-p": "pushd +1 &>/dev/null"'
+bind '"\e[1;3D":"\C-x\C-p\n"'
+# Alt-Right rotate forward in the directory stack.
+bind -x '"\C-x\C-n": "pushd -0 &>/dev/null"'
+bind '"\e[1;3C":"\C-x\C-n\n"'
+
 [[ -f ~/.extend.bashrc ]] && . ~/.extend.bashrc
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -1,6 +1,7 @@
 return {
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    cond = function() return not vim.g.vscode end,
     config = function()
         local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
