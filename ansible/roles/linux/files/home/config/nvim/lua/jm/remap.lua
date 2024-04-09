@@ -52,8 +52,9 @@ then
     vim.keymap.set("n", "<leader>ff", function() vscode.call('workbench.action.findInFiles') end)
     vim.keymap.set("n", "<leader>sc", function() vscode.call('workbench.action.showCommands') end)
     vim.keymap.set("n", "<leader>tp", function() vscode.call('workbench.action.togglePanel') end)
+    vim.keymap.set("n", "<leader>tb", function() vscode.call('editor.debug.action.toggleBreakpoint') end)
+    vim.keymap.set("v", "<leader>ed", function() vscode.call('editor.debug.action.selectionToRepl') end)
     -- see ~/.config/Code/User/keybindings.json for extra mappings
-    
 
     --
     -- run debug
