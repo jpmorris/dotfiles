@@ -9,7 +9,6 @@
   become_user: root
   ansible.builtin.package:
     name:
-      - "{{ linux_headful_remmina }}"
       - "{{ linux_headful_spotify }}"
       - "{{ linux_headful_veracrypt }}"
       - "{{ linux_headful_slack }}"
@@ -22,6 +21,7 @@
 - name: Install common packages on workstations, laptops (AUR packages)
   kewlfft.aur.aur:
     name:
+      - "{{ linux_headful_remmina_git }}"
       - "{{ linux_headful_betterbird }}"
       - "{{ linux_headful_zoom }}"
   become: true
