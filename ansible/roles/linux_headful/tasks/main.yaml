@@ -5,6 +5,8 @@
     file: '{{ ansible_os_family | lower }}.yaml'
 
 - name: Install common packages on non-VM desktops
+  become: true
+  become_user: root
   ansible.builtin.package:
     name:
       - "{{ linux_headful_remmina }}"
