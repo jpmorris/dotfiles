@@ -48,7 +48,10 @@
     state: link
   with_items:
     - { src: '{{ ansible_config_home }}/roles/linux_desktop/files/mimeapps.list', dest: $HOME/.config/mimeapps.list }
-    - { src: '{{ ansible_config_home }}/roles/linux_desktop/files/google-chrome-stable.desktop', dest: $HOME/.local/share/applications/google-chrome-stable.desktop}
+    - { 
+        src: '{{ ansible_config_home }}/roles/linux_desktop/files/google-chrome-stable.desktop', 
+        dest: $HOME/.local/share/applications/google-chrome-stable.desktop
+      }
 
 - name: Link VSCODE files
   ansible.builtin.file:
@@ -58,4 +61,4 @@
     group: jmorris
     state: link
   with_items:
-    - { src: '{{ ansible_config_home }}/roles/linux_desktop/files/config/Code/User/keybindings.json', dest: $HOME/.config/Code/User/keybindings.json'}
+    - { src: '{{ ansible_config_home }}/roles/linux_desktop/files/config/Code/User/keybindings.json', dest: $HOME/.config/Code/User/keybindings.json}
