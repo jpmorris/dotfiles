@@ -88,4 +88,73 @@
         "command": "workbench.action.debug.stop",
         "when": "inDebugMode && !focusedSessionIsAttach"
     },
+    // scrolling workarounds
+    {
+        "key": "ctrl+u",
+        "command": "-vscode-neovim.ctrl-u",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.u && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+      },
+      {
+        "key": "ctrl+d",
+        "command": "-vscode-neovim.ctrl-d",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.d && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+      },
+      {
+        "key": "ctrl+u",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editorScroll",
+              "args": {
+                "to": "up",
+                "by": "halfPage"
+              }
+            },
+            {
+              "command": "cursorMove",
+              "args": { "to": "viewPortCenter" }
+            }
+          ]
+        }
+      },
+      {
+        "key": "ctrl+d",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editorScroll",
+              "args": {
+                "to": "down",
+                "by": "halfPage"
+              }
+            },
+            {
+              "command": "cursorMove",
+              "args": { "to": "viewPortCenter" }
+            }
+          ]
+        }
+      },
+    // Workaround for mapping n to nzz to center find results
+    // https://github.com/vscode-neovim/vscode-neovim/issues/1222
+    {
+        "key": "n",
+        "when": "editorTextFocus && neovim.mode == normal",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                // commands to run in sequence
+                {
+                    "command": "vscode-neovim.send",
+                    "args": "n",
+                },
+                {
+                    "command": "vscode-neovim.send",
+                    "args": "zz",
+                },
+            ]
+        }
+    },    
 ]
