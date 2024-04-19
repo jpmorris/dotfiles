@@ -1,5 +1,6 @@
 ---
 linux_headful_remmina: remmina
+linux_headful_remmina_git: remmina-git
 linux_headful_spotify: spotify
 linux_headful_veracrypt: veracrypt
 linux_headful_slack: slack-desktop
