@@ -56,6 +56,7 @@ then
     vim.keymap.set("v", "<leader>sc", function() vscode.call('editor.debug.action.selectionToRepl') end)
     vim.keymap.set("n", "<leader>sh", function() vscode.call('editor.debug.action.showDebugHover') end)
     vim.keymap.set("n", "<leader>gd", function() vscode.call('editor.action.revealDefinition') end)
+    vim.keymap.set("n", "<leader>tf", function() vscode.call('editor.toggleFold') end)
     -- see ~/.config/Code/User/keybindings.json for extra mappings
 
     --
