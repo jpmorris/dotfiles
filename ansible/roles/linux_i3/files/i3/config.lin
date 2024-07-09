@@ -14,6 +14,9 @@ bindsym $mod+u border none
 bindsym $mod+y border pixel 1
 bindsym $mod+n border normal
 
+bindsym $mod+Ctrl+l workspace next
+bindsym $mod+Ctrl+h workspace prev
+
 font xft:URWGothic-Book 11
 
 floating_modifier $mod
