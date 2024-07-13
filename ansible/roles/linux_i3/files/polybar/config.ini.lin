@@ -27,7 +27,7 @@ disabled = #707880
 
 [bar/polybar]
 width = 100%
-height = 24pt
+height = 20pt
 ;radius = 6
 monitor = ${env:MONITOR:}
 bottom = true
@@ -36,8 +36,8 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 line-size = 3pt
 border-size = 0
-border-bottom-size = 4
-border-top-size = 4
+border-bottom-size = 0
+border-top-size = 0
 border-color = #00000000
 ;padding-left = 1
 ;padding-right = 1
@@ -152,14 +152,14 @@ label-indicator-background = ${colors.secondary}
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "RAM "
+format-prefix = "M:"
 format-prefix-foreground = ${colors.primary}
 label = %percentage_used:2%%
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "CPU "
+format-prefix = "P:"
 format-prefix-foreground = ${colors.primary}
 label = %percentage:2%%
 
@@ -209,16 +209,16 @@ fuzzy-match = true
 enable-click = false
 
 label-mode = %mode%
-label-mode-padding = 2
+label-mode-padding = 1
 label-mode-background = ${colors.primary}
 
 label-focused =  %index%
 ;label-focused-foreground = ${colors.background-alt}
 label-focused-underline = ${colors.primary}
-label-focused-padding = 2
+label-focused-padding = 1
 
 label-unfocused = %index%
-label-unfocused-padding = 2
+label-unfocused-padding = 1
 
 label-visible = %index%
 ;label-visible-background = ${self.label-focused-background}
@@ -227,7 +227,7 @@ label-visible-padding = ${self.label-focused-padding}
 
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 1
 
 ; Separator in between workspaces
 label-separator = |
@@ -237,7 +237,7 @@ label-separator = |
 [module/clickdate]
 type = custom/script
 format-prefix-foreground = ${colors.accent}
-exec = date +'  %a. %d %b. %Y ~ %I:%M %p'
+exec = date +'%a. %d %b. %Y ~ %I:%M %p'
 tail = false
 interval = 5
 click-left = gsimplecal
