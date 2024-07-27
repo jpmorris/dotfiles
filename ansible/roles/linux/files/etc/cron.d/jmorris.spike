@@ -1,0 +1,58 @@
+
+# summer flights this runs on vicious
+#14 18 * * * jmorris cd /mnt/bebop_jmorris/syncthing/flight_price_monitor && 
+#/home/jmorris/.local/bin/poetry run python main.py --firstflight "WAS-MFR" 
+#--firstdate "2024-07-06" --secondflight "MFR-PHX" --seconddate "2024-07-13" 
+#--thirdflight "PHX-WAS" --thirddate "2024-07-20" 2>&1 | logger -t 
+#flight_price
+
+# winter flights 14 18 * * * jmorris cd 
+#/mnt/bebop_jmorris/syncthing/flight_price_monitor && 
+#/home/jmorris/.local/bin/poetry run python main.py --firstflight "WAS-PHX" 
+#--firstdate "2023-12-18" --secondflight "PHX-WAS" --seconddate "2023-12-26" 
+#2>&1 | logger -t flight_price 15 20 * * * jmorris cd 
+#/mnt/bebop_jmorris/syncthing/flight_price_monitor && 
+#/home/jmorris/.local/bin/poetry run python main.py --firstflight "WAS-PHX" 
+#--firstdate "2023-12-24" --secondflight "PHX-WAS" --seconddate "2023-12-30" 
+#2>&1 | logger -t flight_price 10 12 * * * jmorris cd 
+#/mnt/bebop_jmorris/syncthing/flight_price_monitor && 
+#/home/jmorris/.local/bin/poetry run python main.py --firstflight "WAS-PHX" 
+#--firstdate "2023-12-25" --secondflight "PHX-WAS" --seconddate "2023-12-30" 
+#2>&1 | logger -t flight_price 13 16 * * * jmorris cd 
+#/mnt/bebop_jmorris/syncthing/flight_price_monitor && 
+#/home/jmorris/.local/bin/poetry run python main.py --firstflight "WAS-PHX" 
+#--firstdate "2023-12-25" --secondflight "PHX-WAS" --seconddate "2023-12-31" 
+#2>&1 | logger -t flight_price 16 22 * * * jmorris cd 
+#/mnt/bebop_jmorris/syncthing/flight_price_monitor && 
+#/home/jmorris/.local/bin/poetry run python main.py --firstflight "WAS-PHX" 
+#--firstdate "2023-12-25" --secondflight "PHX-WAS" --seconddate "2024-01-01" 
+#2>&1 | logger -t flight_price 14 20 * * * jmorris cd 
+#/mnt/bebop_jmorris/syncthing/flight_price_monitor && 
+#/home/jmorris/.local/bin/poetry run python main.py --firstflight "WAS-PHX" 
+#--firstdate "2023-12-18" --secondflight "PHX-WAS" --seconddate "2023-12-26" 
+#--redeye 2>&1 | logger -t flight_price 15 22 * * * jmorris cd 
+#/mnt/bebop_jmorris/syncthing/flight_price_monitor && 
+#/home/jmorris/.local/bin/poetry run python main.py --firstflight "WAS-PHX" 
+#--firstdate "2023-12-24" --secondflight "PHX-WAS" --seconddate "2023-12-30" 
+#--redeye 2>&1 | logger -t flight_price 10 14 * * * jmorris cd 
+#/mnt/bebop_jmorris/syncthing/flight_price_monitor && 
+#/home/jmorris/.local/bin/poetry run python main.py --firstflight "WAS-PHX" 
+#--firstdate "2023-12-25" --secondflight "PHX-WAS" --seconddate "2023-12-30" 
+#--redeye 2>&1 | logger -t flight_price 13 16 * * * jmorris cd 
+#/mnt/bebop_jmorris/syncthing/flight_price_monitor && 
+#/home/jmorris/.local/bin/poetry run python main.py --firstflight "WAS-PHX" 
+#--firstdate "2023-12-25" --secondflight "PHX-WAS" --seconddate "2023-12-31" 
+#--redeye 2>&1 | logger -t flight_price 16 23 * * * jmorris cd 
+#/mnt/bebop_jmorris/syncthing/flight_price_monitor && 
+#/home/jmorris/.local/bin/poetry run python main.py --firstflight "WAS-PHX" 
+#--firstdate "2023-12-25" --secondflight "PHX-WAS" --seconddate "2024-01-01" 
+#--redeye 2>&1 | logger -t flight_price
+
+# mongobackup
+21 18 * * * jmorris mongodump --uri=mongodb://192.168.1.25 --db pre-covid-vax-incidents --archive --gzip > /mnt/bebop_jmorris/mongodbbackups/pre_covid-vax-incidents-dump.gz && curl -fsS -m 10 --retry 5 -o /dev/null https://hc-ping.com/f03fbf89-4d7a-4bf4-bd14-f93ec9d07c89
+
+# to backup cron
+10 23 * * * jmorris cp /etc/cron.d/jmorris /home/jmorris/dotfiles/ansible/roles/linux/files/etc/cron.d/jmorris.spike
+
+
+
