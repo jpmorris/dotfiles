@@ -57,6 +57,13 @@
     name:
       - "{{ linux_i3_rofi }}"
 
+- name: Create rofi launcher folder
+  ansible.builtin.file:
+    path: $HOME/.config/rofi/launcher
+    owner: jmorris
+    group: jmorris
+    mode: '0755'
+
 - name: Link rofi config
   ansible.builtin.file:
     src: '{{ item.src }}'

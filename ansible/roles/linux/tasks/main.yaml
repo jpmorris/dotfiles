@@ -150,13 +150,15 @@
 # (N)VIM
 #
 
-- name: Install (neo)vim
-  become: true
-  become_user: root
-  ansible.builtin.package:
-    name:
-      - '{{ linux_vim }}'
-      - '{{ linux_neovim }}'
+    # currently we get  latest vim via appimage and copy into /usr/bin, so do not install
+    # at os level
+    #- name: Install (neo)vim
+    #  become: true
+    #  become_user: root
+    #  ansible.builtin.package:
+    #    name:
+    #      - '{{ linux_vim }}'
+    #      - '{{ linux_neovim }}'
 
 - name: Create symbolic link vim files
   ansible.builtin.file:

@@ -21,7 +21,9 @@
 - name: Install common packages on workstations, laptops (AUR packages)
   kewlfft.aur.aur:
     name:
-      - "{{ linux_headful_remmina_git }}"
+      # remmina has issues with wireguard connections and issues with git version
+      # disabling for now
+      #      - "{{ linux_headful_remmina_git }}"
       - "{{ linux_headful_betterbird }}"
       - "{{ linux_headful_zoom }}"
   become: true
