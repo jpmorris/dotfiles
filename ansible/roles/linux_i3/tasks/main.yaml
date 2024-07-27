@@ -52,8 +52,6 @@
       export REDSHIFT_TEMP=4500
 
 
-# - name: install weather-icons
-
 - name: Install rofi
   ansible.builtin.package:
     name:
@@ -67,10 +65,10 @@
     group: jmorris
     state: link
   with_items:
-    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/colors/colors.rasi.{{ inventory_hostname }}', dest: $HOME/.config/rofi/colors/colors.rasi }
-    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launchers/type-1/launcher.sh', dest: $HOME/.config/rofi/launchers/type-1/launcher.sh }
-    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launchers/type-1/shared/colors.rasi', dest: $HOME/.config/rofi/launchers/type-1/shared/colors.rasi }
-    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launchers/type-1/shared/fonts.rasi', dest: $HOME/.config/rofi/launchers/type-1/shared/fonts.rasi }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launcher/colors.rasi.{{ inventory_hostname }}', dest: $HOME/.config/rofi/launcher/colors.rasi }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launcher/fonts.rasi', dest: $HOME/.config/rofi/launcher/fonts.rasi }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launcher/config.rasi', dest: $HOME/.config/rofi/launcher/config.rasi }
+    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/rofi/launcher/style-6.rasi', dest: $HOME/.config/rofi/launcher/style-6.rasi }
 
 #
 # SYSTEMD LINKS

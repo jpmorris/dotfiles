@@ -28,8 +28,8 @@ bindsym $mod1+Return exec terminator
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id  ~/.config/rofi/launchers/type-1/launcher.sh
-bindsym $mod1+d exec --no-startup-id ~/.config/rofi/launchers/type-1/launcher.sh
+bindsym $mod+d exec --no-startup-id rofi -show run -config ~/.config/rofi/launcher/config.rasi -rnow 
+bindsym $mod1+d exec --no-startup-id rofi -show run -config ~/.config/rofi/launcher/config.rasi -rnow 
 
 # change focus
 bindsym $mod+j focus down
@@ -56,7 +56,8 @@ bindsym $mod+Shift+Right move right
 workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
-bindsym $mod1+Tab workspace back_and_forth
+# trying 'alttab' program
+#bindsym $mod1+Tab workspace back_and_forth
 
 # split orientation
 bindsym $mod+semicolon split h;exec notify-send 'tile horizontally'
@@ -251,8 +252,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# for full screen shots
-bindsym $mod+Shift+Print --release exec "scrot /home/jmorris/Pictures/screenshot_%Y%m%d_%H%M%S.png -e 'xclip -selection clipboard -t image/png < $f'"
 # hotkey for selection screenshots
 bindsym Print --release exec "flameshot gui"
 
