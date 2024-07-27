@@ -28,8 +28,8 @@ bindsym $mod1+Return exec terminator
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id  ~/.config/rofi/launchers/type-1/launcher.sh
-bindsym $mod1+d exec --no-startup-id ~/.config/rofi/launchers/type-1/launcher.sh
+bindsym $mod+d exec --no-startup-id rofi -show run -config ~/.config/rofi/launcher/config.rasi -rnow
+bindsym $mod1+d exec --no-startup-id rofi -show run -config ~/.config/rofi/launcher/config.rasi -rnow
 
 
 
