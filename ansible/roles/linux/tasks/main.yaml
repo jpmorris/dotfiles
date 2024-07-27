@@ -151,6 +151,8 @@
 #
 
 - name: Install (neo)vim
+  become: true
+  become_user: root
   ansible.builtin.package:
     name:
       - '{{ linux_vim }}'
