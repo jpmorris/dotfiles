@@ -5,7 +5,8 @@ set $mod1 Mod1
 
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border pixel 1
+# default_border pixel 1
+default_border none
 default_floating_border normal
 
 hide_edge_borders none
@@ -13,6 +14,9 @@ hide_edge_borders none
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
 bindsym $mod+n border normal
+
+bindsym $mod+Ctrl+l workspace next
+bindsym $mod+Ctrl+h workspace prev
 
 font xft:URWGothic-Book 11
 
@@ -495,6 +499,8 @@ exec --no-startup-id veracrypt
 # google chat - install progressive web app PWA
 assign [class="Google-chrome" instance="crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi"] $ws2
 exec google-chrome-stable --profile-directory=Default --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
+# leaving messages.google.com out for now
+
 
 # GOOGLE VOICE
 # to create WPA for google voice you need to
@@ -504,8 +510,8 @@ exec google-chrome-stable --profile-directory=Default --app-id=mdpkiolbdkhdjpekf
 # - use xprop to get classname
 
 # personal number
-assign [class="Google-chrome" instance="crx_bhacinadenbkojblbakackhneiahcgkb"] $ws2
-exec google-chrome-stable --profile-directory=Default --app-id=bhacinadenbkojblbakackhneiahcgkb
+assign [class="Google-chrome" instance="crx_bojjonegeadjcbekpnkhoalecdkdohbo"] $ws2
+exec google-chrome-stable --profile-directory=Default --app-id=bojjonegeadjcbekpnkhoalecdkdohbo
 # junk number
 assign [class="Google-chrome" instance="crx_nnjlgmkenicdieemeigkiipfcodbkgak"] $ws2
 exec google-chrome-stable --profile-directory=Default --app-id=nnjlgmkenicdieemeigkiipfcodbkgak
