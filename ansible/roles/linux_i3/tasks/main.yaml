@@ -60,8 +60,7 @@
 - name: Create rofi launcher folder
   ansible.builtin.file:
     path: $HOME/.config/rofi/launcher
-    owner: jmorris
-    group: jmorris
+    state: directory
     mode: '0755'
 
 - name: Link rofi config
