@@ -56,9 +56,11 @@ then
     vim.keymap.set("v", "<leader>sc", function() vscode.call('editor.debug.action.selectionToRepl') end)
     vim.keymap.set("n", "<leader>sh", function() vscode.call('editor.debug.action.showDebugHover') end)
     vim.keymap.set("n", "<leader>gd", function() vscode.call('editor.action.revealDefinition') end)
-    vim.keymap.set("n", "<leader>tf", function() vscode.call('editor.toggleFold') end)
-    vim.keymap.set("n", "<leader>fa", function() vscode.call('editor.foldAll') end)
-    vim.keymap.set("n", "<leader>ur", function() vscode.call('editor.unfoldRecursively') end)
+    -- folds using vim defaults
+    vim.keymap.set("n", "<leader>za", function() vscode.call('editor.toggleFold') end)
+    vim.keymap.set("n", "<leader>zM", function() vscode.call('editor.foldAll') end)
+    vim.keymap.set("n", "<leader>zR", function() vscode.call('editor.unfoldAll') end)
+    vim.keymap.set("n", "<leader>zO", function() vscode.call('editor.unfoldRecursively') end)
     -- see ~/.config/Code/User/keybindings.json for extra mappings
 
     --
