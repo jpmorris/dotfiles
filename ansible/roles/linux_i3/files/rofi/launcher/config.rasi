@@ -37,7 +37,7 @@ configuration {
 /*	tokenize: true;*/
 /*	m: "-5";*/
 // use rofi -h or arandr to see display name
-monitor: "DP-2";
+// monitor: "DP-2";
 /*	filter: ;*/
 /*	dpi: -1;*/
 /*	threads: 0;*/
