@@ -96,7 +96,7 @@ bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
 
-set $lmon DP-4.8
+set $lmon DP-4
 set $cmon DP-2
 set $rmon HDMI-0
 
@@ -375,12 +375,12 @@ exec google-chrome-stable --profile-directory=Default --app-id=hpfldicfbfomlpcik
 # - use xprop to get classname
 
 # personal number
-assign [class="Google-chrome" instance="crx_bhacinadenbkojblbakackhneiahcgkb"] $ws2
-exec google-chrome-stable --profile-directory=Default --app-id=bhacinadenbkojblbakackhneiahcgkb
+assign [class="Google-chrome" instance="crx_dllkhiioojpbbndlgmhfiiahkoklfpop"] $ws2
+exec google-chrome-stable --profile-directory=Default --app-id=dllkhiioojpbbndlgmhfiiahkoklfpop
 #
 # junk number
-assign [class="Google-chrome" instance="crx_nnjlgmkenicdieemeigkiipfcodbkgak"] $ws2
-exec google-chrome-stable --profile-directory=Default --app-id=nnjlgmkenicdieemeigkiipfcodbkgak
+assign [class="Google-chrome" instance="crx_clpgciojomlgfemaadhdddplihnpbfha"] $ws2
+exec google-chrome-stable --profile-directory=Default --app-id=clpgciojomlgfemaadhdddplihnpbfha
 
 
 
