@@ -96,7 +96,7 @@ bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
 
-set $lmon DP-4.8
+set $lmon DP-4
 set $cmon DP-2
 set $rmon HDMI-0
 
@@ -306,18 +306,19 @@ mode "resize" {
 #}
 
 # bar
-#exec_always --no-startup-id /$HOME/.config/polybar/polybar_allmonitors.sh
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-# nitrogenfor wallpaper
 # dunst should start automatically with dbus, but if not check that another notifier
 # isn't also running and uninstall:
 # grep -ri org.freedesktop.notifications /usr/share/dbus-1/services
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+# POLYBAR
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# FEH - WALLPAPER
+# nitrogen is no longer maintained 
 # picom is compositor -- doesn't seem worth it
-#exec --no-startup-id nitrogen --restore; sleep 1; picom -b
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id numlockx on
+exec --no-startup-id feh --bg-fill /home/jmorris/dotfiles/ansible/roles/linux_i3/files/feh/brooklyn_bridge_at_night-wallpaper-7680x1440.jpg
 
+
+exec --no-startup-id numlockx on
 # default startup
 exec --no-startup-id nm-applet
 # this blocks disabling the power button via /etc/systemd/logind.conf
@@ -375,12 +376,12 @@ exec google-chrome-stable --profile-directory=Default --app-id=hpfldicfbfomlpcik
 # - use xprop to get classname
 
 # personal number
-assign [class="Google-chrome" instance="crx_bhacinadenbkojblbakackhneiahcgkb"] $ws2
-exec google-chrome-stable --profile-directory=Default --app-id=bhacinadenbkojblbakackhneiahcgkb
+assign [class="Google-chrome" instance="crx_dllkhiioojpbbndlgmhfiiahkoklfpop"] $ws2
+exec google-chrome-stable --profile-directory=Default --app-id=dllkhiioojpbbndlgmhfiiahkoklfpop
 #
 # junk number
-assign [class="Google-chrome" instance="crx_nnjlgmkenicdieemeigkiipfcodbkgak"] $ws2
-exec google-chrome-stable --profile-directory=Default --app-id=nnjlgmkenicdieemeigkiipfcodbkgak
+assign [class="Google-chrome" instance="crx_clpgciojomlgfemaadhdddplihnpbfha"] $ws2
+exec google-chrome-stable --profile-directory=Default --app-id=clpgciojomlgfemaadhdddplihnpbfha
 
 
 

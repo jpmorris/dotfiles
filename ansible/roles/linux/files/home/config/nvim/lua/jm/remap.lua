@@ -19,7 +19,8 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- paste over highlight without overwriting 
-vim.keymap.set("x", "<leader>p", [["_dP]])
+-- this can be simply done with 'P'
+--vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- yank into system clipboard
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
