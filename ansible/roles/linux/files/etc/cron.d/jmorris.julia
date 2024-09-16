@@ -2,7 +2,7 @@
 15 12 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window https://outlook.office.com/mail/inbox
 15 12 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window https://calendar.google.com
 15 12 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window https://vocabulary.com/vocabtrainer
-15 12 * * 1-5 jmorris DISPLAY=:0 slack 
+15 12 * * 1-5 jmorris DISPLAY=:0 if ps -A | grep -q slack; then wmctrl -r slack -b add,demands_attention; else slack; fi &
 # make sure messaging windows are always up
 0 * * * * jmorris DISPLAY=:0 /home/jmorris/dotfiles/scripts/launch_messaging_windows.sh
 # to delete clipboard history
