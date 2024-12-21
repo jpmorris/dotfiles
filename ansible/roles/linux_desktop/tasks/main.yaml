@@ -53,12 +53,13 @@
         dest: $HOME/.local/share/applications/google-chrome-stable.desktop
       }
 
-- name: Link VSCODE files
-  ansible.builtin.file:
-    src: '{{ item.src }}'
-    dest: '{{ item.dest }}'
-    owner: jmorris
-    group: jmorris
-    state: link
-  with_items:
-    - { src: '{{ ansible_config_home }}/roles/linux_desktop/files/config/Code/User/keybindings.json', dest: $HOME/.config/Code/User/keybindings.json}
+      # VSCODE syncs via the cloud
+      # - name: Link VSCODE files
+      #   ansible.builtin.file:
+      #     src: '{{ item.src }}'
+      #     dest: '{{ item.dest }}'
+      #     owner: jmorris
+      #     group: jmorris
+      #     state: link
+      #   with_items:
+      #     - { src: '{{ ansible_config_home }}/roles/linux_desktop/files/config/Code/User/keybindings.json', dest: $HOME/.config/Code/User/keybindings.json}
