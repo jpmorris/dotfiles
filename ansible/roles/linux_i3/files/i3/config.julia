@@ -336,6 +336,7 @@ exec --no-startup-id xfce4-notes
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 #exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec --no-startup-id blueman-applet
 
 
  #default location
