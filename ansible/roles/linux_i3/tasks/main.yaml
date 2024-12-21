@@ -12,17 +12,6 @@
     group: jmorris
     state: link
 
-- name: Link nitrogen config
-  ansible.builtin.file:
-    src: '{{ item.src }}'
-    dest: '{{ item.dest }}'
-    owner: jmorris
-    group: jmorris
-    state: link
-  with_items:
-    # need this as global variable
-    - { src: '{{ ansible_config_home }}/roles/linux_i3/files/nitrogen/bg-saved.cfg.{{ inventory_hostname }}', dest: $HOME/.config/nitrogen/bg-saved.cfg }
-
 - name: Link dunst config
   ansible.builtin.file:
     src: '{{ ansible_config_home }}/roles/linux_i3/files/dunst/dunstrc.{{ inventory_hostname }}'
