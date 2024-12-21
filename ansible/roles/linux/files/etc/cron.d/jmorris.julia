@@ -2,6 +2,10 @@
 15 12 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window https://outlook.office.com/mail/inbox
 15 12 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window https://calendar.google.com
 15 12 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window https://vocabulary.com/vocabtrainer
+15 12 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window https://www.duolingo.com/learn
+15 12 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window https://www.dreamingspanish.com/browse?level=beginner
+15 12 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window 'https://excellaco.sharepoint.com/sites/DataScience/Shared%20Documents/Forms/AllItems.aspx?csf=1&amp%3Bweb=1&amp%3Be=0atM7t&CID=99a0b319%2D366a%2D4d97%2D874d%2De3c853dd416e&FolderCTID=0x012000A010E0CAF3E5EB4291CBAF977260020B&id=%2Fsites%2FDataScience%2FShared%20Documents%2FData%20Science%20Interviews'
+15 12 * * 1-5 jmorris DISPLAY=:0 google-chrome-stable --new-window 'https://quizlet.com/412821675/us-history-flash-cards/'
 15 12 * * 1-5 jmorris DISPLAY=:0 if ps -A | grep -q slack; then wmctrl -r slack -b add,demands_attention; else slack; fi &
 # make sure messaging windows are always up
 0 * * * * jmorris DISPLAY=:0 /home/jmorris/dotfiles/scripts/launch_messaging_windows.sh

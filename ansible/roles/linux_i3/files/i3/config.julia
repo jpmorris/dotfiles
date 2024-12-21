@@ -235,7 +235,7 @@ for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="Yad" title="yad-calendar"] floating enable
-for_window [class="zoom"] floating enable
+# for_window [class="zoom"] floating enable
 
 
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
@@ -344,7 +344,7 @@ assign [class="betterbird"] $ws3
 assign [class="Veracrypt"] $ws3
 assign [class="org.remmina.Remmina"] $ws9
 assign [class="Anydesk.bin"] $ws9
-assign [class="Slack"] $ws5
+assign [class="Slack"] $ws7
 assign [class="jetbrains-pycharm"] $ws4
 
 
@@ -362,11 +362,11 @@ assign [class="jetbrains-pycharm"] $ws4
 # ___AUTO LAUNCH MESSAGING SERVICES___
 # GOOGLE CHAT
 assign [class="Google-chrome" instance="crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi"] $ws2
-exec google-chrome-stable --profile-directory=Default --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi
+exec "sleep 10; google-chrome-stable --profile-directory=Default --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi"
 
 # MESSAGES.GOOGLE.COM - messages on phone - provider number
 assign [class="Google-chrome" instance="crx_hpfldicfbfomlpcikngkocigghgafkph"] $ws2
-exec google-chrome-stable --profile-directory=Default --app-id=hpfldicfbfomlpcikngkocigghgafkph
+exec "sleep 10; google-chrome-stable --profile-directory=Default --app-id=hpfldicfbfomlpcikngkocigghgafkph"
 
 # GOOGLE VOICE
 # to create WPA for google voice you need to
@@ -378,11 +378,11 @@ exec google-chrome-stable --profile-directory=Default --app-id=hpfldicfbfomlpcik
 
 # personal number
 assign [class="Google-chrome" instance="crx_dllkhiioojpbbndlgmhfiiahkoklfpop"] $ws2
-exec google-chrome-stable --profile-directory=Default --app-id=dllkhiioojpbbndlgmhfiiahkoklfpop
+exec "sleep 10; google-chrome-stable --profile-directory=Default --app-id=dllkhiioojpbbndlgmhfiiahkoklfpop"
 #
 # junk number
 assign [class="Google-chrome" instance="crx_clpgciojomlgfemaadhdddplihnpbfha"] $ws2
-exec google-chrome-stable --profile-directory=Default --app-id=clpgciojomlgfemaadhdddplihnpbfha
+exec "sleep 10; google-chrome-stable --profile-directory=Default --app-id=clpgciojomlgfemaadhdddplihnpbfha"
 
 
 
