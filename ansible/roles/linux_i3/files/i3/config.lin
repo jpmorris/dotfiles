@@ -70,6 +70,14 @@ bindsym $mod+F5 exec terminal -e 'mocp'
 # bindsym $mod+t exec --no-startup-id pkill picom
 # bindsym $mod+Ctrl+t exec --no-startup-id picom -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+
+
+# POLYBAR
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# nitrogen is no longer maintained - keeping for now - may change to feh
+#exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+exec --no-startup-id nitrogen --restore
+
 #bindsym Print exec --no-startup-id i3-scrot
 #bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 #bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
@@ -381,7 +389,6 @@ set_from_resource $term_color15    color15
         #urgent_workspace   #16a085 #FDF6E3 #E5201D
     #}
 #}
-exec_always --no-startup-id polybar --reload polybar
 
 # hide/unhide i3status bar
 #bindsym $mod+m bar mode toggle
@@ -458,8 +465,6 @@ mode "$mode_gaps_outer" {
 
 #  Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-#exec --no-startup-id nitrogen --restore; sleep 1; picom -b
-exec --no-startup-id nitrogen --restore
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 #exec --no-startup-id xfce4-power-manager
