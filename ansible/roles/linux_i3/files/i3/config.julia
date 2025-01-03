@@ -315,8 +315,8 @@ bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart du
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # FEH - WALLPAPER
 # nitrogen is no longer maintained 
-# picom is compositor -- doesn't seem worth it
 exec --no-startup-id feh --bg-fill /home/jmorris/dotfiles/ansible/roles/linux_i3/files/feh/brooklyn_bridge_at_night-wallpaper-7680x1440.jpg
+# picom is compositor -- doesn't seem worth it but disabling does break zoom screen sharing--see zoom docs for fix while on calls
 
 
 exec --no-startup-id numlockx on
