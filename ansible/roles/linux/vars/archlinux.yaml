@@ -4,3 +4,4 @@ linux_neovim: neovim
 linux_vim: vim
 linux_neofetch: neofetch
 linux_cal: util-linux
+hosts_deny: [vicious] # install is fragile with selenium bot

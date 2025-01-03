@@ -3,14 +3,31 @@
 # Initial setup
 #
 
+- name: Load a variable file based on the OS type
+  ansible.builtin.include_vars:
+    file: '{{ ansible_os_family | lower }}.yaml'
+  tags:
+    - upgrade
+
+- name: Pull dotfiles from github if no local modifications
+  ansible.builtin.git:
+    repo: git@github.com:jpmorris/dotfiles.git
+    dest: /home/jmorris/dotfiles
+    version: master
+  tags:
+    - upgrade
+
 - name: Update apt repo and cache on all Debian/Ubuntu boxes
   when: ansible_os_family == 'Debian'
   become: true
   become_user: root
   ansible.builtin.apt:
+    upgrade: true 
     update_cache: true
     force_apt_get: true
     cache_valid_time: 3600
+  tags:
+    - upgrade
 
 - name: Update pcaman repo and cache on all Arch boxes
   when: ansible_os_family == 'Archlinux'
@@ -18,6 +35,8 @@
   become_user: root
   community.general.pacman:
     update_cache: true
+  tags:
+    - upgrade
 
 - name: Create the `aur_builder` user
   become: true
@@ -27,6 +46,8 @@
     name: aur_builder
     create_home: true
     group: wheel
+  tags:
+    - upgrade
 
 - name: Allow the `aur_builder` user to run `sudo pacman` without a password
   become: true
@@ -38,17 +59,24 @@
     create: true
     mode: "0644"
     validate: 'visudo -cf %s'
+  tags:
+    - upgrade
 
-- name: Load a variable file based on the OS type
-  ansible.builtin.include_vars:
-    file: '{{ ansible_os_family | lower }}.yaml'
-      
 
-- name: Pull dotfiles from github if no local modifications
-  ansible.builtin.git:
-    repo: git@github.com:jpmorris/dotfiles.git
-    dest: /home/jmorris/dotfiles
-    version: master
+- name: Upgrade the system using yay, AUR and repo packages.
+  become: true
+  become_user: aur_builder
+  when: 
+    - ansible_os_family == 'Archlinux' 
+    - inventory_hostname not in hosts_deny
+  kewlfft.aur.aur:
+    update_cache: true
+    upgrade: true
+    state: latest
+    aur_only: true
+  tags:
+    - upgrade
+
 
 #
 # COMMON PACKAGES
