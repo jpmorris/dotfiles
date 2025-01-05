@@ -54,5 +54,6 @@
 # to backup cron
 10 23 * * * jmorris cp /etc/cron.d/jmorris /home/jmorris/dotfiles/ansible/roles/linux/files/etc/cron.d/jmorris.spike
 
-5  0  * * * jmorris ansible-playbook --become-password-file=/etc/ansible/pass.txt playbook.yaml && dig +short myip.opendns.com @resolver1.opendns.com | xargs -I\% curl -fsS -m 10 --retry 5 --data-raw "\%" https://hc-ping.com/5013c746-ed25-4651-a013-2cb33247a183
+5  0  * * * jmorris cd /home/jmorris/dotfiles/ansible && ansible-playbook --become-password-file=/etc/ansible/pass.txt playbook.yaml && dig +short myip.opendns.com @resolver1.opendns.com | xargs -I\% curl -fsS -m 10 --retry 5 --data-raw "\%" https://hc-ping.com/5013c746-ed25-4651-a013-2cb33247a183
 
+10 0  * * * jmorris bash /home/jmorris/dotfiles/scripts/check_protools_usage.sh
