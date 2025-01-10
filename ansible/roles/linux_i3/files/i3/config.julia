@@ -201,6 +201,10 @@ bindsym $mod1+Shift+9 move container to workspace $ws19
 #bindsym $mod+$mod1+Ctrl+8 move container to workspace $ws18; workspace $ws18
 #bindsym $mod+$mod1+Ctrl+9 move container to workspace $ws19; workspace $ws19
 
+bindsym XF86AudioMute exec amixer sset 'Master' toggle
+bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
+bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
+
 bindsym --whole-window $mod+button4 workspace next
 bindsym --whole-window $mod+button5 workspace prev
 
