@@ -73,7 +73,7 @@
     update_cache: true
     upgrade: true
     state: latest
-    aur_only: true
+    aur_only: false
   tags:
     - upgrade
 
