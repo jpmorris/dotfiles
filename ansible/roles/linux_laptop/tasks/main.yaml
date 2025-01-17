@@ -14,4 +14,4 @@
     mode: '0644'
   with_items:
     - { src: '{{ ansible_config_home }}/roles/linux_laptop/files/etc/systemd/logind.conf.{{ inventory_hostname }}', dest: /etc/systemd/logind.conf }
-    - { src: '{{ ansible_config_home }}/roles/linux_laptop/files/etc/systemd/sleep.conf.{{ inventory_hostname }}', dest: /etc/systemd/sleep.conf }
+    - { src: '{{ ansible_config_home }}/roles/linux_laptop/files/etc/systemd/suspend.conf.{{ inventory_hostname }}', dest: /etc/systemd/sleep.conf }
