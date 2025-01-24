@@ -1,12 +1,12 @@
 [Unit]
 Description=Update packages on resume if connected to home wifi
-Requires=network.target
-After=network.target suspend.target hibernate.target hybrid.sleep.target
+#Requires=network-online.target
+After=sleep.target network-online.target
 
 [Service]
-User=jmorris
+#User=jmorris
 Type=simple
 ExecStart=bash /home/jmorris/dotfiles/scripts/update_arch_packages.sh
 
 [Install]
-WantedBy=suspend.target hibernate.target hybrid-sleep.target
+WantedBy=sleep.target
