@@ -7,7 +7,7 @@
 # check pro tools
 10 0  * * * jmorris bash /home/jmorris/dotfiles/scripts/check_protools_usage.sh
 # gmailAutorespond
-*/7 0-23  *   *   * jmorris /usr/bin/perl /mnt/bebop_jmorris/code/gmailAutorespond/gmailAutorespond.pl
+*/7 0-23  *   *   * jmorris /usr/bin/perl /mnt/bebop_jmorris/syncthing/gmailAutorespond/gmailAutorespond.pl
 # healthcheck on pages
 */5 * * * * jmorris python3 /docker/dockerconfigs/http_healthcheck.py
 
