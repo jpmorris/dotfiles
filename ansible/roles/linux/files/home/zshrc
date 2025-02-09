@@ -145,5 +145,6 @@ setopt auto_pushd
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export LS_COLORS=$LS_COLORS:'ow=01;36;40:'
 # Created by `pipx` on 2024-07-16 07:35:42
 export PATH="$PATH:/home/jmorris/.local/bin"
