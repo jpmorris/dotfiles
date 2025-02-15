@@ -129,6 +129,17 @@
     path: $HOME/.oh-my-zsh/cache/completions
     mode: '0755'
 
+- name: Copy custom theme oh-my-zsh
+  ansible.builtin.file:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    owner: jmorris
+    group: jmorris
+    state: link
+    force: true
+  with_items:
+    - { src: '{{ ansible_config_home }}/roles/linux/files/home/oh-my-zsh/themes/blinks.zsh-theme', dest: $HOME/.oh-my-zsh/themes/blinks.zsh-theme }
+
 - name: Change shell
   become: true
   ansible.builtin.user:
