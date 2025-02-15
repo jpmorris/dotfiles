@@ -10,6 +10,11 @@
 */7 0-23  *   *   * jmorris /usr/bin/perl /mnt/bebop_jmorris/syncthing/gmailAutorespond/gmailAutorespond.pl
 # healthcheck on pages
 */5 * * * * jmorris python3 /docker/dockerconfigs/http_healthcheck.py
+# change frigate config dark->light (sunrise) 
+0 5 * * * jmorris rjd-sunwait.sunwait wait daylight rise 38.9970N 77.0302W && cp /docker/frigate/config/config.yml /docker/frigate/config/config_night.yml && cp /docker/frigate/config/config_day.yml /docker/frigate/config/config.yml && docker restart frigate 
+# change frigate config light->dark (sundown) 
+0 16 * * * jmorris rjd-sunwait.sunwait wait daylight set 39.9970N 77.0302W && cp /docker/frigate/config/config.yml /docker/frigate/config/config_day.yml && cp /docker/frigate/config/config_night.yml /docker/frigate/config/config.yml && docker restart frigate 
+
 
 #*/2 0-3  *   *   * jmorris /usr/bin/perl /mnt/bebop_jmorris/code/gmailAutorespond/gmailAutorespond.pl
 #49   *     *   *   * jmorris     dig +short myip.opendns.com @resolver1.opendns.com | xargs -I\% curl -fsS -m 10 --retry 5 --data-raw "\%" https://hc-ping.com/86e2f010-42f4-4576-bc43-debd88366282
