@@ -12,7 +12,7 @@ function host_color {
     case $HOST in
       julia) echo cyan;;
       spike) echo red;;
-      vicious) echo blue;;
+      vicious) echo magenta;;
       lin) echo yellow;;
       *) echo default ;;
     esac
