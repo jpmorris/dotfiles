@@ -163,13 +163,15 @@
     group: jmorris
     mode: '0755'
 
-- name: Create link to zshrc.extras
-  ansible.builtin.file:
-    src: '{{ ansible_config_home }}/roles/linux/files/home/zshrc.extras.{{ inventory_hostname }}'
-    dest: $HOME/.zsh/zshrc.extras
-    owner: jmorris
-    group: jmorris
-    state: link
+    # this was only for zsh hostname colors
+    # now using oh-my-zsh
+    #- name: Create link to zshrc.extras
+    #  ansible.builtin.file:
+    #    src: '{{ ansible_config_home }}/roles/linux/files/home/zshrc.extras.{{ inventory_hostname }}'
+    #    dest: $HOME/.zsh/zshrc.extras
+    #    owner: jmorris
+    #    group: jmorris
+    #    state: link
 
 - name: Check for local aliases file
   delegate_to: localhost
