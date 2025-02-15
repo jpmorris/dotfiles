@@ -153,6 +153,7 @@
     owner: jmorris
     group: jmorris
     state: link
+    force: true
 
 - name: Create .zsh dir
   ansible.builtin.file:
